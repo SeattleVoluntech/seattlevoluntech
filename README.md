@@ -1,4 +1,5 @@
 # Seattle VolunTech
+[![Build Status](https://travis-ci.org/SeattleVoluntech/seattlevoluntech.svg?branch=master)](https://travis-ci.org/SeattleVoluntech/seattlevoluntech)
 Seattle VolunTech is a platform that connects minority- and immigrant-owned  small businesses with technical resources necessary to improve web presence and brand awareness in the Seattle area.
 
 Seattle VolunTech one of three projects resulting from the efforts of the [WTIA ION Collaborators - Cohort 3](https://www.washingtontechnology.org/ion/) developed and maintained in concert with [Codefellows](https://www.codefellows.org) code school in Seattle.
