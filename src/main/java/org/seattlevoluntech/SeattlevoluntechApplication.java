@@ -8,5 +8,7 @@ public class SeattlevoluntechApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SeattlevoluntechApplication.class, args);
+
+		System.out.println("http://localhost:8080");
 	}
 }
