@@ -37,6 +37,14 @@ front-end/.grunt
 # Bower dependency directory (https://bower.io/)
 front-end/bower_components
 
+# Intellij files for front-end
+front-end/*.iml
+front-end/**/.idea/workspace.xml
+front-end/**/.idea/tasks.xml
+front-end/**/.idea/gradle.xml
+front-end/**/.idea/dictionaries
+front-end/**/.idea/libraries
+
 # front-end ignore stops
 
 ### Android ###
