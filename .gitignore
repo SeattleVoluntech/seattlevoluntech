@@ -1,5 +1,44 @@
 # Created by https://www.gitignore.io/api/java,macos,android,androidstudio
 
+# front-end ignore starts
+
+# Webpack build dir
+# excluding build folder for now
+front-end/build/
+
+# Dependency directories
+front-end/node_modules/
+front-end/jspm_packages/
+
+# Optional npm cache directory
+front-end/.npm
+
+# Optional eslint cache
+front-end/.eslintcache
+
+# Optional REPL history
+front-end/.node_repl_history
+
+# Output of 'npm pack'
+front-end/*.tgz
+
+# Yarn Integrity file
+front-end/.yarn-integrity
+
+# dotenv environment variables file
+front-end/.env
+
+# next.js build output
+front-end/.next
+
+# Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
+front-end/.grunt
+
+# Bower dependency directory (https://bower.io/)
+front-end/bower_components
+
+# front-end ignore stops
+
 ### Android ###
 # Built application files
 *.apk
