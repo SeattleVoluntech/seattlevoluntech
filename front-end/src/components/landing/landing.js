@@ -3,7 +3,7 @@ import React from 'react';
 class Landing extends React.Component {
   render() {
     return (
-        <p>Testing 123</p>
+        <p>Hello Ming</p>
     );
   }
 }
