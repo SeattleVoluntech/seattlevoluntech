@@ -1,4 +1,5 @@
 require('dotenv').config();
+const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { DefinePlugin } = require('webpack');
@@ -6,10 +7,11 @@ const { DefinePlugin } = require('webpack');
 const webpackConfig = module.exports = {};
 
 webpackConfig.entry = `${__dirname}/src/main.js`;
+const buildPath = path.join(__dirname, '../src/main/resources/static');
 
 webpackConfig.output = {
   filename: '[name].[hash].js',
-  path: `${__dirname}/build`,
+  path: buildPath,
   publicPath: process.env.CDN_URL,
 };
 
