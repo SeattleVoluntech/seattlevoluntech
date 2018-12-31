@@ -6,7 +6,7 @@
 body {
   background-color: #ffffff;
   font-family: "Proxima_Nova", sans-serif;
-  color: #ea402c; }
+  color: #80aed0; }
 
 button:hover {
   cursor: pointer; }
@@ -29,5 +29,5 @@ a {
   text-decoration: none; }
 
 a:visited {
-  color: #ea402c; }
+  color: #80aed0; }
 
