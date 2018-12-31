@@ -1,0 +1,129 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+@font-face {
+  font-family: "Proxima_Nova";
+  src: url(feface72008e6857da27f939e1eceffa.ttf); }
+
+body {
+  background-color: #ffffff;
+  font-family: "Proxima_Nova", sans-serif;
+  color: #80aed0; }
+
+button:hover {
+  cursor: pointer; }
+
+h1 {
+  font-family: "Proxima_Nova", sans-serif;
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 3%; }
+
+html {
+  overflow-y: scroll; }
+
+.logo {
+  margin: 50px auto;
+  width: 250px;
+  display: block; }
+
+a {
+  text-decoration: none; }
+
+a:visited {
+  color: #80aed0; }
+
+.centered {
+  width: 100%;
+  margin: 0 auto; }
+
+.error {
+  color: red; }
+
+.create-form {
+  max-width: 400px;
+  margin: 50px auto;
+  background: #fff;
+  border-radius: 2px; }
+  .create-form.signup {
+    margin: 0px auto; }
+
+.create-form h1 {
+  display: block;
+  text-align: center;
+  padding: 0;
+  margin: 0 0 20px 0;
+  color: #5C5C5C;
+  font-size: x-large; }
+
+.create-form li {
+  display: block;
+  padding: 9px;
+  border: 1px solid #DDDDDD;
+  margin-bottom: 30px;
+  border-radius: 3px; }
+
+.create-form li > label {
+  display: block;
+  float: left;
+  margin-top: -19px;
+  background: #FFFFFF;
+  height: 14px;
+  padding: 2px 5px 2px 5px;
+  color: #B9B9B9;
+  font-size: 14px;
+  overflow: hidden; }
+
+.create-form input[type="text"],
+.create-form input[type="email"],
+.create-form input[type="number"],
+.create-form input[type="search"],
+.create-form input[type="password"],
+.create-form select {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  width: 100%;
+  display: block;
+  outline: none;
+  border: none;
+  height: 25px;
+  line-height: 25px;
+  font-size: 16px;
+  padding: 0; }
+
+.create-form li > span {
+  background: #F3F3F3;
+  display: block;
+  padding: 3px;
+  margin: 0 -9px -9px -9px;
+  text-align: center;
+  color: #C0C0C0;
+  font-size: 11px; }
+
+#navControl {
+  padding: 5px 5px 5px 5px;
+  background: #FF5757; }
+
+.navUILogo {
+  height: 70px;
+  width: 70px;
+  margin: 3px 3px 3px 20px; }
+
+#navControl .navLink {
+  float: right;
+  margin: 30px 20px 5px 5px;
+  padding: 0px; }
+
+Link a {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  color: #ffffff; }
+
+p {
+  color: #ffffff; }
+
+.formHeader {
+  color: #80aed0;
+  margin-top: 40px;
+  text-align: center; }
+
