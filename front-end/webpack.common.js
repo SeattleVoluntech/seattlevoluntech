@@ -27,7 +27,7 @@ webpackConfig.plugins = [
 webpackConfig.module = {};
 webpackConfig.module.rules = [
   {
-    test: /\.(png|svg|jpg|ttf|gif)$/,
+    test: /\.(png|svg|JPG|jpg|ttf|gif)$/,
     use: [
       'file-loader',
     ],
