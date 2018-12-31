@@ -5,7 +5,6 @@
   margin: 50px auto;
   background: #fff;
   border-radius: 2px;
-  font-family: $proxima, sans-serif;
   &.signup {
     margin: 0px auto;
   }
@@ -38,7 +37,6 @@
   color: #B9B9B9;
   font-size: 14px;
   overflow: hidden;
-  font-family: $proxima, sans-serif;
 }
 
 .create-form input[type="text"],
@@ -59,7 +57,6 @@
   line-height: 25px;
   font-size: 16px;
   padding: 0;
-  font-family: $proxima, serif;
 }
 
 .create-form li > span{
@@ -69,6 +66,5 @@
   margin: 0 -9px -9px -9px;
   text-align: center;
   color: #C0C0C0;
-  font-family: $proxima, sans-serif;
   font-size: 11px;
 }
