@@ -1,13 +1,13 @@
 @import "variables";
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
 @font-face {
-  font-family: "Proxima_Nova";
-  src: url("../assets/proxima_nova_reg.ttf");
+  font-family: 'Josefin Sans', sans-serif;
+  //src: url("../assets/proxima_nova_reg.ttf");
 }
 
 body {
   background-color: $color-primary;
-  font-family: $proxima;
+  font-family: $josefinsans;
   color: $color-secondary;
 }
 
@@ -16,7 +16,7 @@ button:hover {
 }
 
 h1 {
-  font-family: $proxima;
+  font-family: $josefinsans;
   font-size: 2em;
   font-weight: bold;
   margin-bottom: 3%;

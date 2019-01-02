@@ -1,4 +1,11 @@
-@import '../../../style/variables.scss';
+.landing-image {
+  background: url('../../../assets/landing_image.jpg') no-repeat center;
+  background-size: contain;
+  width: 100;
+  height: 50vw;
+  min-height: 100%;
+  border: 1px solid black;
+}
 
 Link a {
   width: 100%;

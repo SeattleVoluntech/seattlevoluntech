@@ -1,6 +1,7 @@
 // packages
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './landing.scss';
 
 // custom components
 import LandingAuthForm from '../landing-auth-form/landing-auth-form'; // eslint-disable-line
@@ -36,6 +37,7 @@ class Landing extends React.Component {
     const { location } = this.props;
     return (
         <section>
+          <div className="landing-image"></div>
           <NavUi location={location} />
           { location.pathname === routes.LOGIN_FRONTEND ? this.loginForm() : null }
           { location.pathname === routes.SIGNUP_FRONTEND ? this.signUpForm() : null }
