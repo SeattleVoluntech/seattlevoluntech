@@ -58,6 +58,8 @@
     "dotenv": "^6.1.0",
     "lodash": "latest",
     "match-sorter": "^2.3.0",
-    "namor": "^1.1.1"
+    "namor": "^1.1.1",
+    "react-pose": "^4.0.4",
+    "react-pose-text": "^3.1.0"
   }
 }
