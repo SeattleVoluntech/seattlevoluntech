@@ -14,7 +14,7 @@ class App extends React.Component {
         <div>
           <BrowserRouter>
             <div>
-              <Route path='*' component={AuthRedirect}/>
+              {/* <Route path='*' component={Landing}/> */}
               <Route exact path={routes.SITE_ROOT_FRONTEND} component={Landing}/>
               <Route path={routes.LOGIN_FRONTEND} component={Landing}/>
               <Route path={routes.SIGNUP_FRONTEND} component={Landing}/>
