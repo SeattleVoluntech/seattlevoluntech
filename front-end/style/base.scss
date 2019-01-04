@@ -1,14 +1,15 @@
 @import "variables";
-@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans|Raleway');
 @font-face {
   font-family: 'Josefin Sans', sans-serif;
   //src: url("../assets/proxima_nova_reg.ttf");
 }
 
 body {
-  background-color: $color-primary;
+  background-color: $color-secondary;
   font-family: $josefinsans;
   color: $color-secondary;
+  margin: 0;
 }
 
 button:hover {
@@ -18,12 +19,12 @@ button:hover {
 h1 {
   font-family: $josefinsans;
   font-size: 2em;
-  font-weight: bold;
   margin-bottom: 3%;
 }
 
 html {
   overflow-y: scroll;
+  scroll-behavior: smooth;
 }
 .logo {
   margin:50px auto;
@@ -46,4 +47,3 @@ a:visited {
 .error {
   color: red;
 }
-
