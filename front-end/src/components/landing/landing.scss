@@ -1,0 +1,17 @@
+@import '../../../style/variables.scss';
+
+Link a {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  color: $color-primary;
+}
+p {
+  color: $color-primary;
+}
+
+.formHeader {
+  color: $color-secondary;
+  margin-top: 40px;
+  text-align: center;
+}
