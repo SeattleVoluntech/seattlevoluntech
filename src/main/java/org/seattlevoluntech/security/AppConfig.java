@@ -31,12 +31,6 @@ public class AppConfig extends WebSecurityConfigurerAdapter {
     @Value(value = "${com.auth0.clientId}")
     private String clientId;
 
-    /**
-     * This is the client secret of your auth0 application (see Settings page on auth0 dashboard)
-     */
-    @Value(value = "${com.auth0.clientSecret}")
-    private String clientSecret;
-
     @Bean
     public InternalResourceViewResolver viewResolver() {
         InternalResourceViewResolver viewResolver
@@ -49,6 +43,10 @@ public class AppConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public AuthenticationController authenticationController() throws UnsupportedEncodingException {
+        String clientSecret = System.getenv("auth0.client-secret");
+        if(clientSecret == null) {
+            throw new RuntimeException("Auth0 client secret is not setup. Set the auth0 secret in the auth0.client-secret environment variable");
+        }
         return AuthenticationController.newBuilder(domain, clientId, clientSecret)
                 .build();
     }
@@ -74,7 +72,4 @@ public class AppConfig extends WebSecurityConfigurerAdapter {
         return clientId;
     }
 
-    public String getClientSecret() {
-        return clientSecret;
-    }
 }
