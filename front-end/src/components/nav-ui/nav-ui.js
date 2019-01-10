@@ -6,8 +6,6 @@ import './nav-ui.scss';
 import voluntechLogo from '../../../assets/voluntechLogo.jpg';
 import signOutIcon from '../../../assets/sign-out-orig.svg';
 import signOutIconHighlighted from '../../../assets/sign-out-highlighted.svg';
-import keyboard from "../../../assets/keyboard.svg";
-import keyboardHighlighted from "../../../assets/keyboard-highlighted.svg";
 
 class NavUi extends React.Component {
   constructor(props) {
