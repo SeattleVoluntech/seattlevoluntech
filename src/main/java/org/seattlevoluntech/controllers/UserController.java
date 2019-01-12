@@ -1,24 +1,34 @@
 package org.seattlevoluntech.controllers;
 
+import org.seattlevoluntech.storage.User;
+import org.seattlevoluntech.storage.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.servlet.http.HttpServletRequest;
 
 @RestController
 public class UserController {
 
-    @RequestMapping(method = RequestMethod.GET, path = "/user")
-    public User getRemoteUser(HttpServletRequest request) {
-        return new User(request.getRemoteUser());
-    }
+    @Autowired UserRepository userRepository;
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    public static class User {
-        public String username;
+    @RequestMapping("/findByLastName")
+    public String fetchDataByLastName(@RequestParam("last_name") String lastName){
 
-        public User(String username) {
-            this.username = username;
+        logger.info("Finding items by last name");
+        StringBuilder result = new StringBuilder();
+
+        for(User user: userRepository.findByLastName(lastName)){
+//            result += user.getFirstName() + " " + user.getLastName() + "\n";
+            result.append(user.getFirstName());
+            result.append(" ");
+            result.append(user.getLastName());
+            result.append("\n");
         }
+
+        return result.toString();
     }
 }
