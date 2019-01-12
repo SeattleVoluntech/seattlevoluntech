@@ -1,0 +1,26 @@
+@import '../../../style/variables';
+
+#navControl {
+  background: $color-quaternary;
+}
+
+.navUILogo {
+  height: 70px;
+  width: 70px;
+  margin: 3px 3px 3px 20px;
+}
+
+#navControl .navLink {
+  float: right;
+  margin: 30px 20px 5px 5px;
+  padding: 0px;
+  color: $color-septenary;
+}
+
+#navControl .navLink:hover {
+  color: $color-primary;
+}
+
+#navControl .navLink:active {
+  color: $color-secondary;
+}

@@ -1,0 +1,50 @@
+@import '../../../style/variables.scss';
+
+.latest-projects {
+  width: 100%;
+  height: 20vw;
+  color: white;
+  margin: 50px 0 50px 0;
+  text-align: center;
+  font-size: 22px;
+}
+
+.projects {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  margin-top: 50px;
+}
+
+.latest-projects h3 {
+  text-shadow: 3px 3px 0px $color-accent;
+}
+
+.project {
+  width: 25vw;
+  height: 20vw;
+  background-color: $color-primary;
+  padding: 5px;
+  margin-bottom: 20px;
+  box-shadow: 0 3px 7px 3px $color-senary;
+  border-radius: 5px;
+  color: $color-septenary;
+}
+
+.project > p {
+  color: $color-septenary;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 700px){
+  .project {
+    width: 70vw;
+    height: 50vw;
+  }
+}
+
+@media only screen and (min-width: 701px) and (max-width: 900px){
+  .project {
+    width: 40vw;
+    height: 35vw;
+  }
+}

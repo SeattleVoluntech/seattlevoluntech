@@ -1,0 +1,46 @@
+@import '../../../style/variables.scss';
+
+.intro-text {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  font-size: 20px;
+}
+
+.intro-text p {
+  width: 80%;
+  font-size: 30px;
+}
+
+.underline {
+  width: 70vw;
+  border-bottom: 2px solid $color-tertiary;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+
+Link a {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  color: $color-primary;
+}
+
+p {
+  color: $color-primary;
+}
+
+.formHeader {
+  color: $color-secondary;
+  margin-top: 40px;
+  text-align: center;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 600px){
+  .intro-text p {
+    width: 80%;
+    font-size: 20px;
+    font-weight: normal;
+  }
+}
