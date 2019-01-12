@@ -16,8 +16,8 @@ public class Skills {
 
     protected Skills() {}
 
-    public Skills(String skillname, String description) {
-        this.skillName = skillname;
+    public Skills(String skillName, String description) {
+        this.skillName = skillName;
         this.description = description;
     }
 
