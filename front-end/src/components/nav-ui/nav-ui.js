@@ -12,9 +12,9 @@ class NavUi extends React.Component {
     super(props);
     this.state = {
       onHover: {
-        signOut: false,
+        signOut: false
       }
-    }
+    };
   }
 
   onImageHover(event) {
@@ -22,42 +22,67 @@ class NavUi extends React.Component {
     const { onHover } = this.state;
     onHover[propertyToChange] = true;
     return this.setState({ onHover });
-  };
+  }
 
   onImageExit(event) {
     const { onHover } = this.state;
     const propertyToChange = event.target.className.split('-')[0];
     onHover[propertyToChange] = false;
     return this.setState({ onHover });
-  };
+  }
 
   // CSS classNames for each nav instance can be unique for custom looks
   whichMenuSet(location) {
-    const loginSet = <nav className ='loginSetNavigation'>
-      <Link to={routes.SITE_ROOT_FRONTEND}>
-      <img src={voluntechLogo} className="navUILogo"/></Link>
-      <Link to={routes.LOGIN_FRONTEND} className='navLink'>Login</Link>
-      <Link to={routes.SIGNUP_FRONTEND} className='navLink'>Sign Up</Link>
-      <Link to={routes.SITE_ROOT_FRONTEND} className='navLink'>About Us</Link>
-      <Link to={routes.PROJECTS_FRONTEND} className='navLink'>Projects</Link>
-      <Link to={routes.SITE_ROOT_FRONTEND} className='navLink'>Home</Link>
-      <Link to={routes.ABOUT_FRONTEND} className="navLink">
+    const loginSet = (
+      <nav className="loginSetNavigation">
+        <Link to={routes.SITE_ROOT_FRONTEND}>
+          <img src={voluntechLogo} className="navUILogo" />
+        </Link>
+        <Link to={routes.LOGIN_FRONTEND} className="navLink">
+          Login
+        </Link>
+        <Link to={routes.SIGNUP_FRONTEND} className="navLink">
+          Sign Up
+        </Link>
+        <Link to={routes.PROJECTS_FRONTEND} className="navLink">
+          Projects
+        </Link>
+        <Link to={routes.SITE_ROOT_FRONTEND} className="navLink">
+          Home
+        </Link>
+        <Link to={routes.ABOUT_FRONTEND} className="navLink">
           About Us
         </Link>
-    </nav>;
+      </nav>
+    );
 
-
-    const dashboardSet = <nav className ='loginSetNavigation'>
-      <Link to={routes.DASHBOARD_FRONTEND}>
-        <img src={voluntechLogo} className="navUILogo"/></Link>
-      <Link to={routes.SITE_ROOT_FRONTEND} className='navLink'>
-        <img src={this.state.onHover.signOut ? signOutIconHighlighted : signOutIcon} onMouseOver={this.onImageHover.bind(this)}
-             onMouseOut={this.onImageExit.bind(this)} alt="sign-out" className="signOut"/>
+    const dashboardSet = (
+      <nav className="loginSetNavigation">
+        <Link to={routes.DASHBOARD_FRONTEND}>
+          <img src={voluntechLogo} className="navUILogo" />
         </Link>
-      <Link to={routes.BLOG_FRONTEND} className='navLink'>Blog</Link>
-      <Link to={routes.ABOUT_US_FRONTEND} className='navLink'>About Us</Link>
-      <Link to={routes.PROJECTS_FRONTEND} className='navLink'>Projects</Link>
-    </nav>;
+        <Link to={routes.SITE_ROOT_FRONTEND} className="navLink">
+          <img
+            src={
+              this.state.onHover.signOut ? signOutIconHighlighted : signOutIcon
+            }
+            onMouseOver={this.onImageHover.bind(this)}
+            onMouseOut={this.onImageExit.bind(this)}
+            alt="sign-out"
+            className="signOut"
+          />
+        </Link>
+        <Link to={routes.BLOG_FRONTEND} className="navLink">
+          Blog
+        </Link>
+        <Link to={routes.ABOUT_US_FRONTEND} className="navLink">
+          About Us
+        </Link>
+        <Link to={routes.PROJECTS_FRONTEND} className="navLink">
+          Projects
+        </Link>
+      </nav>
+    );
 
     if (location.pathname === routes.LOGIN_FRONTEND) {
       console.log('loading loginSet');
