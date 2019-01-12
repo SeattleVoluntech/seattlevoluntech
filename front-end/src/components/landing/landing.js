@@ -21,17 +21,21 @@ class Landing extends React.Component {
   }
 
   signUpForm() {
-    return <div className="centered">
-      <h2 className="formHeader">Sign Up</h2>
-      <LandingAuthForm type='signup' onComplete={this.handleSignup}/>
-    </div>;
+    return (
+      <div className="centered">
+        <h2 className="formHeader">Sign Up</h2>
+        <LandingAuthForm type="signup" onComplete={this.handleSignup} />
+      </div>
+    );
   }
 
   loginForm() {
-    return <div className="centered">
-      <h2 className="formHeader">Login</h2>
-      <LandingAuthForm type='login' onComplete={this.handleLogin}/>
-    </div>;
+    return (
+      <div className="centered">
+        <h2 className="formHeader">Login</h2>
+        <LandingAuthForm type="login" onComplete={this.handleLogin} />
+      </div>
+    );
   }
 
   render() {
@@ -46,12 +50,14 @@ class Landing extends React.Component {
         </section>
         <section>
           <div className="intro-text">
-            <p>Seattle Voluntech is a platform that connects volunteers who are
+            <p>
+              Seattle Voluntech is a platform that connects volunteers who are
               interested in donating their time and skills with small business
-              owners in the Seattle area who needs technical help.</p>
+              owners in the Seattle area who needs technical help.
+            </p>
           </div>
         </section>
-        <hr className="underline"/>
+        <hr className="underline" />
         <section>
           <LatestProjects />
         </section>
