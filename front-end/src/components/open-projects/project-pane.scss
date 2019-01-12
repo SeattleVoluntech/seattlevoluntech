@@ -1,0 +1,55 @@
+@import '../../../style/variables.scss';
+
+.card-top {
+  background-color: #5C5C5C;
+  color: white;
+  width: 100%;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.projectPane {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  //margin-top: 10px;
+}
+
+.aProject {
+  text-align: center;
+  width: 27vw;
+  height: 22vw;
+  background-color: $color-primary;
+  margin-bottom: 60px;
+  box-shadow: 0 3px 7px 3px $color-senary;
+  border-radius: 5px;
+  color: $color-septenary;
+}
+
+.aProject h2 {
+  font-size: 48px;
+  margin: 0 0 20px 0;
+  padding: 10px;
+}
+
+.aProject h3 {
+  font-size: 33px;
+}
+
+.project > p {
+  color: $color-septenary;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 700px){
+  .aProject {
+    width: 70vw;
+    height: 50vw;
+  }
+}
+
+@media only screen and (min-width: 701px) and (max-width: 900px){
+  .project {
+    width: 40vw;
+    height: 35vw;
+  }
+}
