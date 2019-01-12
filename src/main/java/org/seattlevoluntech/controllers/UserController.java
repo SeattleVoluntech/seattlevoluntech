@@ -22,7 +22,6 @@ public class UserController {
         StringBuilder result = new StringBuilder();
 
         for(User user: userRepository.findByLastName(lastName)){
-//            result += user.getFirstName() + " " + user.getLastName() + "\n";
             result.append(user.getFirstName());
             result.append(" ");
             result.append(user.getLastName());

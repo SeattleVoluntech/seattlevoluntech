@@ -16,6 +16,24 @@ import java.util.Date;
 @Table(name="users")
 public class User implements Serializable {
 
+  public User(
+    long id,
+    String firstName,
+    String lastName,
+    String email,
+    String phoneNumber,
+    String status,
+    String bio
+  ) {
+    this.id = id;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.email = email;
+    this.phoneNumber = phoneNumber;
+    this.status = status;
+    this.bio = bio;
+  }
+
   @Id
   private long id;
 
@@ -41,29 +59,7 @@ public class User implements Serializable {
   @UpdateTimestamp
   private Date updated;
 
-//  @PrePersist
-//  protected void onCreate() {
-//    created = new Date();
-//  }
-//
-//  @PreUpdate
-//  protected void onUpdate() {
-//    updated = new Date();
-//  }
-
-
-  public User() { }
-
-  public User(
-    long id,
-    String firstName,
-    String lastName
-  ) {
-    this.id = id;
-    this.firstName = firstName;
-    this.lastName = lastName;
-  }
-
+  public User() {}
 
   public long getId() {
     return id;
