@@ -1,7 +1,10 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
+
+import ProjectPane from './project-pane';
+import NavUi from '../nav-ui/nav-ui';
 
 import './open-projects.scss';
-import NavUi from '../nav-ui/nav-ui';
 
 class Projects extends React.Component {
   constructor(props) {
@@ -25,9 +28,14 @@ class Projects extends React.Component {
         <section>
           {this.projectsList()}
         </section>
+        <ProjectPane/>
       </Fragment>
     );
   }
 }
+
+Projects.propTypes = {
+  location: PropTypes.object,
+};
 
 export default Projects;
