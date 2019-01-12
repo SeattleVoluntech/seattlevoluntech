@@ -1,6 +1,5 @@
 // packages
-import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
 
 // custom components
 import LandingAuthForm from '../landing-auth-form/landing-auth-form'; // eslint-disable-line
@@ -19,7 +18,7 @@ class Landing extends React.Component {
     super(props);
     this.state = {};
   }
-
+  
   signUpForm() {
     return (
       <div className="centered">
@@ -41,7 +40,7 @@ class Landing extends React.Component {
   render() {
     const { location } = this.props;
     return (
-      <Fragment>
+      <React.Fragment>
         <section>
           <NavUi location={location} />
           <LandingImage />
@@ -61,7 +60,7 @@ class Landing extends React.Component {
         <section>
           <LatestProjects />
         </section>
-      </Fragment>
+      </React.Fragment>
     );
   }
 }
