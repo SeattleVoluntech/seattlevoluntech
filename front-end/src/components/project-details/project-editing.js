@@ -19,6 +19,7 @@ class ProjectEditing extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    this.props.handleClick();
     ///////////////////////////////////////////////////////////////////////////
     // Make POST request here
     ///////////////////////////////////////////////////////////////////////////
@@ -33,7 +34,7 @@ class ProjectEditing extends React.Component {
         <textarea name="projectDesc" value={this.props.projectDesc} required onChange={e => this.handleChange(e)}></textarea>
         <button>Submit</button>
       </form>
-    )
+    );
   }
 }
 

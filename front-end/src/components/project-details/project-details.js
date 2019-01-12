@@ -13,6 +13,12 @@ class ProjectDetails extends React.Component {
     };
   }
 
+  handleClick() {
+    this.setState({
+      isEditing: true,
+    });
+  }
+
   render() {
     const { location } = this.props;
     return (
@@ -26,9 +32,10 @@ class ProjectDetails extends React.Component {
             : null 
           }
           {this.state.isEditing && this.props.isBusiness 
-            ? <ProjectEditing/>
+            ? <ProjectEditing handleClick={this.handleClick}/>
             : <ProjectInfo />
           }
+          {/* Button on click needs functionality - must make some kind of POST request */}
           {this.props.isVolunteer ? <Link to='/thank-you'><button >I want to work on this!</button></Link> : null}
         </section>
       </Fragments>
