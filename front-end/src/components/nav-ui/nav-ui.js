@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import * as routes from '../../routes';
 import './nav-ui.scss';
-import voluntechLogo from '../../../assets/voluntechLogo.jpg';
+import voluntechLogo from '../../../assets/voluntechLogo.png';
 
 class NavUi extends React.Component {
   // CSS classNames for each nav instance can be unique for custom looks

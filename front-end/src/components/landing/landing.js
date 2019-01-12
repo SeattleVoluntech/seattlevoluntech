@@ -40,21 +40,30 @@ class Landing extends React.Component {
       <Fragment>
         <section>
           <NavUi location={location} />
-          <LandingImage />
+         
+		  <div className="business-profile-header">
+		  <div className="business-name">Business Name</div>
+		  <div>Email Address: abc@example.com</div>
+		  <div className="business-description">Business Description: goes here</div>
+		  
+		  
+		  
+		  </div>
           {/* { location.pathname === routes.LOGIN_FRONTEND ? this.loginForm() : null } */}
           {/* { location.pathname === routes.SIGNUP_FRONTEND ? this.signUpForm() : null } */}
         </section>
         <section>
-          <div className="intro-text">
-            <p>Seattle Voluntech is a platform that connects volunteers who are
-              interested in donating their time and skills with small business
-              owners in the Seattle area who needs technical help.</p>
+          <div className="business-profile">
+		  
+            <div className="business-box"></div>
+			<div className="business-box"></div>
+			<div className="business-box"></div>
+			<div className="business-box"></div>
+			
           </div>
         </section>
         <hr className="underline"/>
-        <section>
-          <LatestProjects />
-        </section>
+        
       </Fragment>
     );
   }

@@ -1,5 +1,36 @@
 @import '../../../style/variables.scss';
 
+.business-profile-header {background:#464646;
+text-align:center;
+color:#fff;
+height:200px;
+padding:10px 0;
+width:100%;
+justify-content:center;
+
+
+}
+.business-name{font-size:30px;
+font-weight: 900;
+margin:10px;}
+
+.business-profile {
+width:70%;
+margin:20px auto;
+
+
+}
+.business-description{
+font-size:20px;
+margin:50px 0 0;}
+
+.business-box{    width: 20%;
+    border-radius: 5px;
+    border: 1px solid $color-primary;
+    height: 140px;
+    float: left;
+    margin: 2.35%;}
+
 .intro-text {
   text-align: center;
   display: flex;
