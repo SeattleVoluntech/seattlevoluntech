@@ -6,6 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface SkillsRepository extends CrudRepository<Skills, Long> {
 
-    //List<Skills> findBySkillName(String skill_name);
+    List<Skills> findBySkillName(String skillName);
 
 }

@@ -9,7 +9,7 @@ public class Skills {
     private Long id;
 
     @Column(name = "skill_name")
-    private String skillname;
+    private String skillName;
 
     @Column(name = "description")
     private String description;
@@ -17,12 +17,12 @@ public class Skills {
     protected Skills() {}
 
     public Skills(String skillname, String description) {
-        this.skillname = skillname;
+        this.skillName = skillname;
         this.description = description;
     }
 
     public String getName (){
-        return this.skillname;
+        return this.skillName;
     }
 
     public String getDescription(){
@@ -37,6 +37,6 @@ public class Skills {
     public String toString() {
         return String.format(
                 "Skill[id=%d, skill name='%s', description='%s']",
-                id, skillname, description);
+                id, skillName, description);
     }
 }
