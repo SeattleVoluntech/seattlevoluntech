@@ -1,6 +1,5 @@
 // packages
-import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
 
 // custom components
 import LandingAuthForm from '../landing-auth-form/landing-auth-form'; // eslint-disable-line
@@ -37,25 +36,18 @@ class Landing extends React.Component {
   render() {
     const { location } = this.props;
     return (
-      <Fragment>
+      <React.Fragment>
         <section>
           <NavUi location={location} />
-          <LandingImage />
-          {/* { location.pathname === routes.LOGIN_FRONTEND ? this.loginForm() : null } */}
-          {/* { location.pathname === routes.SIGNUP_FRONTEND ? this.signUpForm() : null } */}
-        </section>
-        <section>
-          <div className="intro-text">
-            <p>Seattle Voluntech is a platform that connects volunteers who are
-              interested in donating their time and skills with small business
-              owners in the Seattle area who needs technical help.</p>
-          </div>
-        </section>
-        <hr className="underline"/>
-        <section>
+          <section>
+            <LandingImage />
+            <hr className="underline"/>
+            {/* { location.pathname === routes.LOGIN_FRONTEND ? this.loginForm() : null } */}
+            {/* { location.pathname === routes.SIGNUP_FRONTEND ? this.signUpForm() : null } */}
+          </section>
           <LatestProjects />
         </section>
-      </Fragment>
+      </React.Fragment>
     );
   }
 }

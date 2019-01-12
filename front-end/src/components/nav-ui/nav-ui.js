@@ -4,8 +4,33 @@ import PropTypes from 'prop-types';
 import * as routes from '../../routes';
 import './nav-ui.scss';
 import voluntechLogo from '../../../assets/voluntechLogo.jpg';
+import signOutIcon from '../../../assets/sign-out-orig.svg';
+import signOutIconHighlighted from '../../../assets/sign-out-highlighted.svg';
 
 class NavUi extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      onHover: {
+        signOut: false,
+      }
+    }
+  }
+
+  onImageHover(event) {
+    const propertyToChange = event.target.className.split('-')[0];
+    const { onHover } = this.state;
+    onHover[propertyToChange] = true;
+    return this.setState({ onHover });
+  };
+
+  onImageExit(event) {
+    const { onHover } = this.state;
+    const propertyToChange = event.target.className.split('-')[0];
+    onHover[propertyToChange] = false;
+    return this.setState({ onHover });
+  };
+
   // CSS classNames for each nav instance can be unique for custom looks
   whichMenuSet(location) {
     const loginSet = <nav className ='loginSetNavigation'>
@@ -18,9 +43,26 @@ class NavUi extends React.Component {
       <Link to={routes.SITE_ROOT_FRONTEND} className='navLink'>Home</Link>
     </nav>;
 
+    const dashboardSet = <nav className ='loginSetNavigation'>
+      <Link to={routes.DASHBOARD_FRONTEND}>
+        <img src={voluntechLogo} className="navUILogo"/></Link>
+      <Link to={routes.SITE_ROOT_FRONTEND} className='navLink'>
+        <img src={this.state.onHover.signOut ? signOutIconHighlighted : signOutIcon} onMouseOver={this.onImageHover.bind(this)}
+             onMouseOut={this.onImageExit.bind(this)} alt="sign-out" className="signOut"/>
+        </Link>
+      <Link to={routes.BLOG_FRONTEND} className='navLink'>Blog</Link>
+      <Link to={routes.ABOUT_US_FRONTEND} className='navLink'>About Us</Link>
+      <Link to={routes.PROJECTS_FRONTEND} className='navLink'>Projects</Link>
+    </nav>;
+
     if (location.pathname === routes.LOGIN_FRONTEND) {
       console.log('loading loginSet');
       return loginSet;
+    }
+
+    if (location.pathname === routes.DASHBOARD_FRONTEND) {
+      console.log('loading dashboardSet');
+      return dashboardSet;
     }
 
     return loginSet;
