@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 
+import './open-projects.scss';
 import NavUi from '../nav-ui/nav-ui';
 
 class Projects extends React.Component {
@@ -22,7 +23,7 @@ class Projects extends React.Component {
           <NavUi location={location} />
         </section>
         <section>
-          <p>HELLLLLLLLO</p>
+          {this.projectsList()}
         </section>
       </Fragment>
     );
