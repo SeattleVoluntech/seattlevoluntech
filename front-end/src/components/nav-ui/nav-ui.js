@@ -33,9 +33,17 @@ class NavUi extends React.Component {
 
   // CSS classNames for each nav instance can be unique for custom looks
   whichMenuSet(location) {
-    const loginSet = <nav className ='loginSetNavigation'>
+    const loginSet =
+    <nav className ='loginSetNavigation'>
       <Link to={routes.SITE_ROOT_FRONTEND}>
-      <img src={voluntechLogo} className="navUILogo"/></Link>
+        <div className="logo">
+          <img src={voluntechLogo} className="navUILogo"/>
+          <div>
+            <p>Seattle</p>
+            <p>Voluntech</p>
+          </div>
+        </div>
+      </Link>
       <Link to={routes.LOGIN_FRONTEND} className='navLink'>Login</Link>
       <Link to={routes.SIGNUP_FRONTEND} className='navLink'>Sign Up</Link>
       <Link to={routes.SITE_ROOT_FRONTEND} className='navLink'>About Us</Link>
