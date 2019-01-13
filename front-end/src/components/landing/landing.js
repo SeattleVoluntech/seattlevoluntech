@@ -1,6 +1,5 @@
 // packages
-import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
 
 // custom components
 import LandingAuthForm from '../landing-auth-form/landing-auth-form'; // eslint-disable-line
@@ -37,34 +36,18 @@ class Landing extends React.Component {
   render() {
     const { location } = this.props;
     return (
-      <Fragment>
+      <React.Fragment>
         <section>
           <NavUi location={location} />
-         
-		  <div className="business-profile-header">
-		  <div className="business-name">Business Name</div>
-		  <div>Email Address: abc@example.com</div>
-		  <div className="business-description">Business Description: goes here</div>
-		  
-		  
-		  
-		  </div>
-          {/* { location.pathname === routes.LOGIN_FRONTEND ? this.loginForm() : null } */}
-          {/* { location.pathname === routes.SIGNUP_FRONTEND ? this.signUpForm() : null } */}
+          <section>
+            <LandingImage />
+            <hr className="underline"/>
+            {/* { location.pathname === routes.LOGIN_FRONTEND ? this.loginForm() : null } */}
+            {/* { location.pathname === routes.SIGNUP_FRONTEND ? this.signUpForm() : null } */}
+          </section>
+          <LatestProjects />
         </section>
-        <section>
-          <div className="business-profile">
-		  
-            <div className="business-box"></div>
-			<div className="business-box"></div>
-			<div className="business-box"></div>
-			<div className="business-box"></div>
-			
-          </div>
-        </section>
-        <hr className="underline"/>
-        
-      </Fragment>
+      </React.Fragment>
     );
   }
 }
