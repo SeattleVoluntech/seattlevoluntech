@@ -6,6 +6,7 @@ import * as routes from '../../routes';
 
 // custom components
 import Landing from '../landing/landing';
+import AboutUs from '../about/aboutUs';
 import Dashboard from '../dashboard/dashboard';
 import AuthRedirect from '../auth-redirect/auth-redirect';
 import Projects from '../open-projects/open-projects';
@@ -21,6 +22,7 @@ class App extends React.Component {
               <Route path={routes.LOGIN_FRONTEND} component={Landing}/>
               <Route path={routes.SIGNUP_FRONTEND} component={Landing}/>
               <Route path={routes.DASHBOARD_FRONTEND} component={Dashboard}/>
+              <Route path={routes.ABOUT_US_FRONTEND} component={AboutUs} />
               <Route path={routes.PROJECTS_FRONTEND} component={Projects}/>
             </div>
           </BrowserRouter>
