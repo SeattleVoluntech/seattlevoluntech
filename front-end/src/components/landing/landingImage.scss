@@ -27,23 +27,27 @@
 }
 
 .landing-image {
-  // background: url('../../../assets/landing_image.jpg') no-repeat content-box;
-  background-color: $color-secondary;
+  background: url('../../../assets/handshake.jpg') no-repeat content-box;
   background-size: 100% 100%;
   width: 100%;
-  height: 50vw;
+  max-height: 28vw;
 }
 
 .overlay {
-  //background-color: $color-septenary;
-  //opacity: 0.95;
-  //height: inherit;
+  background-color: $color-septenary;
+  opacity: 0.85;
+  height: 28vw;
 }
 
 .siteTitle {
   // top, right, bottom, left
-  margin: 20px auto 0 auto;
+  margin: 0 auto 0 auto;
   display: block;
+  text-align: center;
+  padding: 100px 0 0 0;
+  color: $color-primary;
+  font-size: 50px;
+  text-shadow: 5px 5px black;
 }
 
 .intro-title {
@@ -77,8 +81,11 @@
 }
 
 .intro-headline p:first-of-type {
-  color: $color-quinary;
   animation: example 3s, slide-in 2s;
+}
+
+.intro-body p:first-of-type {
+    color: $color-quinary;
 }
 
 .intro-headline p:last-of-type {
@@ -95,14 +102,6 @@
 @keyframes slide-in {
     0% { transform: translateX(-100px);}
     100% { transform: translateX(0%); }
-}
-
-.arrow-wrapper svg {
-  width: 40px;
-  height: 40px;
-  margin-top: 8vw;
-  margin-left: 47vw;
-  animation: bounce 2s linear 0s infinite normal;
 }
 
 @keyframes bounce {

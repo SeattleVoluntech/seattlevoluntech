@@ -43,6 +43,34 @@ p {
   text-align: center;
 }
 
+.intro-body {
+  display: flex;
+  justify-content: center;
+}
+
+.business {
+  width: 40%;
+  margin: 50px 0 0 0;
+  text-align: center;
+}
+
+.volunteer {
+  width: 40%;
+  margin: 50px 0 0 0;
+  text-align: center;
+}
+
+.business p, .volunteer p {
+  width: 60%;
+  margin-left: 20%;
+}
+
+.vertical-line {
+  border-left: 4px solid $color-quaternary;
+  height: 200px;
+  margin: 50px 0 0 0;
+}
+
 @media only screen and (min-width: 320px) and (max-width: 600px){
   .intro-text p {
     width: 80%;

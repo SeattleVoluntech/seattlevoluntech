@@ -3,7 +3,7 @@
 .latest-projects {
   width: 100%;
   height: 20vw;
-  color: white;
+  color: $color-quaternary;
   margin: 50px 0 50px 0;
   text-align: center;
   font-size: 22px;
@@ -14,10 +14,6 @@
   flex-flow: row wrap;
   justify-content: space-around;
   margin-top: 50px;
-}
-
-.latest-projects h3 {
-  text-shadow: 3px 3px 0px $color-accent;
 }
 
 .project {

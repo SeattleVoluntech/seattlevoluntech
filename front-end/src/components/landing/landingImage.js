@@ -15,6 +15,7 @@ import keyboard from  '../../../assets/hand-orig.svg';
 import keyboardHighlighted from '../../../assets/hand-highlighted.svg';
 import puzzleSolo from '../../../assets/puzzle-solo.png';
 
+
 // routes
 import * as routes from "../../routes";
 
@@ -59,42 +60,33 @@ class LandingImage extends React.Component {
     return this.setState({ onHover });
   };
 
-
   render() {
     const { onHover } = this.state;
-
-    const businessText = <p>Are you a small business owner who needs a website to grow your business,
-        but don't know how or where to start?</p>;
-
-    const volunteerText = <p>Are you a tech professional/enthusiast who is passionate
-        about making a difference in your local community with your skills and time?</p>;
 
     return (
         <div className="landing-image">
           <div className="overlay">
             <section>
-              {/*<h1 className="siteTitle">Seattle Voluntech</h1>*/}
-              <img className="siteTitle" src={puzzleSolo} alt="Seattle Voluntech"/>
+              {<h1 className="siteTitle">Seattle Voluntech</h1>}
               <div className="intro-text">
                 <p>A platform to connect volunteers to small businesses in the Seattle area
                   in need of technical help.</p>
               </div>
             </section>
             <div className="intro-headline">
-              <Link to={routes.DASHBOARD_FRONTEND}>
-                <img src={onHover.keyboard ? keyboardHighlighted : keyboard } onMouseOver={this.onImageHover.bind(this)}
+              { /* Link to={routes.DASHBOARD_FRONTEND}>
+                {<img src={onHover.keyboard ? keyboardHighlighted : keyboard }
+                  onMouseOver={this.onImageHover.bind(this)}
                    onMouseOut={this.onImageExit.bind(this)} alt="bar-chart" className="keyboard-image"/>
-              </Link>
+               </Link> */ }
               { onHover.keyboard ? <h1 className="infoTextVolunteer">I want to volunteer.</h1> : null }
               { onHover.barChart ? <h1 className="infoTextBusiness">I am a business.</h1> : null }
-              <Link to={routes.DASHBOARD_FRONTEND}>
-                <img src={onHover.barChart ? barChartOrig : barChartBW} onMouseOver={this.onImageHover.bind(this)}
+              { /* <Link to={routes.DASHBOARD_FRONTEND}>
+                <img src={onHover.barChart ? barChartOrig : barChartBW}
+                  onMouseOver={this.onImageHover.bind(this)}
                      onMouseOut={this.onImageExit.bind(this)} alt="bar-chart" className="barChart-image"/>
-              </Link>
+                 </Link> */ }
             </div>
-            <a className="arrow-wrapper" href='#latest-projects'>
-              <ArrowDown className="arrow-down"/>
-            </a>
           </div>
         </div>
     );
