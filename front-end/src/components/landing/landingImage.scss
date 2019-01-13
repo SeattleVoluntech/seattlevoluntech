@@ -1,20 +1,57 @@
 @import '../../../style/variables.scss';
 
+.barChart-image {
+  width: 340px;
+  height: 374px;
+}
+
+.keyboard-image {
+  width: 250px;
+  height: 250px;
+}
+
+.infoTextVolunteer {
+  color: white;
+  text-align: center;
+  position: absolute;
+  padding: 0;
+  margin-top: 2%;
+}
+
+.infoTextBusiness {
+  color: white;
+  text-align: center;
+  position: absolute;
+  padding: 0;
+  margin-top: 2%;
+}
+
 .landing-image {
-  background: url('../../../assets/landing_image.jpg') no-repeat content-box;
+  background: url('../../../assets/handshake.jpg') no-repeat content-box;
   background-size: 100% 100%;
   width: 100%;
-  height: 50vw;
+  max-height: 28vw;
 }
 
 .overlay {
   background-color: $color-septenary;
-  opacity: 0.95;
-  height: inherit;
+  opacity: 0.85;
+  height: 28vw;
+}
+
+.siteTitle {
+  // top, right, bottom, left
+  margin: 0 auto 0 auto;
+  display: block;
+  text-align: center;
+  padding: 100px 0 0 0;
+  color: $color-primary;
+  font-size: 50px;
+  text-shadow: 5px 5px black;
 }
 
 .intro-title {
-  margin: 0px;
+  margin: 0;
   font-size: 35px;
   color: $color-primary;
   text-align: center;
@@ -23,7 +60,7 @@
 .intro-title h1 {
   font-weight: 100;
   text-shadow: 3px 3px 0px $color-senary;
-  margin-top: 0;
+  margin: 0;
   padding-top: 30px;
   font-family: $raleway;
   width: 100%;
@@ -34,7 +71,7 @@
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  margin-top: 15%;
+  margin-top: 5%;
 }
 
 .intro-headline p {
@@ -44,8 +81,11 @@
 }
 
 .intro-headline p:first-of-type {
-  color: $color-quinary;
   animation: example 3s, slide-in 2s;
+}
+
+.intro-body p:first-of-type {
+    color: $color-quinary;
 }
 
 .intro-headline p:last-of-type {
@@ -62,14 +102,6 @@
 @keyframes slide-in {
     0% { transform: translateX(-100px);}
     100% { transform: translateX(0%); }
-}
-
-.arrow-wrapper svg {
-  width: 40px;
-  height: 40px;
-  margin-top: 8vw;
-  margin-left: 47vw;
-  animation: bounce 2s linear 0s infinite normal;
 }
 
 @keyframes bounce {
@@ -102,7 +134,7 @@
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    margin-top: 3%;
+    margin: 0;
   }
 
   .intro-headline p {
@@ -133,7 +165,7 @@
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    margin-top: 3%;
+    margin: 0;
   }
 }
 

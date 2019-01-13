@@ -1,13 +1,35 @@
 @import '../../../style/variables';
 
+.loginSetNavigation {
+  color: black;
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+  height: 75px;
+}
+
+.loginSetNavigation p {
+  color: black;
+}
+
+.logo {
+  display: flex;
+  margin: 0 650px 0 0;
+}
+
 #navControl {
-  background: $color-quaternary;
+  background: $color-primary;
 }
 
 .navUILogo {
   height: 70px;
   width: 70px;
   margin: 3px 3px 3px 20px;
+}
+
+.signOut {
+  height: 25px;
+  width: 25px;
 }
 
 #navControl .navLink {

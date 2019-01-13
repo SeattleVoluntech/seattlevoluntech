@@ -1,30 +1,39 @@
 @import '../../../style/variables.scss';
 
-.latest-projects {
+.card-top {
+  background-color: #5C5C5C;
+  color: white;
   width: 100%;
-  height: 20vw;
-  color: $color-quaternary;
-  margin: 50px 0 50px 0;
-  text-align: center;
-  font-size: 22px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
-.projects {
+.projectPane {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
-  margin-top: 50px;
+  //margin-top: 10px;
 }
 
-.project {
-  width: 25vw;
-  height: 20vw;
+.aProject {
+  text-align: center;
+  width: 27vw;
+  height: 22vw;
   background-color: $color-primary;
-  padding: 5px;
-  margin-bottom: 20px;
+  margin-bottom: 60px;
   box-shadow: 0 3px 7px 3px $color-senary;
   border-radius: 5px;
   color: $color-septenary;
+}
+
+.aProject h2 {
+  font-size: 48px;
+  margin: 0 0 20px 0;
+  padding: 10px;
+}
+
+.aProject h3 {
+  font-size: 33px;
 }
 
 .project > p {
@@ -32,7 +41,7 @@
 }
 
 @media only screen and (min-width: 320px) and (max-width: 700px){
-  .project {
+  .aProject {
     width: 70vw;
     height: 50vw;
   }
