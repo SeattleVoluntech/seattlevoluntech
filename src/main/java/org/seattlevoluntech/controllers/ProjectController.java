@@ -34,9 +34,5 @@ public class ProjectController {
     public Project createProject(@RequestBody Project project){
         return projectsRepository.save(project);
     }
-
-    // View single project
-//    @GetMapping("/{id}")
-//    @ResponseBody
-//    public Project
+    
 }
