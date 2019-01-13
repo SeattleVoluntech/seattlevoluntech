@@ -2,8 +2,8 @@ import React from 'react';
 // To do later: organize css/scss into seperate file.
 //import './business-profiles.scss';
 import NavUi from '../nav-ui/nav-ui';
-import LandingImage from './landingImage';
-import LatestProjects from './latestProjects';
+import LandingImage from '../landing/landingImage';
+import LatestProjects from '../landing/latestProjects';
 
 class BusinessProfiles extends React.Component{
     constructor(props){

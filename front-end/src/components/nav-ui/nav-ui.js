@@ -38,9 +38,11 @@ class NavUi extends React.Component {
       <img src={voluntechLogo} className="navUILogo"/></Link>
       <Link to={routes.LOGIN_FRONTEND} className='navLink'>Login</Link>
       <Link to={routes.SIGNUP_FRONTEND} className='navLink'>Sign Up</Link>
+      <Link to={routes.BUSINESSPROFILES_FRONTEND} className='navLink'>Business Profiles</Link>
       <Link to={routes.SITE_ROOT_FRONTEND} className='navLink'>About Us</Link>
       <Link to={routes.PROJECTS_FRONTEND} className='navLink'>Projects</Link>
       <Link to={routes.SITE_ROOT_FRONTEND} className='navLink'>Home</Link>
+    
     </nav>;
 
     const dashboardSet = <nav className ='loginSetNavigation'>
