@@ -1,13 +1,14 @@
 @import "variables";
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans|Raleway');
 @font-face {
-  font-family: 'Josefin Sans', sans-serif;
+  //font-family: 'Josefin Sans', sans-serif;
+  font-family: 'Raleway', sans-serif;
   //src: url("../assets/proxima_nova_reg.ttf");
 }
 
 body {
   background-color: $color-primary;
-  font-family: $josefinsans;
+  font-family: $raleway;
   color: $color-secondary;
   margin: 0;
 }
@@ -46,4 +47,11 @@ a:visited {
 
 .error {
   color: red;
+}
+
+.underline {
+  width: 10%;
+  height: 1px;
+  background-color: $color-septenary;
+  color: $color-septenary;
 }
