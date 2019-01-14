@@ -17,13 +17,12 @@ import puzzleSolo from '../../../assets/puzzle-solo.png';
 
 
 // routes
-import * as routes from "../../routes";
+import * as routes from '../../routes';
 
 const ArrowDown = () => {
-  return <svg id="i-chevron-bottom" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2">
-    <path d="M30 12 L16 24 2 12" /></svg>;
+  return <svg id='i-chevron-bottom' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='currentcolor' strokeLinecap='round' strokeLinejoin='round' strokeWidth='2'>
+    <path d='M30 12 L16 24 2 12' /></svg>;
 };
-
 
 // Animation properties for React Pose Text to add animation for each letter
 const charPoses = {
@@ -64,27 +63,29 @@ class LandingImage extends React.Component {
     const { onHover } = this.state;
 
     return (
-        <div className="landing-image">
-          <div className="overlay">
+        <div className='landing-image'>
+          <div className='overlay'>
             <section>
-              {<h1 className="siteTitle">Seattle Voluntech</h1>}
-              <div className="intro-text">
-                <p>A platform to connect volunteers to small businesses in the Seattle area
-                  in need of technical help.</p>
+              <h1 className='siteTitle'>
+                <SplitText initialPose="exit" pose="enter" charPoses={charPoses}>Seattle Voluntech</SplitText>
+              </h1>
+              <div className='intro-text'>
+                <p>Connecting minority and immigrant-owned small
+                  businesses with technical volunteers in the Seattle area.</p>
               </div>
             </section>
-            <div className="intro-headline">
+            <div className='intro-headline'>
               { /* Link to={routes.DASHBOARD_FRONTEND}>
                 {<img src={onHover.keyboard ? keyboardHighlighted : keyboard }
                   onMouseOver={this.onImageHover.bind(this)}
-                   onMouseOut={this.onImageExit.bind(this)} alt="bar-chart" className="keyboard-image"/>
+                   onMouseOut={this.onImageExit.bind(this)} alt='bar-chart' className='keyboard-image'/>
                </Link> */ }
-              { onHover.keyboard ? <h1 className="infoTextVolunteer">I want to volunteer.</h1> : null }
-              { onHover.barChart ? <h1 className="infoTextBusiness">I am a business.</h1> : null }
+              { onHover.keyboard ? <h1 className='infoTextVolunteer'>I want to volunteer.</h1> : null }
+              { onHover.barChart ? <h1 className='infoTextBusiness'>I am a business.</h1> : null }
               { /* <Link to={routes.DASHBOARD_FRONTEND}>
                 <img src={onHover.barChart ? barChartOrig : barChartBW}
                   onMouseOver={this.onImageHover.bind(this)}
-                     onMouseOut={this.onImageExit.bind(this)} alt="bar-chart" className="barChart-image"/>
+                     onMouseOut={this.onImageExit.bind(this)} alt='bar-chart' className='barChart-image'/>
                  </Link> */ }
             </div>
           </div>
