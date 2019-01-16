@@ -47,23 +47,5 @@ public class UserController {
         return result.toString();
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/user/*")
-    public Volunteer getRemoteUser(HttpServletRequest request) {
-        Long id = new Long(1);
-        Volunteer sample = new Volunteer("Bob", "Jones", "bobjones@gmail.com");
-        Project project = new Project();
-        project.setBusinessName("Bob's Burgers");
-        project.setBusinessDescription("The place where my family and I make the best burgers. Like the black garlic burger.");
-        project.setId(id);
-        project.setCreationDate(new Date());
-        project.setProjectName("Tina's Burger Stand");
-        project.setProjectDescription("The hottest place in town to try some delicious Burgers.");
-        sample.addCompletedProject(project);
-        sample.addOpenProject(project);
-        sample.addSkill("Javascript");
-        sample.addSkill("C++");
-        return sample;
-    }
-
 
 }
