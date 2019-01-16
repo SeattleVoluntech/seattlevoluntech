@@ -1,7 +1,41 @@
 @import '../../../style/variables';
 
+.loginSetNavigation {
+  color: black;
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+  height: 75px;
+  justify-content: space-between;
+  font-size: 20px;
+}
+
+.loginSetNavigation p {
+  color: $color-octonary;
+}
+
+.logo {
+  display: flex;
+  margin: 0;
+}
+
+.logoName {
+  padding: 15px 0 0 15px;
+}
+
+.logoName p {
+  margin: 0;
+}
+
+.logoName p:last-of-type {
+  font-weight: 600;
+}
+
 #navControl {
-  background: $color-quaternary;
+  background: $color-primary;
+  position: fixed;
+  width: 100%;
+  box-shadow: 0 1px $color-accent;
 }
 
 .navUILogo {
@@ -15,16 +49,21 @@
   width: 25px;
 }
 
+.navLinks {
+  padding: 0 20px 0 20px;
+}
 
 #navControl .navLink {
   float: right;
-  margin: 30px 20px 5px 5px;
+  margin: 25px 20px 5px 5px;
   padding: 0px;
-  color: $color-septenary;
+  color: $color-secondary;
+  font-weight: 600;
 }
 
 #navControl .navLink:hover {
-  color: $color-primary;
+  color: $color-septenary;
+  text-shadow: 2px 2px #b5b5b5;
 }
 
 #navControl .navLink:active {

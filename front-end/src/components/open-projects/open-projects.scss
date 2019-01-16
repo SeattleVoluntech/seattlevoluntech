@@ -1,13 +1,16 @@
 @import '../../../style/variables';
 
 .projectListHeader {
-  color: #F3F3F3;
+  color: $color-secondary;
   font-size: 35px;
+  text-align: center;
+  background-color: $color-septenary;
+  margin: 0;
+  //font-family: $josefinsans;
+  padding: 10px 0 10px 0;
 }
 
 .projects {
-  text-shadow: 3px 3px 0 $color-accent;
-  margin: 20px;
+  //text-shadow: 3px 3px 0 $color-accent;
+  padding: 75px 0 0 0;
 }
-
-

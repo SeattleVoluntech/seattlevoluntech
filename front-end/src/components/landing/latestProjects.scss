@@ -2,38 +2,50 @@
 
 .latest-projects {
   width: 100%;
-  height: 20vw;
-  color: white;
-  margin: 50px 0 50px 0;
+  height: 100%;
+  color: $color-nonary;
+  margin: 0 0 0 0;
   text-align: center;
-  font-size: 22px;
+  background-color: $color-eleven;
+  padding: 50px 0 50px 0;
 }
 
-.projects {
+.latest-projects h3 {
+  font-size: 35px;
+  font-weight: 900;
+  font-family: $josefinsans;
+}
+
+.new-projects {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
   margin-top: 50px;
+  height: auto;
 }
 
-.latest-projects h3 {
-  text-shadow: 3px 3px 0px $color-accent;
-}
-
-.project {
+.main-project {
   width: 25vw;
   height: 20vw;
   background-color: $color-primary;
   padding: 5px;
-  margin-bottom: 20px;
   box-shadow: 0 3px 7px 3px $color-senary;
   border-radius: 5px;
   color: $color-septenary;
 }
 
-.project > p {
-  color: $color-septenary;
+.main-project h4 {
+  font-size: 35px;
 }
+
+.main-project h5 {
+  font-size: 25px;
+}
+
+.main-project h6 {
+  font-size: 20px;
+}
+
 
 @media only screen and (min-width: 320px) and (max-width: 700px){
   .project {
