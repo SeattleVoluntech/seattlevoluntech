@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-@RestController(value = "/projects")
+@RestController
 public class ProjectController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -22,15 +22,16 @@ public class ProjectController {
     private ProjectsRepository projectsRepository;
 
     // View all projects
-    @GetMapping
+    @GetMapping(path = "/projects")
     public List<Project> projects(final HttpServletRequest request) {
+        logger.info(request.getPathInfo());
         logger.info(request.getRemoteUser());
 
         return Lists.newArrayList(projectsRepository.findAll());
     }
 
     // Create project
-    @PostMapping
+    @PostMapping(path="/projects")
     public Project createProject(@RequestBody Project project){
         return projectsRepository.save(project);
     }

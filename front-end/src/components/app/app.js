@@ -9,6 +9,8 @@ import Landing from '../landing/landing';
 import Dashboard from '../dashboard/dashboard';
 import AuthRedirect from '../auth-redirect/auth-redirect';
 import Projects from '../open-projects/open-projects';
+import AboutUs from '../about-us/about-us';
+import ThankYou from "../thank-you/thank-you";
 
 class App extends React.Component {
   render() {
@@ -22,6 +24,8 @@ class App extends React.Component {
               <Route path={routes.SIGNUP_FRONTEND} component={Landing}/>
               <Route path={routes.DASHBOARD_FRONTEND} component={Dashboard}/>
               <Route path={routes.PROJECTS_FRONTEND} component={Projects}/>
+              <Route path={routes.ABOUT_US_FRONTEND} component={AboutUs}/>
+              <Route path={routes.THANK_YOU_FRONTEND} component={ThankYou}/>
             </div>
           </BrowserRouter>
         </div>
