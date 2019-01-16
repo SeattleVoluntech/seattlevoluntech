@@ -1,6 +1,11 @@
+// packages
 import React from 'react';
-import './aboutUs.scss';
+
+// custom components
 import NavUi from '../nav-ui/nav-ui';
+
+// styles
+import './about-us.scss';
 
 class AboutUs extends React.Component {
   constructor(props) {
