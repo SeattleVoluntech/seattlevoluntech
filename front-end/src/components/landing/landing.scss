@@ -23,10 +23,6 @@ p {
   font-weight: bold;
 }
 
-.intro-body p:first-of-type {
-  //color: $color-septenary;
-}
-
 .business {
   width: 40%;
   margin: 50px 0 0 0;
@@ -34,18 +30,16 @@ p {
   animation: fade-in 2s linear;
 }
 
-.business p {
-  color: #0052c8;
+.signup-business {
+  background-color: #0052c8;
+  font-weight: bold;
 }
 
-.signup-business {
+button {
   width: 150px;
-  height: 30px;
-  background-color: #0052c8;
-  border: 1px solid $color-septenary;
+  height: 40px;
   color: $color-primary;
   border-radius: 10px;
-  font-weight: bold;
 }
 
 .volunteer {
@@ -55,16 +49,12 @@ p {
   animation: fade-in 2s linear;
 }
 
-.volunteer p {
+.volunteer p, .business p {
   color: $color-denary;
 }
 
 .signup-volunteer {
-  width: 150px;
-  height: 30px;
-  background-color: $color-quinary;
-  border: 1px solid $color-septenary;
-  border-radius: 10px;
+  background-color: $color-secondary;
   font-weight: bold;
 }
 

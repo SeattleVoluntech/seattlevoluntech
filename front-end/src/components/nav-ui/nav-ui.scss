@@ -11,7 +11,7 @@
 }
 
 .loginSetNavigation p {
-  color: black;
+  color: $color-octonary;
 }
 
 .logo {
@@ -57,12 +57,13 @@
   float: right;
   margin: 25px 20px 5px 5px;
   padding: 0px;
-  color: #cd2323;
+  color: $color-secondary;
   font-weight: 600;
 }
 
 #navControl .navLink:hover {
   color: $color-septenary;
+  text-shadow: 2px 2px #b5b5b5;
 }
 
 #navControl .navLink:active {
