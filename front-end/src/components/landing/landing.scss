@@ -1,31 +1,5 @@
 @import '../../../style/variables.scss';
 
-.intro-text {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  margin-top: 50px;
-  font-size: 20px;
-}
-
-.intro-text p {
-  // background-color: #FFFFFF;
-  // background-size: 100% 100%;
-  // color: $color-accent;
-  // border-radius: 25px;
-  margin-top: 0;
-  margin-bottom: 0;
-  width: 80%;
-  font-size: 30px;
-}
-
-.underline {
-  width: 70vw;
-  border-bottom: 2px solid $color-tertiary;
-  margin-top: 5rem;
-  margin-bottom: 5rem;
-}
-
 Link a {
   width: 100%;
   max-width: 400px;
@@ -43,10 +17,94 @@ p {
   text-align: center;
 }
 
+.intro-body {
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.business {
+  width: 40%;
+  margin: 50px 0 0 0;
+  text-align: center;
+  animation: fade-in 2s linear;
+}
+
+.signup-business {
+  background-color: #0052c8;
+  font-weight: bold;
+}
+
+button {
+  width: 150px;
+  height: 40px;
+  color: $color-primary;
+  border-radius: 10px;
+}
+
+.volunteer {
+  width: 40%;
+  margin: 50px 0 0 0;
+  text-align: center;
+  animation: fade-in 2s linear;
+}
+
+.volunteer p, .business p {
+  color: $color-denary;
+}
+
+.signup-volunteer {
+  background-color: $color-secondary;
+  font-weight: bold;
+}
+
+.business p, .volunteer p {
+  width: 60%;
+  margin-left: 20%;
+  margin-right: auto;
+}
+
+@keyframes fade-in {
+  0% {opacity: 0; }
+  100% {opacity: 1; }
+}
+
+.vertical-line {
+  border-left: 4px solid $color-quaternary;
+  height: 200px;
+  margin: 50px 0 0 0;
+}
+
+.main-details {
+  background: url('../../../assets/fistbump.jpg') no-repeat content-box;
+  background-size: cover;
+  height: 450px;
+  display: flex;
+  justify-content: center;
+  margin: 50px 0 0 0;
+}
+
+.about-container {
+  width: 50%;
+  height: 55%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  margin: 95px 0 0 0;
+  background: rgba(0, 0, 0, 0.5);
+  flex-wrap: wrap;
+}
+
+.about-container p {
+  width: 85%;
+  height: auto;
+  color: $color-primary;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+  line-height: 25px;
+}
+
 @media only screen and (min-width: 320px) and (max-width: 600px){
-  .intro-text p {
-    width: 80%;
-    font-size: 20px;
-    font-weight: normal;
-  }
+
 }
