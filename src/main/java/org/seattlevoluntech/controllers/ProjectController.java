@@ -1,7 +1,6 @@
 package org.seattlevoluntech.controllers;
 
 import com.google.common.collect.Lists;
-import org.seattlevoluntech.models.ErrorNotFound;
 import org.seattlevoluntech.models.Project;
 import org.seattlevoluntech.storage.ProjectsRepository;
 import org.slf4j.Logger;
@@ -40,7 +39,7 @@ public class ProjectController {
     @ResponseBody
     public Optional<Project> viewOneProject(@PathVariable("id") Long id) {
         if(!projectsRepository.findById(id).isPresent())
-            throw new ErrorNotFound("id-" + id);
+            throw new ErrorController.ErrorNotFound("id-" + id);
 
         return projectsRepository.findById(id);
     }
@@ -54,7 +53,7 @@ public class ProjectController {
         ) {
 
         if(!projectsRepository.findById(id).isPresent())
-            throw new ErrorNotFound("id-" + id);
+            throw new ErrorController.ErrorNotFound("id-" + id);
 
         project.setId(id);
 
@@ -68,7 +67,7 @@ public class ProjectController {
     @ResponseBody
     public List<Project> deleteProject(@PathVariable("id") Long id) {
         if(!projectsRepository.findById(id).isPresent())
-            throw new ErrorNotFound("id-" + id);
+            throw new ErrorController.ErrorNotFound("id-" + id);
 
         projectsRepository.deleteById(id);
         return Lists.newArrayList(projectsRepository.findAll());

@@ -1,13 +1,13 @@
-package org.seattlevoluntech.controllers;
+package org.seattlevoluntech.models;
 
 import java.util.Date;
 
-public class ErrorDetails {
+public class Error {
     private Date timestamp;
     private String message;
     private String details;
 
-    public ErrorDetails(Date timestamp, String message, String details) {
+    public Error(Date timestamp, String message, String details) {
         super();
         this.timestamp = timestamp;
         this.message = message;
