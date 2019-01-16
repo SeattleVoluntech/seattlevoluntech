@@ -1,11 +1,12 @@
 @import url(https://fonts.googleapis.com/css?family=Josefin+Sans|Raleway);
 @font-face {
-  font-family: 'Josefin Sans', sans-serif; }
+  font-family: 'Josefin Sans', sans-serif;
+  font-family: 'Raleway', sans-serif; }
 
 body {
-  background-color: #24B4D6;
-  font-family: "Josefin Sans", sans-serif;
-  color: #24B4D6;
+  background-color: #ffffff;
+  font-family: "Raleway", Raleways-serif;
+  color: #cd2323;
   margin: 0; }
 
 button:hover {
@@ -29,7 +30,7 @@ a {
   text-decoration: none; }
 
 a:visited {
-  color: #24B4D6; }
+  color: #cd2323; }
 
 .centered {
   width: 100%;
@@ -37,6 +38,12 @@ a:visited {
 
 .error {
   color: red; }
+
+.underline {
+  width: 10%;
+  height: 1px;
+  background-color: #494848;
+  color: #494848; }
 
 .create-form {
   max-width: 400px;
@@ -99,8 +106,36 @@ a:visited {
   color: #C0C0C0;
   font-size: 11px; }
 
+.loginSetNavigation {
+  color: black;
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+  height: 75px;
+  justify-content: space-between;
+  font-size: 20px; }
+
+.loginSetNavigation p {
+  color: #000000; }
+
+.logo {
+  display: flex;
+  margin: 0; }
+
+.logoName {
+  padding: 15px 0 0 15px; }
+
+.logoName p {
+  margin: 0; }
+
+.logoName p:last-of-type {
+  font-weight: 600; }
+
 #navControl {
-  background: #FF5757; }
+  background: #ffffff;
+  position: fixed;
+  width: 100%;
+  box-shadow: 0 1px #808080; }
 
 .navUILogo {
   height: 70px;
@@ -111,17 +146,22 @@ a:visited {
   height: 25px;
   width: 25px; }
 
+.navLinks {
+  padding: 0 20px 0 20px; }
+
 #navControl .navLink {
   float: right;
-  margin: 30px 20px 5px 5px;
+  margin: 25px 20px 5px 5px;
   padding: 0px;
-  color: #494848; }
+  color: #cd2323;
+  font-weight: 600; }
 
 #navControl .navLink:hover {
-  color: #ffffff; }
+  color: #494848;
+  text-shadow: 2px 2px #b5b5b5; }
 
 #navControl .navLink:active {
-  color: #24B4D6; }
+  color: #cd2323; }
 
 .barChart-image {
   width: 340px;
@@ -146,70 +186,49 @@ a:visited {
   margin-top: 2%; }
 
 .landing-image {
-  background-color: #24B4D6;
-  background-size: 100% 100%;
+  background: url(9dbc06ce66a077b0e781157e3053ca67.svg) no-repeat content-box;
+  background-size: cover;
   width: 100%;
-  height: 50vw; }
+  max-height: 28vw;
+  padding: 75px 0 0 0; }
 
 .siteTitle {
-  margin: 20px auto 0 auto;
-  display: block; }
-
-.intro-title {
-  margin: 0;
-  font-size: 35px;
+  margin: 0 auto 5% auto;
+  display: block;
+  text-align: center;
+  padding: 100px 0 0 0;
   color: #ffffff;
-  text-align: center; }
+  font-size: 60px;
+  text-shadow: 3px 3px #FF5757;
+  opacity: 1; }
 
-.intro-title h1 {
-  font-weight: 100;
-  text-shadow: 3px 3px 0px #3891A6;
-  margin: 0;
-  padding-top: 30px;
-  font-family: "Raleway", Raleways-serif;
-  width: 100%;
-  font-size: 40px; }
-
-.intro-headline {
+.intro-text {
+  text-align: center;
   display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  margin-top: 5%; }
-
-.intro-headline p {
+  justify-content: center;
+  margin-top: 50px;
   font-size: 20px;
-  width: 40%;
-  font-family: "Raleway", Raleways-serif; }
+  animation: fade-in 1.5s linear; }
 
-.intro-headline p:first-of-type {
-  color: #FA9958;
-  animation: example 3s, slide-in 2s; }
+.intro-text p {
+  margin-top: 0;
+  margin-bottom: 0;
+  width: 50%;
+  font-size: 25px;
+  text-shadow: 2px 2px #808080;
+  opacity: 1; }
 
-.intro-headline p:last-of-type {
-  color: #24B4D6;
-  opacity: 0;
-  animation: example 2s linear 1s forwards, slide-in 2s 0.5s; }
-
-@keyframes example {
+@keyframes fade-in {
   0% {
-    opacity: 0;
-    left: -100px; }
+    opacity: 0; }
   100% {
-    opacity: 1;
-    left: 0; } }
+    opacity: 1; } }
 
 @keyframes slide-in {
   0% {
     transform: translateX(-100px); }
   100% {
     transform: translateX(0%); } }
-
-.arrow-wrapper svg {
-  width: 40px;
-  height: 40px;
-  margin-top: 8vw;
-  margin-left: 47vw;
-  animation: bounce 2s linear 0s infinite normal; }
 
 @keyframes bounce {
   0%, 50%, 100% {
@@ -224,8 +243,10 @@ a:visited {
     font-size: 14px;
     width: 80%;
     padding: 2%; }
-  .arrow-wrapper svg {
-    margin-top: 2vw; } }
+  .intro-text p {
+    width: 80%;
+    font-size: 20px;
+    font-weight: normal; } }
 
 @media only screen and (min-width: 701px) and (max-width: 900px) {
   .landing-image {
@@ -264,33 +285,42 @@ a:visited {
 
 .latest-projects {
   width: 100%;
-  height: 20vw;
-  color: white;
-  margin: 50px 0 50px 0;
+  height: 100%;
+  color: #0e5791;
+  margin: 0 0 0 0;
   text-align: center;
-  font-size: 22px; }
+  background-color: #f6f6f6;
+  padding: 50px 0 50px 0; }
 
-.projects {
+.latest-projects h3 {
+  font-size: 35px;
+  font-weight: 900;
+  font-family: "Josefin Sans", sans-serif; }
+
+.new-projects {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
-  margin-top: 50px; }
+  margin-top: 50px;
+  height: auto; }
 
-.latest-projects h3 {
-  text-shadow: 3px 3px 0px #808080; }
-
-.project {
+.main-project {
   width: 25vw;
   height: 20vw;
   background-color: #ffffff;
   padding: 5px;
-  margin-bottom: 20px;
   box-shadow: 0 3px 7px 3px #3891A6;
   border-radius: 5px;
   color: #494848; }
 
-.project > p {
-  color: #494848; }
+.main-project h4 {
+  font-size: 35px; }
+
+.main-project h5 {
+  font-size: 25px; }
+
+.main-project h6 {
+  font-size: 20px; }
 
 @media only screen and (min-width: 320px) and (max-width: 700px) {
   .project {
@@ -302,24 +332,18 @@ a:visited {
     width: 40vw;
     height: 35vw; } }
 
-.intro-text {
+.footer {
+  width: 100%;
+  height: 50px;
+  background-color: #FF5757;
+  bottom: 0;
+  color: #000000;
   text-align: center;
   display: flex;
-  justify-content: center;
-  margin-top: 50px;
-  font-size: 20px; }
+  justify-content: space-around; }
 
-.intro-text p {
-  margin-top: 0;
-  margin-bottom: 0;
-  width: 80%;
-  font-size: 30px; }
-
-.underline {
-  width: 70vw;
-  border-bottom: 2px solid #febc5b;
-  margin-top: 5rem;
-  margin-bottom: 5rem; }
+.footer-container {
+  padding-top: 15px; }
 
 Link a {
   width: 100%;
@@ -331,15 +355,86 @@ p {
   color: #ffffff; }
 
 .formHeader {
-  color: #24B4D6;
+  color: #cd2323;
   margin-top: 40px;
   text-align: center; }
 
-@media only screen and (min-width: 320px) and (max-width: 600px) {
-  .intro-text p {
-    width: 80%;
-    font-size: 20px;
-    font-weight: normal; } }
+.intro-body {
+  display: flex;
+  justify-content: center;
+  font-weight: bold; }
+
+.business {
+  width: 40%;
+  margin: 50px 0 0 0;
+  text-align: center;
+  animation: fade-in 2s linear; }
+
+.signup-business {
+  background-color: #0052c8;
+  font-weight: bold; }
+
+button {
+  width: 150px;
+  height: 40px;
+  color: #ffffff;
+  border-radius: 10px; }
+
+.volunteer {
+  width: 40%;
+  margin: 50px 0 0 0;
+  text-align: center;
+  animation: fade-in 2s linear; }
+
+.volunteer p, .business p {
+  color: #333333; }
+
+.signup-volunteer {
+  background-color: #cd2323;
+  font-weight: bold; }
+
+.business p, .volunteer p {
+  width: 60%;
+  margin-left: 20%;
+  margin-right: auto; }
+
+@keyframes fade-in {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+.vertical-line {
+  border-left: 4px solid #FF5757;
+  height: 200px;
+  margin: 50px 0 0 0; }
+
+.main-details {
+  background: url(2461fb7d28ee987a1def3699bb3c9365.jpg) no-repeat content-box;
+  background-size: cover;
+  height: 450px;
+  display: flex;
+  justify-content: center;
+  margin: 50px 0 0 0; }
+
+.about-container {
+  width: 50%;
+  height: 55%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  margin: 95px 0 0 0;
+  background: rgba(0, 0, 0, 0.5);
+  flex-wrap: wrap; }
+
+.about-container p {
+  width: 85%;
+  height: auto;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+  line-height: 25px; }
 
 .tempText {
   margin-left: 1%; }
@@ -354,7 +449,9 @@ p {
 .projectPane {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-around; }
+  justify-content: space-around;
+  padding-top: 30px;
+  background-color: #f6f6f6; }
 
 .aProject {
   text-align: center;
@@ -388,12 +485,15 @@ p {
     height: 35vw; } }
 
 .projectListHeader {
-  color: #F3F3F3;
-  font-size: 35px; }
+  color: #cd2323;
+  font-size: 35px;
+  text-align: center;
+  background-color: #494848;
+  margin: 0;
+  padding: 10px 0 10px 0; }
 
 .projects {
-  text-shadow: 3px 3px 0 #808080;
-  margin: 20px; }
+  padding: 75px 0 0 0; }
 
 .header-styles {
   color: black;
