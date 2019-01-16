@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class ProjectController {
@@ -21,11 +22,17 @@ public class ProjectController {
     @Autowired
     private ProjectsRepository projectsRepository;
 
-    // View all projects
+    // List projects, specifying optional status parameters
     @GetMapping(path = "/projects")
-    public List<Project> projects(final HttpServletRequest request) {
+    public List<Project> projects(@RequestParam("status") Optional<String> status, final HttpServletRequest request) {
         logger.info(request.getPathInfo());
         logger.info(request.getRemoteUser());
+
+        status.ifPresent(projectStatus -> logger.info(projectStatus));
+
+        if(status.isPresent()) {
+            return projectsRepository.findProjectByStatus(status.get());
+        }
 
         return Lists.newArrayList(projectsRepository.findAll());
     }

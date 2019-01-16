@@ -21,6 +21,8 @@ public class Project implements Serializable {
     private String businessDescription;
     @Column(name = "creation_date")
     private Date creationDate;
+    @Column(name = "status")
+    private String status;
 
 
     public Long getId() {
@@ -71,5 +73,7 @@ public class Project implements Serializable {
         this.creationDate = creationDate;
     }
 
+    public String getStatus() { return status; }
 
+    public void setStatus(String status) { this.status = status; }
 }
