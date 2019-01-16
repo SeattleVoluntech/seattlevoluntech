@@ -6,8 +6,8 @@ import org.seattlevoluntech.storage.ProjectsRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
@@ -21,10 +21,19 @@ public class ProjectController {
     @Autowired
     private ProjectsRepository projectsRepository;
 
-    @RequestMapping(value = "/projects")
+    // View all projects
+    @GetMapping(path = "/projects")
     public List<Project> projects(final HttpServletRequest request) {
+        logger.info(request.getPathInfo());
         logger.info(request.getRemoteUser());
 
         return Lists.newArrayList(projectsRepository.findAll());
     }
+
+    // Create project
+    @PostMapping(path="/projects")
+    public Project createProject(@RequestBody Project project){
+        return projectsRepository.save(project);
+    }
+    
 }
