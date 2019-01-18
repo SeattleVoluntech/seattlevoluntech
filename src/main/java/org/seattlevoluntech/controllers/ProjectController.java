@@ -25,11 +25,18 @@ public class ProjectController {
         return projectsRepository.save(project);
     }
 
-    // View all projects
-    @GetMapping(path="/projects")
-    public List<Project> projects(final HttpServletRequest request) {
+    // List projects, specifying optional status parameters
+    @GetMapping(path = "/projects")
+    public List<Project> projects(@RequestParam("status") Optional<String> status, final HttpServletRequest request) {
+
         logger.info(request.getPathInfo());
         logger.info(request.getRemoteUser());
+
+        status.ifPresent(projectStatus -> logger.info(projectStatus));
+
+        if(status.isPresent()) {
+            return projectsRepository.findProjectByStatus(status.get());
+        }
 
         return Lists.newArrayList(projectsRepository.findAll());
     }

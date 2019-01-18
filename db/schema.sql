@@ -8,7 +8,8 @@ CREATE TABLE project (
     project_description text,
     business_name text,
     business_description text,
-    creation_date timestamp without time zone DEFAULT now()
+    creation_date timestamp without time zone DEFAULT now(),
+    status text
 );
 
 -- Indices -------------------------------------------------------
