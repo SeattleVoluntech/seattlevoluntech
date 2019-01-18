@@ -7,21 +7,22 @@ import './latestProjects.scss';
 class LatestProjects extends React.Component {
   render() {
     return (
-      <div id="latest-projects" className="latest-projects">
+      <div id='latest-projects' className='latest-projects'>
         <h3>Latest Projects</h3>
-        <div className="projects">
-          <div className="project">
-            <p>Project Name</p>
+        <hr className="underline"/>
+        <div className='new-projects'>
+          <div className='main-project'>
+            <h4>Project Name</h4>
             <h5>Project Sponsor</h5>
             <h6>Project Headline</h6>
           </div>
-          <div className="project">
-            <p>Project Name</p>
+          <div className='main-project'>
+            <h4>Project Name</h4>
             <h5>Project Sponsor</h5>
             <h6>Project Headline</h6>
           </div>
-          <div className="project">
-            <p>Project Name</p>
+          <div className='main-project'>
+            <h4>Project Name</h4>
             <h5>Project Sponsor</h5>
             <h6>Project Headline</h6>
           </div>

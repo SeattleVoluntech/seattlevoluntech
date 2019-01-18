@@ -1,7 +1,7 @@
 @import '../../../style/variables.scss';
 
 .card-top {
-  background-color: #5C5C5C;
+  background-color: $color-twelve;
   color: white;
   width: 100%;
   border-top-left-radius: 5px;
@@ -12,7 +12,8 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
-  //margin-top: 10px;
+  padding-top: 30px;
+  background-color: $color-eleven;
 }
 
 .aProject {
