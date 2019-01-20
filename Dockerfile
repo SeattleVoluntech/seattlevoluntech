@@ -6,14 +6,14 @@ RUN java -version
 
 COPY . /usr/src/myapp/
 WORKDIR /usr/src/myapp/
-RUN apk --no-cache add maven && mvn --version
-RUN mvn package
+RUN apk --no-cache add nodejs
+RUN cd front-end && npm install && npm rebuild node-sass && npm run build && cd ..
+RUN ./gradlew build
 
 # Stage 2 (to create a downsized "container executable", ~87MB)
 FROM openjdk:8-jre-alpine3.7
 WORKDIR /root/
-COPY --from=builder /usr/src/myapp/build/seattlevoluntech-0.0.1-SNAPSHOT.jar ./app.jar
-COPY --from=builder /usr/src/myapp/target/lib ./lib
+COPY --from=builder /usr/src/myapp/build/libs/seattlevoluntech-0.0.1-SNAPSHOT.jar ./app.jar
 
 EXPOSE 8080
 ENTRYPOINT ["java", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseCGroupMemoryLimitForHeap", "-jar", "./app.jar"]
