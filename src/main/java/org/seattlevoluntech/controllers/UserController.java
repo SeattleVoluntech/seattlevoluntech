@@ -9,9 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -22,18 +20,25 @@ public class UserController {
     @Autowired UsersRepository userRepository;
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @RequestMapping("/user")
+    @RequestMapping("/users")
     public List<User> users(final HttpServletRequest request) {
-      logger.info(request.getRemoteUser());
-
-      return Lists.newArrayList(userRepository.findAll());
+        if (!request.getRemoteUser().isEmpty())
+            logger.info(request.getRemoteUser());
+        return Lists.newArrayList(userRepository.findAll());
     }
 
-    @RequestMapping(value = "/userId", method = RequestMethod.GET)
-    @ResponseBody
-    public String currentUserId(Authentication authentication) {
-        return authentication.getName();
+    @RequestMapping(value = "/currentUser", method = RequestMethod.GET)
+    public User currentUserName(HttpServletRequest request) {
+        if (!request.getRemoteUser().isEmpty()){
+            List<User> users = Lists.newArrayList(userRepository.findAll());
+            for (User i : users){
+                if (i.getTokenId().equals(request.getRemoteUser()))
+                    return i;
+            }
+        }
+        return new User();
     }
+
 
     @RequestMapping("/findByLastName")
     public String fetchDataByLastName(@RequestParam("last_name") String lastName){
