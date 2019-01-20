@@ -8,7 +8,32 @@ CREATE TABLE project (
     project_description text,
     business_name text,
     business_description text,
-    creation_date timestamp without time zone DEFAULT now()
+    creation_date timestamp without time zone DEFAULT now(),
+    status text
+);
+
+CREATE TABLE skills (
+    id SERIAL PRIMARY KEY,
+    skill_name text UNIQUE,
+    description text
+);
+
+INSERT INTO skills VALUES
+    (1, 'frontend', null),
+    (2, 'backend', null),
+    (3, 'full stack', null),
+    (4, 'design', null);
+
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    first_name text,
+    last_name text,
+    email text,
+    phone_number text,
+    status text,
+    bio text,
+    created timestamp without time zone DEFAULT now(),
+    updated timestamp
 );
 
 -- Indices -------------------------------------------------------

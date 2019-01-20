@@ -3,6 +3,7 @@ package org.seattlevoluntech.storage;
 import javax.persistence.*;
 
 @Entity
+@Table(name="skills")
 public class Skills {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
