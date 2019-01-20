@@ -8,7 +8,8 @@ COPY . /usr/src/myapp/
 WORKDIR /usr/src/myapp/
 RUN apk --no-cache add nodejs
 RUN cd front-end && npm install && npm rebuild node-sass && npm run build && cd ..
-RUN ./gradlew build
+RUN ./gradlew assemble
+RUN ./gradlew check
 
 # Stage 2 (to create a downsized "container executable", ~87MB)
 FROM openjdk:8-jre-alpine3.7
