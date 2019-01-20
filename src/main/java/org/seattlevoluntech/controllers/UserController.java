@@ -22,20 +22,14 @@ public class UserController {
 
     @RequestMapping("/users")
     public List<User> users(final HttpServletRequest request) {
-        if (!request.getRemoteUser().isEmpty())
-            logger.info(request.getRemoteUser());
+        logger.info(request.getRemoteUser());
         return Lists.newArrayList(userRepository.findAll());
     }
 
     @RequestMapping(value = "/currentUser", method = RequestMethod.GET)
     public User currentUserName(HttpServletRequest request) {
-        if (!request.getRemoteUser().isEmpty()){
-            List<User> users = Lists.newArrayList(userRepository.findAll());
-            for (User i : users){
-                if (i.getTokenId().equals(request.getRemoteUser()))
-                    return i;
-            }
-        }
+        if (request.getRemoteUser() != null)
+            return userRepository.findByTokenId(request.getRemoteUser());
         return new User();
     }
 
