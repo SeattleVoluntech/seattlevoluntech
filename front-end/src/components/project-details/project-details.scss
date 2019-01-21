@@ -1,0 +1,22 @@
+@import '../../../style/variables';
+
+.project-details {
+  width: 80%;
+  top: 100px;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+  border: 1px solid $color-thirteen;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.project-details > div {
+  padding: 20px;
+}
+
+.project-details p {
+  color: $color-octonary;
+}

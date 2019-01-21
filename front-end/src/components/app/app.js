@@ -9,8 +9,9 @@ import Landing from '../landing/landing';
 import Dashboard from '../dashboard/dashboard';
 import AuthRedirect from '../auth-redirect/auth-redirect';
 import Projects from '../open-projects/open-projects';
+import ProjectDetails from '../project-details/project-details';
 import AboutUs from '../about-us/about-us';
-import ThankYou from "../thank-you/thank-you";
+import ThankYou from '../thank-you/thank-you';
 
 class App extends React.Component {
   render() {
