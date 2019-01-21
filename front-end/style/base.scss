@@ -41,7 +41,7 @@ a {
   text-decoration: none;
 }
 a:visited {
-  color: $color-nonary;
+  color: #551A8B;
 }
 
 .centered {
@@ -58,6 +58,14 @@ a:visited {
   height: 1px;
   background-color: $color-septenary;
   color: $color-septenary;
+}
+
+.header-underline {
+  width: 90%;
+  height: 1px;
+  background-color: $color-septenary;
+  color: $color-septenary;
+  margin: 0;
 }
 
 footer {

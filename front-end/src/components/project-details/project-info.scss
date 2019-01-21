@@ -1,0 +1,13 @@
+@import '../../../style/variables';
+
+.project-container {
+  width: 55%;
+  border: 1px solid $color-thirteen;
+}
+
+.business-container {
+  //width: 50%;
+  border: 1px solid $color-thirteen;
+  flex: 0 0 35%;
+  //max-width: 40%;
+}
