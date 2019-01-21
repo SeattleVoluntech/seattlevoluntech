@@ -23,6 +23,7 @@ class Landing extends React.Component {
     this.state = {
       user: null,
     };
+    this.signUp = this.signUp.bind(this);
   }
 
   signUpForm() {
@@ -39,7 +40,7 @@ class Landing extends React.Component {
     </div>;
   }
 
-  signUp = (e) => {
+  signUp(e) {
     if (e.target.className === 'signup-business') {
       this.setState({ user: 'business' });
     } else if (e.target.className === 'signup-volunteer') {
@@ -81,6 +82,7 @@ class Landing extends React.Component {
             <div className='intro-body'>
               <div className='business'>
                 <img src={cashRegister} alt='cash register icon'/>
+                <p>Businesses</p>
                 { businessText }
                 <Button id='signup-business' className='signup-business'
                   onClick={this.signUp}>Yes, I have a project!</Button>
@@ -88,6 +90,7 @@ class Landing extends React.Component {
               <div className='vertical-line' />
               <div className='volunteer'>
                 <img src={volunteer} alt='people hand raise icon'/>
+                <p>Volunteers</p>
                 { volunteerText }
                 <Button id='signup-volunteer' className='signup-volunteer'
                   onClick={this.signUp}>Yes, I want to help!</Button>

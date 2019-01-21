@@ -32,7 +32,6 @@ p {
 
 .signup-business {
   background-color: #0052c8;
-  font-weight: bold;
 }
 
 button {
@@ -40,6 +39,7 @@ button {
   height: 40px;
   color: $color-primary;
   border-radius: 10px;
+  font-weight: bold;
 }
 
 .volunteer {
@@ -55,7 +55,6 @@ button {
 
 .signup-volunteer {
   background-color: $color-secondary;
-  font-weight: bold;
 }
 
 .business p, .volunteer p {
@@ -93,6 +92,7 @@ button {
   margin: 95px 0 0 0;
   background: rgba(0, 0, 0, 0.5);
   flex-wrap: wrap;
+  padding: 20px 0 20px 0;
 }
 
 .about-container p {
