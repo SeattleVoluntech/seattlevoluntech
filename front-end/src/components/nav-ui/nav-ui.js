@@ -18,7 +18,7 @@ class NavUi extends React.Component {
   }
 
   handleReload() {
-    window.location.reload(true);
+    window.location.assign('http://localhost:8080/login');
   }
 
   onImageHover(event) {
