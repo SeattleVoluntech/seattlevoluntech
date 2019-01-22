@@ -17,6 +17,10 @@ class NavUi extends React.Component {
     };
   }
 
+  handleReload() {
+    window.location.reload(true);
+  }
+
   onImageHover(event) {
     const propertyToChange = event.target.className.split('-')[0];
     const { onHover } = this.state;
@@ -44,7 +48,7 @@ class NavUi extends React.Component {
         </div>
       </Link>
       <div className='navLinks'>
-        <Link to={routes.LOGIN_FRONTEND} className='navLink'>Login</Link>
+        <Link to={routes.LOGIN_FRONTEND} onClick={this.handleReload} className='navLink'>Login</Link>
         <Link to={routes.SIGNUP_FRONTEND} className='navLink'>Sign Up</Link>
         <Link to={routes.SITE_ROOT_FRONTEND} className='navLink'>About Us</Link>
         <Link to={routes.PROJECTS_FRONTEND} className='navLink'>Projects</Link>
@@ -79,7 +83,7 @@ class NavUi extends React.Component {
       return loginSet;
     }
 
-    if (location.pathname === routes.DASHBOARD_FRONTEND) {
+    if (location.pathname === routes.DASHBOARD_EDIT_FRONTEND) {
       console.log('loading dashboardSet');
       return dashboardSet;
     }
