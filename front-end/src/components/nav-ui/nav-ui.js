@@ -39,7 +39,7 @@ class NavUi extends React.Component {
   whichMenuSet(location) {
     const loginSet = <div className='navLinks'>
         <Link to={routes.LOGIN_FRONTEND} onClick={this.handleReload} className='navLink'>Login</Link>
-        <Link to={routes.SIGNUP_FRONTEND} className='navLink'>Sign Up</Link>
+        <Link to={routes.SIGNUP_FRONTEND} onClick={this.handleReload} className='navLink'>Sign Up</Link>
         <Link to={routes.ABOUT_US_FRONTEND} className='navLink'>About Us</Link>
         <Link to={routes.PROJECTS_FRONTEND} className='navLink'>Projects</Link>
         <Link to={routes.SITE_ROOT_FRONTEND} className='navLink'>Home</Link>

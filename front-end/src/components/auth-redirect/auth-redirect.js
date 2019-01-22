@@ -30,7 +30,8 @@ class AuthRedirect extends React.Component {
 
     // default for new user sign-up
     if (!token && path === routes.SIGNUP_FRONTEND) {
-      sendTo = routes.SIGNUP_FRONTEND;
+      console.log(this.props);
+      sendTo = routes.DASHBOARD_EDIT_FRONTEND;
     }
 
     // default for "authorized users"
