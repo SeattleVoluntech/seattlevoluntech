@@ -17,7 +17,10 @@ webpackConfig.output = {
 
 webpackConfig.plugins = [
   new HtmlWebpackPlugin({
-    title: '',
+    title: 'Seattle Voluntech',
+    meta: {
+      viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no',
+    },
   }),
   new DefinePlugin({
     API_URL: JSON.stringify(process.env.API_URL),

@@ -17,6 +17,10 @@ class NavUi extends React.Component {
     };
   }
 
+  handleReload() {
+    window.location.assign('http://localhost:8080/login');
+  }
+
   onImageHover(event) {
     const propertyToChange = event.target.className.split('-')[0];
     const { onHover } = this.state;
@@ -34,7 +38,7 @@ class NavUi extends React.Component {
   // CSS classNames for each nav instance can be unique for custom looks
   whichMenuSet(location) {
     const loginSet = <div className='navLinks'>
-        <Link to={routes.LOGIN_FRONTEND} className='navLink'>Login</Link>
+        <Link to={routes.LOGIN_FRONTEND} onClick={this.handleReload} className='navLink'>Login</Link>
         <Link to={routes.SIGNUP_FRONTEND} className='navLink'>Sign Up</Link>
         <Link to={routes.ABOUT_US_FRONTEND} className='navLink'>About Us</Link>
         <Link to={routes.PROJECTS_FRONTEND} className='navLink'>Projects</Link>
@@ -57,7 +61,7 @@ class NavUi extends React.Component {
       return loginSet;
     }
 
-    if (location.pathname === routes.DASHBOARD_FRONTEND) {
+    if (location.pathname === routes.DASHBOARD_EDIT_FRONTEND) {
       console.log('loading dashboardSet');
       return dashboardSet;
     }
