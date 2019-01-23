@@ -11,7 +11,7 @@ const buildPath = path.join(__dirname, './build');
 webpackProdConfig.output = {
     filename: '[name].[hash].js',
     path: buildPath,
-    publicPath: process.env.CDN_URL,
+    publicPath: (process.env.CDN_URL || '/'),
 };
 
 webpackProdConfig.plugins = [
