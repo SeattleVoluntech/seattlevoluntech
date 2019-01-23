@@ -1,33 +1,17 @@
 package org.seattlevoluntech.storage;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name="users")
 public class User implements Serializable {
-
-  public User(
-    long id,
-    String firstName,
-    String lastName,
-    String email,
-    String phoneNumber,
-    String status,
-    String bio
-  ) {
-    this.id = id;
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.email = email;
-    this.phoneNumber = phoneNumber;
-    this.status = status;
-    this.bio = bio;
-  }
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
@@ -42,6 +26,7 @@ public class User implements Serializable {
   @Column(name = "last_name")
   private String lastName;
 
+  @Column(name = "email")
   private String email;
 
   @Column(name = "phone_number")
@@ -51,11 +36,23 @@ public class User implements Serializable {
 
   private String bio;
 
+  @ManyToMany
+  @JoinTable(
+          name = "volunteers",
+          joinColumns = {@JoinColumn(name = "user_id")},
+          inverseJoinColumns = { @JoinColumn(name = "project_id")}
+  )
+  private List<Project> projects;
+
   @CreationTimestamp
   private Date created;
 
   @UpdateTimestamp
   private Date updated;
+
+  @Version
+  @Column(name = "opt_lock")
+  private Integer lock;
 
   public User() {}
 
@@ -91,7 +88,19 @@ public class User implements Serializable {
     this.lastName = lastName;
   }
 
-  public String getEmail() { return this.email; }
+  public String getEmail() { return email; }
 
   public void setEmail(String email) { this.email = email; }
+
+  public void addProject(Project project) {
+    if (!this.projects.contains(project))
+    {
+      projects.add(project);
+    }
+  }
+
+  @JsonIgnoreProperties("users")
+  public List<Project> getProjects() {
+    return this.projects;
+  }
 }
