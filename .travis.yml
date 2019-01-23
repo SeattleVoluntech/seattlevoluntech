@@ -12,7 +12,7 @@ before_install:
 
 script:
   - cd front-end && npm install && npm run build
-  - ./gradlew build
+  - cd .. && ./gradlew build
 
 deploy:
   provider: pages
