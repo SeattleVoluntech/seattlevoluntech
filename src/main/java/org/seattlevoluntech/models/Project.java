@@ -1,7 +1,10 @@
 package org.seattlevoluntech.models;
 
+import org.seattlevoluntech.storage.User;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.security.acl.Owner;
 import java.util.Date;
 
 @Entity
@@ -23,7 +26,6 @@ public class Project implements Serializable {
     private Date creationDate;
     @Column(name = "status")
     private String status;
-
 
     public Long getId() {
         return id;
