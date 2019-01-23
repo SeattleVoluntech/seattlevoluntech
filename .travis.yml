@@ -11,7 +11,7 @@ before_install:
 
 
 script:
-  - cd front-end && npm run build
+  - cd front-end && npm install && npm run build
   - ./gradlew build
 
 deploy:
