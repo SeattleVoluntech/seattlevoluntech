@@ -1,8 +1,8 @@
 package org.seattlevoluntech.controllers;
 
 import com.google.common.collect.Lists;
-import org.seattlevoluntech.models.Project;
-import org.seattlevoluntech.storage.ProjectsRepository;
+import org.seattlevoluntech.storage.Project;
+import org.seattlevoluntech.storage.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +18,8 @@ public class ProjectController {
 
     @Autowired
     private ProjectsRepository projectsRepository;
+    @Autowired
+    private UsersRepository usersRepository;
 
     // Create project
     @PostMapping(path="/projects")
@@ -86,6 +88,53 @@ public class ProjectController {
         return projectsRepository.findById(id);
     }
 
+    // Update project
+    @PutMapping(path="/projects/link/{projectId}/{userId}")
+    @ResponseBody
+    public Optional<Project> linkUserWithProject(
+            @PathVariable("projectId") Long projectId,
+            @PathVariable("userId") Long userId
+    ) {
+        Optional<Project> optionalProject = projectsRepository.findById(projectId);
+
+        if(!optionalProject.isPresent())
+        {
+            throw new ErrorController.ErrorNotFound("projectId-" + projectId);
+        }
+
+        Optional<User> optionalUser = usersRepository.findById(userId);
+
+        if (!optionalUser.isPresent())
+        {
+            throw new ErrorController.ErrorNotFound("userId-" + userId);
+        }
+
+
+        optionalProject.get().addUsers(optionalUser.get());
+        optionalUser.get().addProject(optionalProject.get());
+
+        projectsRepository.save(optionalProject.get());
+        usersRepository.save(optionalUser.get());
+
+        return projectsRepository.findById(projectId);
+    }
+
+    // Update project
+    @GetMapping(path="/projects/listUsers/{projectId}")
+    @ResponseBody
+    public List<User> listUsersOnProject(
+            @PathVariable("projectId") Long projectId
+    ) {
+        Optional<Project> optionalProject = projectsRepository.findById(projectId);
+
+        if(!optionalProject.isPresent())
+        {
+            throw new ErrorController.ErrorNotFound("projectId-" + projectId);
+        }
+
+        return projectsRepository.findById(projectId).get().getUsers();
+    }
+
     // Delete project
     @DeleteMapping(path="projects/{id}")
     @ResponseBody
@@ -96,5 +145,4 @@ public class ProjectController {
         projectsRepository.deleteById(id);
         return Lists.newArrayList(projectsRepository.findAll());
     }
-
 }

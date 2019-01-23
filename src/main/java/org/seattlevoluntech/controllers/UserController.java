@@ -1,32 +1,33 @@
 package org.seattlevoluntech.controllers;
 
 import com.google.common.collect.Lists;
+import org.seattlevoluntech.storage.Project;
 import org.seattlevoluntech.storage.User;
 import org.seattlevoluntech.storage.UsersRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class UserController {
-
-    @Autowired UsersRepository userRepository;
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @RequestMapping("/users")
+    @Autowired
+    UsersRepository userRepository;
+
+    @GetMapping("/user")
+    @ResponseBody
     public List<User> users(final HttpServletRequest request) {
         logger.info(request.getRemoteUser());
         return Lists.newArrayList(userRepository.findAll());
     }
 
-    @RequestMapping(value = "/currentUser", method = RequestMethod.GET)
+    @GetMapping(value = "/currentUser")
     public User currentUserName(HttpServletRequest request) {
         if (request.getRemoteUser() != null)
             return userRepository.findByTokenId(request.getRemoteUser());
@@ -34,7 +35,8 @@ public class UserController {
     }
 
 
-    @RequestMapping("/findByLastName")
+    @GetMapping("/findByLastName")
+    @ResponseBody
     public String fetchDataByLastName(@RequestParam("last_name") String lastName){
 
         logger.info("Finding items by last name");
@@ -50,5 +52,18 @@ public class UserController {
         return result.toString();
     }
 
+    @GetMapping("/user/listProjects/{userId}")
+    @ResponseBody
+    public List<Project> listUsersOnProject(
+            @PathVariable("userId") Long userId
+    ) {
+        Optional<User> optionalUser = userRepository.findById(userId);
 
+        if(!optionalUser.isPresent())
+        {
+            throw new ErrorController.ErrorNotFound("userId-" + userId);
+        }
+
+        return optionalUser.get().getProjects();
+    }
 }

@@ -5,6 +5,8 @@ import com.auth0.IdentityVerificationException;
 import com.auth0.Tokens;
 import org.seattlevoluntech.security.TokenAuthentication;
 import com.auth0.jwt.JWT;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.AuthenticationException;
@@ -22,6 +24,8 @@ import java.io.IOException;
 @Controller
 public class CallbackController {
 
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @Autowired
     private AuthenticationController controller;
     private final String redirectOnFail;
@@ -34,16 +38,20 @@ public class CallbackController {
 
     @RequestMapping(value = "/callback", method = RequestMethod.GET)
     protected void getCallback(final HttpServletRequest req, final HttpServletResponse res) throws ServletException, IOException {
+        logger.info("get");
         handle(req, res);
     }
 
     @RequestMapping(value = "/callback", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     protected void postCallback(final HttpServletRequest req, final HttpServletResponse res) throws ServletException, IOException {
+        logger.info("post");
         handle(req, res);
     }
 
     private void handle(HttpServletRequest req, HttpServletResponse res) throws IOException {
         try {
+            logger.debug("request: " + req.toString());
+            logger.debug("response: " + res.toString());
             Tokens tokens = controller.handle(req);
             TokenAuthentication tokenAuth = new TokenAuthentication(JWT.decode(tokens.getIdToken()));
             SecurityContextHolder.getContext().setAuthentication(tokenAuth);

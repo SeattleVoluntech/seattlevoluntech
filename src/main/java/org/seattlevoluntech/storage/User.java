@@ -1,38 +1,20 @@
 package org.seattlevoluntech.storage;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name="users")
 public class User implements Serializable {
 
-  public User(
-    long id,
-    String firstName,
-    String lastName,
-    String email,
-    String phoneNumber,
-    String status,
-    String bio
-  ) {
-    this.id = id;
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.email = email;
-    this.phoneNumber = phoneNumber;
-    this.status = status;
-    this.bio = bio;
-  }
-
   @Id
+  @GeneratedValue(strategy= GenerationType.AUTO)
   private long id;
 
   @Column(name = "token_id")
@@ -44,7 +26,7 @@ public class User implements Serializable {
   @Column(name = "last_name")
   private String lastName;
 
-
+  @Column(name = "email")
   private String email;
 
   @Column(name = "phone_number")
@@ -53,6 +35,14 @@ public class User implements Serializable {
   private String status;
 
   private String bio;
+
+  @ManyToMany
+  @JoinTable(
+          name = "user_project",
+          joinColumns = { @JoinColumn(name = "user_id")},
+          inverseJoinColumns = { @JoinColumn(name = "project_id")}
+  )
+  private List<Project> projects;
 
   @CreationTimestamp
   private Date created;
@@ -86,5 +76,20 @@ public class User implements Serializable {
 
   public void setLastName(String lastName) {
     this.lastName = lastName;
+  }
+
+  public String getEmail() { return email; }
+
+  public void setEmail(String email) { this.email = email; }
+
+  public void addProject(Project project) {
+    if (!this.projects.contains(project))
+    {
+      projects.add(project);
+    }
+  }
+  @JsonIgnore
+  public List<Project> getProjects() {
+    return projects;
   }
 }
