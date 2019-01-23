@@ -8,6 +8,7 @@ CREATE TABLE projects (
     project_description text,
     business_name text,
     business_description text,
+    opt_lock integer,
     creation_date timestamp without time zone DEFAULT now(),
     status text
 );
@@ -33,6 +34,7 @@ CREATE TABLE users (
     phone_number text,
     status text,
     bio text,
+    opt_lock integer,
     created timestamp without time zone DEFAULT now(),
     updated timestamp
 );
@@ -44,3 +46,11 @@ CREATE TABLE owners (
     FOREIGN KEY ("user_id") REFERENCES "public"."users"("id") ON DELETE RESTRICT ON UPDATE RESTRICT,
     FOREIGN KEY ("project_id") REFERENCES "public"."projects"("id") ON DELETE CASCADE ON UPDATE RESTRICT
 );
+
+CREATE TABLE volunteers
+(
+    user_id bigint NOT NULL,
+    project_id bigint NOT NULL,
+    FOREIGN KEY ("user_id") REFERENCES "public"."users"("id") ON DELETE RESTRICT ON UPDATE RESTRICT,
+    FOREIGN KEY ("project_id") REFERENCES "public"."projects"("id") ON DELETE CASCADE ON UPDATE RESTRICT
+)
