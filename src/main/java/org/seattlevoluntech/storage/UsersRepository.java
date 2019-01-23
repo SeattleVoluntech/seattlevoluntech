@@ -8,4 +8,5 @@ import java.util.List;
 @Component
 public interface UsersRepository extends CrudRepository<User, Long> {
   List<User> findByLastName(String lastName);
+  User findByTokenId(String tokenId);
 }
