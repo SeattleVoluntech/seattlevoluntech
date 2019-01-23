@@ -35,6 +35,9 @@ public class User implements Serializable {
   @Id
   private long id;
 
+  @Column(name = "token_id")
+  private String tokenId;
+
   @Column(name = "first_name")
   private String firstName;
 
@@ -62,6 +65,8 @@ public class User implements Serializable {
   public long getId() {
     return id;
   }
+
+  public String getTokenId() { return tokenId; }
 
   public void setId(long id) {
     this.id = id;
