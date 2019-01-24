@@ -15,6 +15,14 @@ body {
   min-height: 100vh;
 }
 
+button {
+  width: 150px;
+  height: 40px;
+  color: $color-primary;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
 button:hover {
   cursor: pointer;
 }

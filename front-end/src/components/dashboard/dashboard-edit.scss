@@ -2,9 +2,71 @@
 
 .profile-form {
   padding-top: 75px;
-  position: relative;
+  position: static;
+  margin: 0 0 0 5%;
 }
 
 .profile-form p {
   color: $color-octonary;
+}
+
+.subform {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px 0 0 0;
+}
+
+.profile {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin: 20px 0 0 0;
+  width: 40em;
+}
+
+.profile > label {
+  padding: 1em 0 1em 0;
+}
+
+.profile input[type="text"],  textarea {
+  font-family: $raleway;
+  font-size: 18px;
+}
+
+.user-type label {
+  font-size: 20px;
+}
+
+.user-type > label:nth-of-type(2) {
+  padding-left: 2em;
+}
+
+.user-type button {
+  width: 80px;
+  background-color: $color-quaternary;
+  margin: 20px 0 20px 40%;
+  font-size: 16px;
+}
+
+.skills-group {
+  margin: 50px 0 0 0;
+}
+
+.skills-checkbox {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: [label] 40% [input] 2em ;
+  padding: 0 1em 0 6em;
+  max-height: 270px;
+}
+
+.skills-checkbox > * {
+  border: 1px transparent solid;
+  display:inline-block;
+  width: 12em;
+}
+
+.invalid-feedback {
+  display: none;
+  color: $color-septenary;
 }
