@@ -19,7 +19,7 @@ class App extends React.Component {
   render() {
     return (
         <div>
-          <BrowserRouter>
+          <BrowserRouter basename={process.env.PUBLIC_URL}>
             <div>
               {/* <Route path='*' component={Landing}/> */}
               <Route exact path={routes.SITE_ROOT_FRONTEND} component={Landing}/>

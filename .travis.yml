@@ -1,7 +1,24 @@
 language: java
 
-services:
-  - docker
+jdk:
+- oraclejdk8
+
+env:
+- NODE_VERSION="10.15"
+
+before_install:
+- nvm install $NODE_VERSION
+
 
 script:
-  - docker build -t voluntech:latest .
+  - cd front-end && npm install && npm run build
+  - cd .. && ./gradlew build
+
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  keep-history: true
+  on:
+    branch: master
+  local-dir: ./front-end/build

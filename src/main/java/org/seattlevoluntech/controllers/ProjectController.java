@@ -41,6 +41,22 @@ public class ProjectController {
         return Lists.newArrayList(projectsRepository.findAll());
     }
 
+    // List latest projects
+    @GetMapping(path = "/projects/latest")
+    public List<Project> latestProjects(@RequestParam("status") Optional<String> status, final HttpServletRequest request) {
+
+        Integer DEFAULT_NUMBER_OF_LATEST_PROJECTS = 3;
+        String DEFAULT_PROJECT_STATUS_STRING = "open";
+
+        logger.info(request.getPathInfo());
+        logger.info(request.getRemoteUser());
+
+        logger.info("Request for latest {} projects", DEFAULT_NUMBER_OF_LATEST_PROJECTS);
+
+        return projectsRepository.getLatestProjects(status.orElse(DEFAULT_PROJECT_STATUS_STRING), DEFAULT_NUMBER_OF_LATEST_PROJECTS);
+
+        }
+
     // View individual project by ID
     @GetMapping(path="projects/{id}")
     @ResponseBody
@@ -50,6 +66,7 @@ public class ProjectController {
 
         return projectsRepository.findById(id);
     }
+
 
     // Update project
     @PutMapping(path="/projects/{id}")
