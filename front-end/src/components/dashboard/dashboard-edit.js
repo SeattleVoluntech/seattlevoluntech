@@ -1,7 +1,6 @@
 // packages
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import NavUi from '../nav-ui/nav-ui';
 // import Form from '../form/form';
 
 // styles
@@ -99,7 +98,7 @@ class DashboardEdit extends React.Component {
     /* TODO: Update h2 heading and remove user-type div for existing users*/
     return (
         <React.Fragment>
-          <NavUi location={location} auth={this.props.auth}/>
+      <div className='user-type' onChange={this.handleInputChange}>
           <section className='profile-form'>
             <h2>Create Your Profile</h2>
             <form noValidate submit={this.handleSubmit} >

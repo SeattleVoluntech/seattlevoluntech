@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import NavUi from '../nav-ui/nav-ui';
 import ProjectEditing from './project-editing';
 import ProjectInfo from './project-info';
 
@@ -24,9 +23,6 @@ class ProjectDetails extends React.Component {
     const { location } = this.props;
     return (
       <Fragment>
-        <section>
-          <NavUi location={location} />
-        </section>
         <section className='project-details'>
           {this.props.isBusiness
             ? <span onClick={this.handleClick} className="editLink">edit</span>

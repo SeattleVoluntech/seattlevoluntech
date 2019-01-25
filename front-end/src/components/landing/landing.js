@@ -74,7 +74,6 @@ class Landing extends React.Component {
     return (
       <React.Fragment>
         <section>
-          <NavUi location={location} />
           <section>
             <LandingImage />
             {/* { location.pathname === routes.LOGIN_FRONTEND ? this.loginForm() : null } */}

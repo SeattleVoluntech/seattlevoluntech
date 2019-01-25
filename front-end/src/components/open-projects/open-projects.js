@@ -23,9 +23,6 @@ class Projects extends React.Component {
     return (
       <Fragment>
         <section>
-          <NavUi location={location} />
-        </section>
-        <section>
           {this.projectsList()}
         </section>
         <ProjectPane/>

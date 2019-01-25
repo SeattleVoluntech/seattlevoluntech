@@ -1,6 +1,6 @@
 // packages
 import React from 'react';
-import NavUi from "../nav-ui/nav-ui";
+import Profile from './profile';
 
 // styles
 import './dashboard.scss';
@@ -14,7 +14,7 @@ class Dashboard extends React.Component {
     const { location } = this.props;
     return (
         <React.Fragment>
-          <NavUi location={location}/>
+        <Profile user={'business'}/>
           <p className="tempText"> i e am dashboard</p>
         </React.Fragment>
     )

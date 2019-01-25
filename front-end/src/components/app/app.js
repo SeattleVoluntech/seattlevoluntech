@@ -6,6 +6,7 @@ import * as routes from '../../routes';
 
 // custom components
 import Landing from '../landing/landing';
+import NavUi from '../nav-ui/nav-ui';
 import Callback from '../callback/callback';
 import Dashboard from '../dashboard/dashboard';
 import DashboardEdit from '../dashboard/dashboard-edit';
@@ -22,6 +23,7 @@ class App extends React.Component {
           <BrowserRouter basename={process.env.PUBLIC_URL}>
             <div>
               {/* <Route path='*' component={Landing}/> */}
+              <NavUi location={location} />
               <Route exact path={routes.SITE_ROOT_FRONTEND} component={Landing}/>
               <Route path={routes.LOGIN_FRONTEND} component={Landing}/>
               <Route path={routes.SIGNUP_FRONTEND} component={Landing}/>
@@ -29,6 +31,7 @@ class App extends React.Component {
               <Route path={routes.DASHBOARD_FRONTEND} component={Dashboard}/>
               <Route path={routes.DASHBOARD_EDIT_FRONTEND} component={DashboardEdit}/>
               <Route path={routes.PROJECTS_FRONTEND} component={Projects}/>
+              <Route path={routes.PROJECT_DETAILS_FRONTEND} component={ProjectDetails}/>
               <Route path={routes.ABOUT_US_FRONTEND} component={AboutUs}/>
               <Route path={routes.THANK_YOU_FRONTEND} component={ThankYou}/>
             </div>

@@ -18,7 +18,6 @@ class AboutUs extends React.Component {
     const { location } = this.props;
     return (
         <div className="about-us-container">
-          <NavUi location={location} />
           <div className='about-us'>
             <div className="about-style-container">
               <h3 className="header-styles">About Us!</h3>
