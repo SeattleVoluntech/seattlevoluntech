@@ -17,7 +17,8 @@
 
 .profile-container {
   border: 1px solid $color-accent;
-  width: 60%;
+  border-radius: 10px;
+  width: 60vw;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
@@ -28,6 +29,14 @@
 .profile-container > h2, h3 {
   width: 100%;
   text-align: center;
+}
+
+.profile-container > h2 {
+  background-color: $color-quaternary;
+  margin: 0;
+  padding: 18px 0 18px 0;
+  border-radius: 10px 10px 0 0;
+  color: $color-primary;
 }
 
 .profile-form p {

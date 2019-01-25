@@ -10,7 +10,8 @@ class DashboardEdit extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userType: false,
+      userExist: null,
+      userType: null,
       businessName: '',
       businessEmail: '',
       businessDesc: '',
@@ -33,9 +34,9 @@ class DashboardEdit extends React.Component {
   }
 
   handleInputChange(event) {
-    const target = event.target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const { target } = event;
     const name = target.type === 'radio' ? 'userType' : target.name;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
       [name]: value,
     });
@@ -58,7 +59,7 @@ class DashboardEdit extends React.Component {
 
   render() {
     const { location } = this.props;
-    const skills = [['visual-design', 'visualDesign'], ['ux-design', 'uxDesign'], ['front-end', 'frontEnd'], ['back-end', 'backEnd'], ['full-stack', 'fullStack'], ['wordpress', 'wordpress'], ['squarespace', 'squarespace'], ['wix', 'wix']];
+
     const businessProfile = <React.Fragment><label htmlFor='business-name-edit'>Business Name: </label>
       <input type='text' id='business-name-edit' name='businessName' required size='40' onChange={this.handleInputChange} value={this.state.businessName}/>
       <span className='invalid-feedback' />
@@ -73,6 +74,7 @@ class DashboardEdit extends React.Component {
       <span className='invalid-feedback' />
       </React.Fragment>;
 
+    const skills = [['visual-design', 'visualDesign'], ['ux-design', 'uxDesign'], ['front-end', 'frontEnd'], ['back-end', 'backEnd'], ['full-stack', 'fullStack'], ['wordpress', 'wordpress'], ['squarespace', 'squarespace'], ['wix', 'wix']];
     const volunteerProfile = <React.Fragment><label htmlFor='volunteer-name-edit'>Name: </label>
       <input type='text' id='volunteer-name-edit' name='volunteerName' required size='40' onChange={this.handleInputChange} value={this.state.volunteerName}/>
       <span className='invalid-feedback' />
@@ -105,17 +107,17 @@ class DashboardEdit extends React.Component {
       <input type='radio' id='volunteer' name='userType' onChange={this.handleInputChange} checked={this.state.userType === 'volunteer'} value='volunteer'></input>
       </div></React.Fragment>;
 
-    const existingProfileHeading = <React.Fragment><h3>Edit Your Profile</h3></React.Fragment>
-    /* TODO: Update h2 heading and remove user-type div for existing users */
+    const existingProfileHeading = <React.Fragment><h2>Edit Your Profile</h2></React.Fragment>;
+    const { userExist, userType } = this.state;
+
     return (
         <React.Fragment>
           <section className='profile-form'>
             <form noValidate submit={this.handleSubmit} className='form-container'>
               <div className='profile-container'>
-                {newProfileHeading}
+                { userExist === null ? newProfileHeading : existingProfileHeading}
                 <div className='profile-edit-fields'>
-                  { this.state.userType === 'business' && businessProfile }
-                  { this.state.userType === 'volunteer' && volunteerProfile }
+                  { userType === 'business' ? businessProfile : volunteerProfile }
                   <button type='submit' value='Submit'>Submit</button>
                 </div>
               </div>
