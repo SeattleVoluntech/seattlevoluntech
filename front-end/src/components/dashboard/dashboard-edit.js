@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom';
 
 // styles
 import './dashboard-edit.scss';
-
+/* TODO Add redux for conditional rendering */
 class DashboardEdit extends React.Component {
   constructor(props) {
     super(props);
@@ -28,6 +28,7 @@ class DashboardEdit extends React.Component {
       wordpress: false,
       squarespace: false,
       wix: false,
+      redirectToReferrer: false,
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -55,6 +56,7 @@ class DashboardEdit extends React.Component {
       method: 'POST',
       body: data,
     }); */
+    this.setState({ redirectToReferrer: true });
   }
 
   render() {
@@ -109,11 +111,15 @@ class DashboardEdit extends React.Component {
 
     const existingProfileHeading = <React.Fragment><h2>Edit Your Profile</h2></React.Fragment>;
     const { userExist, userType } = this.state;
-
+    console.log(this.props);
+    const { redirectToReferrer } = this.state;
+    if (redirectToReferrer) {
+      return <Redirect to={'/dashboard'}/>;
+    }
     return (
         <React.Fragment>
           <section className='profile-form'>
-            <form noValidate submit={this.handleSubmit} className='form-container'>
+            <form noValidate onSubmit={this.handleSubmit} className='form-container'>
               <div className='profile-container'>
                 { userExist === null ? newProfileHeading : existingProfileHeading}
                 <div className='profile-edit-fields'>

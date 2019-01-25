@@ -51,8 +51,8 @@ class Profile extends React.Component {
                   <ProjectCard />
                 </div>
                 <hr className='underline' />
-                <h3>Past Projects</h3>
                 <div className='closed-projects flex'>
+                  <h3>Past Projects</h3>
                   <ProjectCard />
                 </div>
               </div>

@@ -26,14 +26,14 @@ class NavUi extends React.Component {
     const { onHover } = this.state;
     onHover[propertyToChange] = true;
     return this.setState({ onHover });
-  };
+  }
 
   onImageExit(event) {
     const { onHover } = this.state;
     const propertyToChange = event.target.className.split('-')[0];
     onHover[propertyToChange] = false;
     return this.setState({ onHover });
-  };
+  }
 
   // CSS classNames for each nav instance can be unique for custom looks
   whichMenuSet(location) {

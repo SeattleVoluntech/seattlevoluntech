@@ -87,6 +87,7 @@
   grid-gap: 20px;
   grid-template-columns: [label] 40% [input] 2em ;
   max-height: 270px;
+  padding-left: 22%;
 }
 
 .skills-checkbox > li {
@@ -94,9 +95,4 @@
   display:inline-block;
   width: 12em;
   align-self: center;
-}
-
-.invalid-feedback {
-  display: none;
-  color: $color-septenary;
 }
