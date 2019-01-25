@@ -56,11 +56,11 @@
 }
 
 .intro-text p {
-  // border-radius: 25px;
   margin-top: 0;
   margin-bottom: 0;
   width: 50%;
   font-size: 25px;
+  color: $color-primary;
   text-shadow: 2px 2px $color-accent;
   opacity: 1;
 }

@@ -54,7 +54,7 @@ class Landing extends React.Component {
       grow your business, but don't know how or where to start?</p>;
 
     const volunteerText = <p>Are you a tech professional/enthusiast who is passionate
-        about making a difference in your local community with your skills and time?</p>;
+        about making a difference in your local community?</p>;
 
     const about = <div className='about-container'>
       <p>Seattle VolunTech is a platform that connects minority and immigrant-owned
@@ -81,7 +81,7 @@ class Landing extends React.Component {
             <div className='intro-body'>
               <div className='business'>
                 <img src={cashRegister} alt='cash register icon'/>
-                <p>Businesses</p>
+                <h2>Businesses</h2>
                 { businessText }
                 <Button id='signup-business' className='signup-business'
                   onClick={this.signUp}>Yes, I have a project!</Button>
@@ -89,7 +89,7 @@ class Landing extends React.Component {
               <div className='vertical-line' />
               <div className='volunteer'>
                 <img src={volunteer} alt='people hand raise icon'/>
-                <p>Volunteers</p>
+                <h2>Volunteers</h2>
                 { volunteerText }
                 <Button id='signup-volunteer' className='signup-volunteer'
                   onClick={this.signUp}>Yes, I want to help!</Button>
