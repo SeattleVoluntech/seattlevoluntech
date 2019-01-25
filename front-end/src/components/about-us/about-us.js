@@ -3,7 +3,6 @@ import React from 'react';
 
 // custom components
 import NavUi from '../nav-ui/nav-ui';
-import Footer from '../footer/footer';
 
 // styles
 import './about-us.scss';
@@ -52,7 +51,6 @@ class AboutUs extends React.Component {
               </h2>
             </div>
           </div>
-          <Footer />
         </div>
     );
   }

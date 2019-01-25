@@ -7,7 +7,6 @@ import LandingAuthForm from '../landing-auth-form/landing-auth-form'; // eslint-
 import NavUi from '../nav-ui/nav-ui';
 import LandingImage from './landingImage';
 import LatestProjects from './latestProjects';
-import Footer from '../footer/footer';
 import volunteer from '../../../assets/red_Volunteer.png';
 import cashRegister from '../../../assets/red_Cash.png';
 
@@ -101,7 +100,6 @@ class Landing extends React.Component {
           </section>
           <LatestProjects />
         </section>
-        <Footer />
       </React.Fragment>
     );
   }

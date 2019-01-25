@@ -15,6 +15,7 @@ import Projects from '../open-projects/open-projects';
 import ProjectDetails from '../project-details/project-details';
 import AboutUs from '../about-us/about-us';
 import ThankYou from '../thank-you/thank-you';
+import Footer from '../footer/footer';
 
 class App extends React.Component {
   render() {
@@ -26,6 +27,7 @@ class App extends React.Component {
               <NavUi location={location} />
               <Route exact path={routes.SITE_ROOT_FRONTEND} component={Landing}/>
               <Route path={routes.LOGIN_FRONTEND} component={Landing}/>
+              <Route path={routes.LOGOUT_FRONTEND} component={Landing}/>
               <Route path={routes.SIGNUP_FRONTEND} component={Landing}/>
               <Route path={routes.CALLBACK_FRONTEND} component={Callback}/>
               <Route path={routes.DASHBOARD_FRONTEND} component={Dashboard}/>
@@ -34,6 +36,7 @@ class App extends React.Component {
               <Route path={routes.PROJECT_DETAILS_FRONTEND} component={ProjectDetails}/>
               <Route path={routes.ABOUT_US_FRONTEND} component={AboutUs}/>
               <Route path={routes.THANK_YOU_FRONTEND} component={ThankYou}/>
+              <Footer />
             </div>
           </BrowserRouter>
         </div>
