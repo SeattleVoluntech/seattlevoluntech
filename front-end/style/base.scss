@@ -15,10 +15,15 @@ body {
   min-height: 100vh;
 }
 
+.flex {
+  display: flex;
+  justify-content: center;
+}
+
 button {
-  width: 150px;
+  width: 160px;
   height: 40px;
-  color: $color-primary;
+  background-color: $color-primary;
   border-radius: 10px;
   font-weight: bold;
 }
@@ -37,6 +42,10 @@ html {
   overflow-y: scroll;
   scroll-behavior: smooth;
   height: 100vh;
+}
+
+p {
+  color: $color-octonary;
 }
 
 .logo {
