@@ -60,24 +60,24 @@ class DashboardEdit extends React.Component {
     const { location } = this.props;
     const skills = [['visual-design', 'visualDesign'], ['ux-design', 'uxDesign'], ['front-end', 'frontEnd'], ['back-end', 'backEnd'], ['full-stack', 'fullStack'], ['wordpress', 'wordpress'], ['squarespace', 'squarespace'], ['wix', 'wix']];
     const businessProfile = <React.Fragment><label htmlFor='business-name-edit'>Business Name: </label>
-      <input type='text' id='business-name-edit' name='businessName' required size="40" onChange={this.handleInputChange}  value={this.state.businessName}/>
+      <input type='text' id='business-name-edit' name='businessName' required size='40' onChange={this.handleInputChange} value={this.state.businessName}/>
       <span className='invalid-feedback' />
       <label htmlFor='business-email-edit'>Business Email: </label>
-      <input type='email' id='business-email-edit' name='businessEmail' required size="40" onChange={this.handleInputChange} value={this.state.businessEmail}/>
+      <input type='email' id='business-email-edit' name='businessEmail' required size='40' onChange={this.handleInputChange} value={this.state.businessEmail}/>
       <span className='invalid-feedback' />
       <label htmlFor='business-desc-edit'>Business Description: </label>
       <textarea rows='10' cols='50' id='business-desc-edit' name='businessDesc' required onChange={this.handleInputChange} value={this.state.businessDesc}/>
       <span className='invalid-feedback' />
-      <label htmlFor='existing-website-edit'>`Existing Website (Optional): `</label>
-      <input type='url' id='existing-website-edit' name='existingSite' size="50" onChange={this.handleInputChange} value={this.state.existingSite}/>
+      <label htmlFor='existing-website-edit'>Existing Website (Optional): </label>
+      <input type='url' id='existing-website-edit' name='existingSite' size='50' onChange={this.handleInputChange} value={this.state.existingSite}/>
       <span className='invalid-feedback' />
       </React.Fragment>;
 
     const volunteerProfile = <React.Fragment><label htmlFor='volunteer-name-edit'>Name: </label>
-      <input type='text' id='volunteer-name-edit' name='volunteerName' required size="40" onChange={this.handleInputChange} value={this.state.volunteerName}/>
+      <input type='text' id='volunteer-name-edit' name='volunteerName' required size='40' onChange={this.handleInputChange} value={this.state.volunteerName}/>
       <span className='invalid-feedback' />
       <label htmlFor='volunteer-email-edit'>Email: </label>
-      <input type='text' id='volunteer-email-edit' name='volunteerEmail' required size="40" onChange={this.handleInputChange} value={this.state.volunteerEmail}/>
+      <input type='text' id='volunteer-email-edit' name='volunteerEmail' required size='40' onChange={this.handleInputChange} value={this.state.volunteerEmail}/>
       <span className='invalid-feedback' />
       <label htmlFor='volunteer-bio-edit'>Tell us about yourself: </label>
       <textarea rows='10' cols='50' id='volunteer-bio-edit' name='volunteerBio' required onChange={this.handleInputChange} value={this.state.volunteerBio}/>
@@ -95,24 +95,29 @@ class DashboardEdit extends React.Component {
         </ul>
       </fieldset>
       </React.Fragment>;
-    /* TODO: Update h2 heading and remove user-type div for existing users*/
+
+    const newProfileHeading = <React.Fragment><h2>Create Your Profile</h2>
+      <h3>Are you a business owner or want to volunteer?</h3>
+      <div className='user-type' onChange={this.handleInputChange}>
+      <label htmlFor='business'>Business Owner</label>
+      <input type='radio' id='business' name='userType' onChange={this.handleInputChange} checked={this.state.userType === 'business'} value='business'></input>
+      <label htmlFor='volunteer'>Volunteer</label>
+      <input type='radio' id='volunteer' name='userType' onChange={this.handleInputChange} checked={this.state.userType === 'volunteer'} value='volunteer'></input>
+      </div></React.Fragment>;
+
+    const existingProfileHeading = <React.Fragment><h3>Edit Your Profile</h3></React.Fragment>
+    /* TODO: Update h2 heading and remove user-type div for existing users */
     return (
         <React.Fragment>
-      <div className='user-type' onChange={this.handleInputChange}>
           <section className='profile-form'>
-            <h2>Create Your Profile</h2>
-            <form noValidate submit={this.handleSubmit} >
-              <h3>Are you a business owner or want to volunteer?</h3>
-              <div className='user-type' onChange={this.handleInputChange}>
-                <label htmlFor='business'>Business Owner</label>
-                <input type='radio' id='business' name='userType' onChange={this.handleInputChange} checked={this.state.userType === 'business'} value='business'></input>
-                <label htmlFor='volunteer'>Volunteer</label>
-                <input type='radio' id='volunteer' name='userType' onChange={this.handleInputChange} checked={this.state.userType === 'volunteer'} value='volunteer'></input>
-              </div>
-              <div className='profile'>
-                { this.state.userType === 'business' && businessProfile }
-                { this.state.userType === 'volunteer' && volunteerProfile }
-                <button type='submit' value='Submit'>Submit</button>
+            <form noValidate submit={this.handleSubmit} className='form-container'>
+              <div className='profile-container'>
+                {newProfileHeading}
+                <div className='profile-edit-fields'>
+                  { this.state.userType === 'business' && businessProfile }
+                  { this.state.userType === 'volunteer' && volunteerProfile }
+                  <button type='submit' value='Submit'>Submit</button>
+                </div>
               </div>
             </form>
           </section>
