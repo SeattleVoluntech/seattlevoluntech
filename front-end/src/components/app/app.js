@@ -20,7 +20,6 @@ class App extends React.Component {
           <BrowserRouter basename={process.env.CDN_URL}>
             <div>
               {/* <Route path='*' component={Landing}/> */}
-              /* NOTE: This is a bit of a hack because digital ocean doesn't support / -> index.html defaulting */
               <Route exact path="/" >
                   <Redirect to={routes.SITE_ROOT_FRONTEND} />
               </Route>
