@@ -30,11 +30,12 @@
 
 .open-projects, .closed-projects, .current-projects {
   flex-flow: row wrap;
+  justify-content: space-around;
 }
 .open-projects > h3 {
   margin: 0 0 55px 0;
 }
 
 .closed-projects > h3  {
-  margin: 20px 0 55px 0;
+  margin: 40px 0 55px 0;
 }

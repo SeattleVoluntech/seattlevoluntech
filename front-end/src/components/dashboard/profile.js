@@ -14,7 +14,7 @@ class Profile extends React.Component {
     const { location } = this.props;
     console.log(this.props);
 
-    const businessProfile = <div className='profile-info flex'><div className='profile-container'><h3>Business Name</h3>
+    const businessProfile = <div className='profile-info flex'><div className='profile-container'><h3>this.props.businessname</h3>
     <span><h4>Business Email : </h4><p>this.props.business.email</p></span>
     <span><h4>Business Description: </h4><p>this.props.business.description</p></span>
     <span><h4>Business Website: </h4><p>this.props.business.website</p></span>
@@ -32,6 +32,9 @@ class Profile extends React.Component {
                 <button>Create a new project</button>
                 <div className='open-projects flex'>
                   <h3>Open Projects</h3>
+                  <ProjectCard />
+                  <ProjectCard />
+                  <ProjectCard />
                   <ProjectCard />
                 </div>
                 <hr className='underline' />

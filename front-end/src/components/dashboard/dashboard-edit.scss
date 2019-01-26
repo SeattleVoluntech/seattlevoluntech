@@ -78,6 +78,11 @@
   color: $color-primary;
 }
 
+button:disabled {
+  background-color: #dddddd;
+  color: #666666;
+}
+
 .skills-group {
   margin: 30px 0 0 0;
 }
@@ -95,4 +100,8 @@
   display:inline-block;
   width: 12em;
   align-self: center;
+}
+
+.invalid-feedback {
+  color: red;
 }
