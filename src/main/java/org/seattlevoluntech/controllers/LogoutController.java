@@ -26,5 +26,4 @@ public class LogoutController {
             request.getSession().invalidate();
         }
     }
-
 }

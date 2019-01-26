@@ -15,5 +15,4 @@ public class HomeController {
     }
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-
 }
