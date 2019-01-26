@@ -1,5 +1,0 @@
-@import '../../../style/variables.scss';
-
-.was-validated .form-control:valid~.invalid-feedback {
-    display: none;
-}
