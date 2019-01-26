@@ -66,7 +66,9 @@ public class User implements Serializable {
     return id;
   }
 
-  public String getTokenId() { return tokenId; }
+  public String getTokenId() {
+    return tokenId;
+  }
 
   public void setId(long id) {
     this.id = id;

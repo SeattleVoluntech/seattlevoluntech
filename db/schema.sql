@@ -2,7 +2,7 @@
 
 -- Table Definition ----------------------------------------------
 
-CREATE TABLE project (
+CREATE TABLE projects (
     id SERIAL PRIMARY KEY,
     project_name text UNIQUE,
     project_description text,
@@ -26,6 +26,7 @@ INSERT INTO skills VALUES
 
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
+    token_id text,
     first_name text,
     last_name text,
     email text,
@@ -34,6 +35,15 @@ CREATE TABLE users (
     bio text,
     created timestamp without time zone DEFAULT now(),
     updated timestamp
+);
+
+CREATE TABLE owners (
+    id SERIAL PRIMARY KEY,
+    user_id serial,
+    project_id serial,
+    PRIMARY KEY ("id"),
+    FOREIGN KEY ("user_id") REFERENCES "public"."users"("id") ON DELETE RESTRICT ON UPDATE RESTRICT,
+    FOREIGN KEY ("project_id") REFERENCES "public"."project"("id") ON DELETE CASCADE ON UPDATE RESTRICT
 );
 
 -- Indices -------------------------------------------------------
