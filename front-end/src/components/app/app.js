@@ -17,8 +17,8 @@ class App extends React.Component {
   render() {
     return (
         <div>
-          <BrowserRouter basename={process.env.PUBLIC_URL}>
-            <Switch>
+          <BrowserRouter basename={process.env.CDN_URL}>
+            <div>
               {/* <Route path='*' component={Landing}/> */}
               <Route exact path={routes.SITE_ROOT_FRONTEND} component={Landing}/>
               <Route path={routes.LOGIN_FRONTEND} component={Landing}/>
@@ -28,7 +28,7 @@ class App extends React.Component {
               <Route path={routes.ABOUT_US_FRONTEND} component={AboutUs}/>
               <Route path={routes.THANK_YOU_FRONTEND} component={ThankYou}/>
               <Route component={() => (<div>404 Not found</div>)} />
-            </Switch>
+            </div>
           </BrowserRouter>
         </div>
     );
