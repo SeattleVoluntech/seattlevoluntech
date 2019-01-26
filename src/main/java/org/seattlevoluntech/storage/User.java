@@ -3,10 +3,7 @@ package org.seattlevoluntech.storage;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -33,6 +30,7 @@ public class User implements Serializable {
   }
 
   @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
   private long id;
 
   @Column(name = "token_id")
@@ -43,7 +41,6 @@ public class User implements Serializable {
 
   @Column(name = "last_name")
   private String lastName;
-
 
   private String email;
 
@@ -68,6 +65,10 @@ public class User implements Serializable {
 
   public String getTokenId() { return tokenId; }
 
+  public void setTokenId(String tokenId) {
+    this.tokenId = tokenId;
+  }
+
   public void setId(long id) {
     this.id = id;
   }
@@ -87,4 +88,8 @@ public class User implements Serializable {
   public void setLastName(String lastName) {
     this.lastName = lastName;
   }
+
+  public String getEmail() { return this.email; }
+
+  public void setEmail(String email) { this.email = email; }
 }
