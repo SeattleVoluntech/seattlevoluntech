@@ -66,8 +66,9 @@ a:visited {
   margin: 0 auto;
 }
 
-.error {
-  color: red;
+button:disabled {
+  background-color: #dddddd;
+  color: #666666;
 }
 
 .underline {

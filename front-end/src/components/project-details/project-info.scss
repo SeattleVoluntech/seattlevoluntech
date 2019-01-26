@@ -1,5 +1,14 @@
 @import '../../../style/variables';
 
+.project-info {
+  height: 60vh;
+  justify-content: space-between;
+}
+
+.project-info > div {
+  padding: 20px;
+}
+
 .project-container {
   width: 55%;
   border: 1px solid $color-thirteen;

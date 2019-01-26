@@ -7,46 +7,11 @@ class ProjectPane extends React.Component {
     return (
       <div className="projectPane">
         <ProjectCard className="aProject" />
-        <div className="aProject">
-          <h2>Project Name</h2>
-          <h3>Project Sponsor</h3>
-          <h4>Project Headline</h4>
-        </div>
-        <div className="aProject">
-          <h2>Project Name</h2>
-          <h3>Project Sponsor</h3>
-          <h4>Project Headline</h4>
-        </div>
-        <div className="aProject">
-          <h2>Project Name</h2>
-          <h3>Project Sponsor</h3>
-          <h4>Project Headline</h4>
-        </div>
-        <div className="aProject">
-          <h2>Project Name</h2>
-          <h3>Project Sponsor</h3>
-          <h4>Project Headline</h4>
-        </div>
-        <div className="aProject">
-          <h2>Project Name</h2>
-          <h3>Project Sponsor</h3>
-          <h4>Project Headline</h4>
-        </div>
-        <div className="aProject">
-          <h2>Project Name</h2>
-          <h3>Project Sponsor</h3>
-          <h4>Project Headline</h4>
-        </div>
-        <div className="aProject">
-          <h2>Project Name</h2>
-          <h3>Project Sponsor</h3>
-          <h4>Project Headline</h4>
-        </div>
-        <div className="aProject">
-          <h2>Project Name</h2>
-          <h3>Project Sponsor</h3>
-          <h4>Project Headline</h4>
-        </div>
+        <ProjectCard className="aProject" />
+        <ProjectCard className="aProject" />
+        <ProjectCard className="aProject" />
+        <ProjectCard className="aProject" />
+        <ProjectCard className="aProject" />
       </div>
     );
   }

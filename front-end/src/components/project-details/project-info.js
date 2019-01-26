@@ -3,7 +3,7 @@ import './project-info.scss';
 
 const ProjectInfo = (props) => {
   return (
-    <Fragment>
+    <div className='project-info flex'>
       <div className='project-container'>
         <h2 className='project-name'>{props.projectName || 'Project Name'}</h2>
         <hr className='header-underline'/>
@@ -22,7 +22,7 @@ const ProjectInfo = (props) => {
           <a href={props.businessLink} className='existing-site' rel="noopener noreferrer" target="_blank">{props.businessName || 'Link to existing site'}</a>
         </div>
       </div>
-    </Fragment>
+    </div>
   );
 };
 
