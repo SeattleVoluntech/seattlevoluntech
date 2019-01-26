@@ -1,10 +1,7 @@
 package org.seattlevoluntech.models;
 
-import org.seattlevoluntech.storage.User;
-
 import javax.persistence.*;
 import java.io.Serializable;
-import java.security.acl.Owner;
 import java.util.Date;
 
 @Entity

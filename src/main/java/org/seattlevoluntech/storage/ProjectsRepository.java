@@ -1,7 +1,6 @@
 package org.seattlevoluntech.storage;
 
 import org.seattlevoluntech.models.Project;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -21,5 +20,7 @@ public interface ProjectsRepository extends CrudRepository<Project, Long> {
             "DESC LIMIT :numberOfProjectsToDisplay", nativeQuery = true)
     List<Project> getLatestProjects(@Param("status") String status,
                                     @Param("numberOfProjectsToDisplay") Integer numberOfProjectsToDisplay);
+
+
 
 }
