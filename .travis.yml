@@ -15,10 +15,12 @@ script:
   - cd .. && ./gradlew build
 
 deploy:
-  provider: pages
+  provider: s3
+  access_key_id: $ACCESS_KEY
+  secret_access_key: $SECRET_KEY
   skip-cleanup: true
-  github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
-  keep-history: true
+  bucket: seattlevoluntech
   on:
     branch: master
   local-dir: ./front-end/build
+  endpoint: https://sfo2.digitaloceanspaces.com
