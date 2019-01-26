@@ -1,14 +1,13 @@
 // packages
 import React from 'react';
-import posed from 'react-pose';
 
 // custom components
 import LandingAuthForm from '../landing-auth-form/landing-auth-form'; // eslint-disable-line
-import NavUi from '../nav-ui/nav-ui';
 import LandingImage from './landingImage';
 import LatestProjects from './latestProjects';
 import volunteer from '../../../assets/red_Volunteer.png';
 import cashRegister from '../../../assets/red_Cash.png';
+import Button from '../button/button';
 
 // styles
 import './landing.scss';
@@ -62,14 +61,7 @@ class Landing extends React.Component {
       <p>Seattle VolunTech is one of three projects resulting from
       the efforts of the <a href='https://www.washingtontechnology.org/'>WTIA</a> ION Collaborators - Cohort 3 developed and maintained in concert
       with Codefellows code school in Seattle.</p></div>;
-
-    const Button = posed.button({
-      hoverable: true,
-      pressable: true,
-      init: { scale: 1 },
-      hover: { scale: 1.2 },
-      press: { scale: 1.1 }
-    })
+  
     return (
       <React.Fragment>
         <section>
