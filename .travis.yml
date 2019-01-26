@@ -20,6 +20,8 @@ deploy:
   secret_access_key: $SECRET_KEY
   skip-cleanup: true
   bucket: seattlevoluntech
+  overwrite: true
+  acl: public_read
   on:
     branch: master
   local-dir: ./front-end/build
