@@ -186,7 +186,7 @@ a:visited {
   margin-top: 2%; }
 
 .landing-image {
-  background: url(/seattlevoluntech6f1fa224e653b2e0b838b81edb0681b2.svg) no-repeat content-box;
+  background: url(/seattlevoluntech/6f1fa224e653b2e0b838b81edb0681b2.svg) no-repeat content-box;
   background-size: cover;
   width: 100%;
   max-height: 28vw;
@@ -410,7 +410,7 @@ button {
   margin: 50px 0 0 0; }
 
 .main-details {
-  background: url(/seattlevoluntech2461fb7d28ee987a1def3699bb3c9365.jpg) no-repeat content-box;
+  background: url(/seattlevoluntech/2461fb7d28ee987a1def3699bb3c9365.jpg) no-repeat content-box;
   background-size: cover;
   height: 450px;
   display: flex;
