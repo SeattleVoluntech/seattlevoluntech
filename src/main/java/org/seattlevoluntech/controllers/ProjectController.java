@@ -24,6 +24,7 @@ public class ProjectController {
     // Create project
     @PostMapping(path="/projects")
     public Project createProject(@RequestBody Project project){
+
         return projectsRepository.save(project);
     }
 

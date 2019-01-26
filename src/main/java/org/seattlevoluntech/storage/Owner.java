@@ -31,5 +31,7 @@ public class Owner implements Serializable {
     private Owner (User user, Project project) {
         this.user = user;
         this.project = project;
+
+        // dummy change
     }
 }
