@@ -11,12 +11,13 @@ import AuthRedirect from '../auth-redirect/auth-redirect';
 import Projects from '../open-projects/open-projects';
 import AboutUs from '../about-us/about-us';
 import ThankYou from "../thank-you/thank-you";
+import {Switch} from "react-router";
 
 class App extends React.Component {
   render() {
     return (
         <div>
-          <BrowserRouter>
+          <BrowserRouter basename={process.env.CDN_URL}>
             <div>
               {/* <Route path='*' component={Landing}/> */}
               <Route exact path={routes.SITE_ROOT_FRONTEND} component={Landing}/>
@@ -26,6 +27,7 @@ class App extends React.Component {
               <Route path={routes.PROJECTS_FRONTEND} component={Projects}/>
               <Route path={routes.ABOUT_US_FRONTEND} component={AboutUs}/>
               <Route path={routes.THANK_YOU_FRONTEND} component={ThankYou}/>
+              <Route component={() => (<div>404 Not found</div>)} />
             </div>
           </BrowserRouter>
         </div>

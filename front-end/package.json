@@ -10,8 +10,9 @@
     "heroku-postbuild": "webpack --progress --config webpack.prod.js",
     "postinstall": "npm run build",
     "webpack": "webpack-cli --config='config/webpack.config.js'",
-    "build": "rm -rf ../src/main/resources/static/* && rm -rf ../src/main/resources/templates/* && webpack --config webpack.prod.js && mv ../src/main/resources/static/index.html ../src/main/resources/templates/"
+    "build": "rm -rf ./build && webpack --config webpack.prod.js"
   },
+  "homepage": "https://seattlevoluntech.github.io/seattlevoluntech/",
   "keywords": [],
   "author": "",
   "license": "ISC",
