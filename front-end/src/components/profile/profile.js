@@ -26,7 +26,7 @@ class Profile extends React.Component {
     return (
         <React.Fragment>
           {this.props.user === 'business' && (
-              <React.Fragment>
+              <div className='profile'>
               {businessProfile}
               <div className='profile-projects flex'>
                 <button>Create a new project</button>
@@ -42,9 +42,9 @@ class Profile extends React.Component {
                   <h3>Closed Projects</h3>
                   <ProjectCard />
                 </div>
-              </div>)
-          </React.Fragment>
-          )}
+              </div>
+            </div>)
+          }
           {this.props.user === 'volunteer' && (
             <React.Fragment>
               <div className='profile'>
@@ -60,7 +60,7 @@ class Profile extends React.Component {
                 </div>
               </div>
             </React.Fragment>
-          )}
+          )}    
         </React.Fragment>
     );
   }

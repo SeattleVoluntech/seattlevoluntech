@@ -2,17 +2,22 @@
 
 .profile {
   padding-top: 75px;
-  color: $color-secondary;
+  color: $color-primary;
   flex-flow: row wrap;
 }
 
 .profile-info {
-    width: 100%;
+  width: 100%;
+  background-color: $color-septenary;
 }
 
 .profile > div > span > p {
   color: $color-secondary;
   width: 300px;
+}
+
+.profile-container {
+  width: 80%;
 }
 
 .profile-container > span {
@@ -27,6 +32,8 @@
   align-self: center;
   margin: 50px 0 50px 0;
   border: 1px solid $color-octonary;
+  background-color: $color-quaternary;
+  color: $color-primary;
 }
 
 .open-projects, .closed-projects, .current-projects {
