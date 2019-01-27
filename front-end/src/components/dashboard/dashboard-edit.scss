@@ -1,6 +1,6 @@
 @import '../../../style/variables.scss';
 
-.profile-form {
+/*.profile-form {
   padding-top: 100px;
   position: static;
   display: flex;
@@ -16,19 +16,22 @@
 }
 
 .profile-container {
-  border: 1px solid $color-accent;
-  border-radius: 10px;
   width: 60vw;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   align-items: center;
   margin: 0 0 20px 0;
+  color: $color-primary;
 }
 
 .profile-container > h2, h3 {
   width: 100%;
   text-align: center;
+}
+
+.profile-container > span > p {
+  color: $color-primary;
 }
 
 .profile-container > h2 {
@@ -104,4 +107,4 @@ button:disabled {
 
 .invalid-feedback {
   color: red;
-}
+}*/

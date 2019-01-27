@@ -1,10 +1,9 @@
 // packages
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-// import Form from '../form/form';
 
 // styles
-import './dashboard-edit.scss';
+import './profile-form.scss';
 
 class NewProfileForm extends React.Component {
   constructor(props) {
@@ -31,7 +30,7 @@ class NewProfileForm extends React.Component {
   }
 
   handleInputChange(event) {
-    let fields = this.state.fields;
+    let { fields } = this.state;
     const { target } = event;
     const name = target.type === 'radio' ? 'userType' : target.name;
     const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -63,63 +62,59 @@ class NewProfileForm extends React.Component {
     let errors = {};
     let formValid = true;
 
-    if (this.state.fields.userType === 'business') {
-      if (touched['businessName'] && !fields['businessName']) {
-        formValid = false;
-        errors['businessName'] ='Please enter the name of your business.';
-      } else if (!touched['businessName']) {
-        formValid = false;
-        errors['businessName'] ='Please enter the name of your business.';
-      }
+    if (touched['businessName'] && !fields['businessName']) {
+      formValid = false;
+      errors['businessName'] ='Please enter the name of your business.';
+    } else if (!touched['businessName']) {
+      formValid = false;
+      errors['businessName'] ='Please enter the name of your business.';
+    }
 
-      if (touched['businessEmail'] && !fields['businessEmail']) {
-        formValid = false;
-        errors['businessEmail'] ='Please enter your business email.';
-      }
+    if (touched['businessEmail'] && !fields['businessEmail']) {
+      formValid = false;
+      errors['businessEmail'] ='Please enter your business email.';
+    }
 
-      if (typeof fields['businessEmail'] !== 'undefined') {
-        let pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
-        console.log(pattern.test(fields['businessEmail']));
-        if (!pattern.test(fields['businessEmail'])){
-          formValid = false;
-          errors['businessEmail'] ='Please enter a valid email address.';
-        }
-      }
-
-      if (touched['businessDesc'] && !fields['businessDesc']) {
+    if (typeof fields['businessEmail'] !== 'undefined') {
+      let pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+      console.log(pattern.test(fields['businessEmail']));
+      if (!pattern.test(fields['businessEmail'])){
         formValid = false;
-        errors['businessDesc'] ='Please tell us briefly about your business.';
-      }
-
-      if (touched['existingSite'] && !fields['existingSite']) {
-        formValid = false;
-        errors['existingSite'] ='Please enter a valid url.';
+        errors['businessEmail'] ='Please enter a valid email address.';
       }
     }
 
-    if (this.state.fields.userType === 'volunteer') {
-      if (touched['volunteerName'] && !fields['volunteerName']) {
-        formValid = false;
-        errors['volunteerName'] ='Please tell us your name.';
-      }
+    if (touched['businessDesc'] && !fields['businessDesc']) {
+      formValid = false;
+      errors['businessDesc'] ='Please tell us briefly about your business.';
+    }
 
-      if (touched['volunteerEmail'] && !fields['volunteerEmail']) {
-        formValid = false;
-        errors['volunteerEmail'] ='Please tell us your email.';
-      }
+    if (touched['existingSite'] && !fields['existingSite']) {
+      formValid = false;
+      errors['existingSite'] ='Please enter a valid url.';
+    }
 
-      if (typeof fields['volunteerEmail'] !== 'undefined') {
-        let pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
-        if (!pattern.test(fields['volunteerEmail'])){
-          formValid = false;
-          errors['volunteerEmail'] ='Please enter a valid email.';
-        }
-      }
+    if (touched['volunteerName'] && !fields['volunteerName']) {
+      formValid = false;
+      errors['volunteerName'] ='Please tell us your name.';
+    }
 
-      if (touched['volunteerBio'] && !fields['volunteerBio']) {
+    if (touched['volunteerEmail'] && !fields['volunteerEmail']) {
+      formValid = false;
+      errors['volunteerEmail'] ='Please tell us your email.';
+    }
+
+    if (typeof fields['volunteerEmail'] !== 'undefined') {
+      let pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+      if (!pattern.test(fields['volunteerEmail'])){
         formValid = false;
-        errors['volunteerBio'] ='Please tell us yourself.';
+        errors['volunteerEmail'] ='Please enter your email.';
       }
+    }
+
+    if ( touched['volunteerBio'] && !fields['volunteerBio']) {
+      formValid = false;
+      errors['volunteerBio'] ='Please tell us yourself.';
     }
 
     this.setState({
@@ -208,11 +203,11 @@ class NewProfileForm extends React.Component {
     }
     return (
         <React.Fragment>
-          <section className='profile-form'>
+          <section className='profile-form flex'>
             <form onSubmit={this.handleSubmit} className='form-container'>
-              <div className='profile-container'>
+              <div className='profile-form-container flex'>
                 { newProfileHeading }
-                <div className='profile-edit-fields'>
+                <div className='profile-edit-fields flex'>
                   { userType === 'business' ? businessProfile : null }
                   { userType === 'volunteer' ? volunteerProfile : null}
                   <button type='submit' disabled={!checkFormCompletion} value='Submit'>Submit</button>

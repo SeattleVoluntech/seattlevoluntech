@@ -1,12 +1,11 @@
 // packages
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-// import Form from '../form/form';
 
 // styles
-import './dashboard-edit.scss';
+import './profile-form.scss';
 /* TODO Add redux for conditional rendering */
-class VolunteerProfileEdit extends React.Component {
+class BusinessProfileEdit extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -42,28 +41,35 @@ class VolunteerProfileEdit extends React.Component {
     let errors = {};
     let formValid = true;
 
-    if (touched['volunteerName'] && !fields['volunteerName']) {
+    if (touched['businessName'] && !fields['businessName']) {
       formValid = false;
-      errors['volunteerName'] ='Please tell us your name.';
+      errors['businessName'] ='Please enter the name of your business.';
     }
 
-    if (touched['volunteerEmail'] && !fields['volunteerEmail']) {
+    if (touched['businessEmail'] && !fields['businessEmail']) {
       formValid = false;
-      errors['volunteerEmail'] ='Please tell us your email.';
+      errors['businessEmail'] ='Please enter your business email.';
     }
 
-    if (typeof fields['volunteerEmail'] !== 'undefined') {
+    if (typeof fields['businessEmail'] !== 'undefined') {
       let pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
-      if (!pattern.test(fields['volunteerEmail'])){
+      console.log(pattern.test(fields['businessEmail']));
+      if (!pattern.test(fields['businessEmail'])){
         formValid = false;
-        errors['volunteerEmail'] ='Please enter your email.';
+        errors['businessEmail'] ='Please enter a valid email address.';
       }
     }
 
-    if ( touched['volunteerBio'] && !fields['volunteerBio']) {
+    if (touched['businessDesc'] && !fields['businessDesc']) {
       formValid = false;
-      errors['volunteerBio'] ='Please tell us yourself.';
+      errors['businessDesc'] ='Please tell us briefly about your business.';
     }
+
+    if (touched['existingSite'] && !fields['existingSite']) {
+      formValid = false;
+      errors['existingSite'] ='Please enter a valid url.';
+    }
+
     this.setState({
         errors: errors
       });
@@ -91,32 +97,24 @@ class VolunteerProfileEdit extends React.Component {
 
   render() {
     const { location } = this.props;
-    const skills = [['visual-design', 'visualDesign'], ['ux-design', 'uxDesign'], ['front-end', 'frontEnd'], ['back-end', 'backEnd'], ['full-stack', 'fullStack'], ['wordpress', 'wordpress'], ['squarespace', 'squarespace'], ['wix', 'wix']];
-    const volunteerProfile = <React.Fragment><label htmlFor='volunteer-name-edit'>Name: </label>
-      <input type='text' id='volunteer-name-edit' name='volunteerName' required size='40' onChange={this.handleInputChange} onBlur={this.handleBlur('volunteerName')} value={this.state.fields.volunteerName || ''}/>
-      <span className='invalid-feedback'>{this.state.errors.volunteerName}</span>
-      <label htmlFor='volunteer-email-edit'>Email: </label>
-      <input type='text' id='volunteer-email-edit' name='volunteerEmail' required size='40' onChange={this.handleInputChange} onBlur={this.handleBlur('volunteerEmail')} value={this.state.fields.volunteerEmail || ''}/>
-      <span className='invalid-feedback'>{this.state.errors.volunteerEmail}</span>
-      <label htmlFor='volunteer-bio-edit'>Tell us about yourself: </label>
-      <textarea rows='10' cols='70' id='volunteer-bio-edit' name='volunteerBio' required onChange={this.handleInputChange} onBlur={this.handleBlur('volunteerBio')} value={this.state.fields.volunteerBio || ''}/>
-      <span className='invalid-feedback'>{this.state.errors.volunteerBio}</span>
-      <fieldset className='skills-group'>
-        <legend><h3>Technical Skills:</h3></legend>
-        <ul className='skills-checkbox'>
-          {skills.map(([id, name], idx) => (
-            <li key={idx}>
-              <input type='checkbox' id={id} name={name} onChange={this.handleInputChange} />
-              <label htmlFor={id}>{id.replace(/-/, ' ').toUpperCase()}</label>
-              <span className='invalid-feedback' />
-            </li>
-          ))}
-        </ul>
-      </fieldset>
+
+    const businessProfile = <React.Fragment><label htmlFor='business-name-edit'>Business Name: </label>
+      <input type='text' id='business-name-edit' name='businessName' required onChange={this.handleInputChange} onBlur={this.handleBlur('businessName')} value={this.state.fields.businessName || ''}/>
+      <span className='invalid-feedback'>{this.state.errors.businessName}</span>
+      <label htmlFor='business-email-edit'>Business Email: </label>
+      <input type='email' id='business-email-edit' name='businessEmail' required onChange={this.handleInputChange} onBlur={this.handleBlur('businessEmail')} value={this.state.fields.businessEmail || ''}/>
+      <span className='invalid-feedback'>{this.state.errors.businessEmail}</span>
+      <label htmlFor='business-desc-edit'>Business Description: </label>
+      <textarea rows='10' cols='70' id='business-desc-edit' name='businessDesc' required onChange={this.handleInputChange} onBlur={this.handleBlur('businessDesc')} value={this.state.fields.businessDesc || ''}/>
+      <span className='invalid-feedback'>{this.state.errors.businessDesc}</span>
+      <label htmlFor='existing-website-edit'>Existing Website (Optional): </label>
+      <input type='url' id='existing-website-edit' name='existingSite' onChange={this.handleInputChange} onBlur={this.handleBlur('existingSite')} value={this.state.fields.existingSite || ''}/>
+      <span className='invalid-feedback'>{this.state.errors.existingSite}</span>
       </React.Fragment>;
 
     const existingProfileHeading = <React.Fragment><h2>Edit Your Profile</h2></React.Fragment>;
-    const { userExist, userType } = this.state;
+    const { userType } = this.state;
+    const { userExist } = this.props;
     console.log(this.props);
     const { redirectToReferrer } = this.state;
     if (redirectToReferrer) {
@@ -125,11 +123,11 @@ class VolunteerProfileEdit extends React.Component {
     return (
         <React.Fragment>
           <section className='profile-form'>
-            <form noValidate onSubmit={this.handleSubmit} className='form-container'>
+            <form onSubmit={this.handleSubmit} className='form-container'>
               <div className='profile-container'>
                 { existingProfileHeading }
                 <div className='profile-edit-fields'>
-                  { volunteerProfile }
+                  { businessProfile }
                   <button type='submit' value='Submit'>Submit</button>
                 </div>
               </div>
@@ -140,4 +138,4 @@ class VolunteerProfileEdit extends React.Component {
   }
 }
 
-export default VolunteerProfileEdit;
+export default BusinessProfileEdit;

@@ -2,9 +2,9 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 
-import NewProfileForm from './new-profile-form';
-import BusinessProfileEdit from './business-profile-edit';
-import VolunteerProfileEdit from './volunteer-profile-edit';
+import NewProfileForm from '../profile-form/new-profile-form';
+import BusinessProfileEdit from '../profile-form/business-profile-edit';
+import VolunteerProfileEdit from '../profile-form/volunteer-profile-edit';
 
 // styles
 import './dashboard-edit.scss';

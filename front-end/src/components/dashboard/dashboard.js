@@ -1,7 +1,6 @@
 // packages
 import React from 'react';
-import Profile from './profile';
-//import ProjectCard from '../open-projects/project-card';
+import Profile from '../profile/profile';
 
 // styles
 import './dashboard.scss';
