@@ -10,7 +10,8 @@ class NewProfileForm extends React.Component {
     super(props);
     this.state = {
       fields: {},
-      errors: {}
+      errors: {},
+      formSubmitted: null
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -141,19 +142,19 @@ class NewProfileForm extends React.Component {
       method: 'POST',
       body: data,
     }); */
-    //this.setState({ formSubmitted: true });
+    this.setState({ formSubmitted: true });
   }
 
   render() {
     const { location } = this.props;
 
-    const businessProfile = <React.Fragment><label htmlFor='business-name-edit'>Business Name: </label>
+    const businessProfile = <React.Fragment><label htmlFor='business-name-edit'>Business Name: (Required)</label>
       <input type='text' id='business-name-edit' name='businessName' required size='70' onChange={this.handleInputChange} onBlur={this.handleBlur('businessName')} value={this.state.fields.businessName || ''}/>
       <span className='invalid-feedback'>{this.state.errors.businessName}</span>
-      <label htmlFor='business-email-edit'>Business Email: </label>
+      <label htmlFor='business-email-edit'>Business Email: (Required)</label>
       <input type='email' id='business-email-edit' name='businessEmail' required size='70' onChange={this.handleInputChange} onBlur={this.handleBlur('businessEmail')} value={this.state.fields.businessEmail || ''}/>
       <span className='invalid-feedback'>{this.state.errors.businessEmail}</span>
-      <label htmlFor='business-desc-edit'>Business Description: </label>
+      <label htmlFor='business-desc-edit'>Business Description: (Required)</label>
       <textarea rows='10' cols='70' id='business-desc-edit' name='businessDesc' required onChange={this.handleInputChange} onBlur={this.handleBlur('businessDesc')} value={this.state.fields.businessDesc || ''}/>
       <span className='invalid-feedback'>{this.state.errors.businessDesc}</span>
       <label htmlFor='business-website-edit'>Existing Website (Optional): </label>
@@ -162,17 +163,17 @@ class NewProfileForm extends React.Component {
       </React.Fragment>;
 
     const skills = [['visual-design', 'visualDesign'], ['ux-design', 'uxDesign'], ['front-end', 'frontEnd'], ['back-end', 'backEnd'], ['full-stack', 'fullStack'], ['wordpress', 'wordpress'], ['squarespace', 'squarespace'], ['wix', 'wix']];
-    const volunteerProfile = <React.Fragment><label htmlFor='volunteer-name-edit'>Name: </label>
+    const volunteerProfile = <React.Fragment><label htmlFor='volunteer-name-edit'>Name: (Required)</label>
       <input type='text' id='volunteer-name-edit' name='volunteerName' required size='70' onChange={this.handleInputChange} onBlur={this.handleBlur('volunteerName')} value={this.state.fields.volunteerName || ''}/>
       <span className='invalid-feedback'>{this.state.errors.volunteerName}</span>
-      <label htmlFor='volunteer-email-edit'>Email: </label>
+      <label htmlFor='volunteer-email-edit'>Email: (Required)</label>
       <input type='text' id='volunteer-email-edit' name='volunteerEmail' required size='70' onChange={this.handleInputChange} onBlur={this.handleBlur('volunteerEmail')} value={this.state.fields.volunteerEmail || ''}/>
       <span className='invalid-feedback'>{this.state.errors.volunteerEmail}</span>
-      <label htmlFor='volunteer-bio-edit'>Tell us about yourself: </label>
+      <label htmlFor='volunteer-bio-edit'>Tell us about yourself: (Required)</label>
       <textarea rows='10' cols='70' id='volunteer-bio-edit' name='volunteerBio' required onChange={this.handleInputChange} onBlur={this.handleBlur('volunteerBio')} value={this.state.fields.volunteerBio || ''}/>
       <span className='invalid-feedback'>{this.state.errors.volunteerBio}</span>
       <fieldset className='skills-group'>
-        <legend><h3>Technical Skills:</h3></legend>
+        <legend><h3>Technical Skills: (Optional)</h3></legend>
         <ul className='skills-checkbox'>
           {skills.map(([id, name], idx) => (
             <li key={idx}>
@@ -197,17 +198,17 @@ class NewProfileForm extends React.Component {
     const { userExist } = this.state;
     console.log(this.state);
     const checkFormCompletion = this.checkFormCompletion();
-    const { redirectToReferrer } = this.state;
+    const { formSubmitted } = this.state;
     if (formSubmitted) {
       return <Link to={'/dashboard'}/>;
     }
     return (
         <React.Fragment>
-          <section className='profile-form flex'>
-            <form onSubmit={this.handleSubmit} className='form-container'>
-              <div className='profile-form-container flex'>
+          <section className='form flex'>
+            <form onSubmit={this.handleSubmit}>
+              <div className='form-container flex'>
                 { newProfileHeading }
-                <div className='profile-edit-fields flex'>
+                <div className='form-edit-fields flex'>
                   { userType === 'business' ? businessProfile : null }
                   { userType === 'volunteer' ? volunteerProfile : null}
                   <button type='submit' disabled={!checkFormCompletion} value='Submit'>Submit</button>

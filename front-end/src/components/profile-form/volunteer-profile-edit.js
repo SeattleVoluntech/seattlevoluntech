@@ -91,17 +91,17 @@ class VolunteerProfileEdit extends React.Component {
   render() {
     const { location } = this.props;
     const skills = [['visual-design', 'visualDesign'], ['ux-design', 'uxDesign'], ['front-end', 'frontEnd'], ['back-end', 'backEnd'], ['full-stack', 'fullStack'], ['wordpress', 'wordpress'], ['squarespace', 'squarespace'], ['wix', 'wix']];
-    const volunteerProfile = <React.Fragment><label htmlFor='volunteer-name-edit'>Name: </label>
+    const volunteerProfile = <React.Fragment><label htmlFor='volunteer-name-edit'>Name: (Required)</label>
       <input type='text' id='volunteer-name-edit' name='volunteerName' required size='40' onChange={this.handleInputChange} onBlur={this.handleBlur('volunteerName')} value={this.state.fields.volunteerName || ''}/>
       <span className='invalid-feedback'>{this.state.errors.volunteerName}</span>
-      <label htmlFor='volunteer-email-edit'>Email: </label>
+      <label htmlFor='volunteer-email-edit'>Email: (Required)</label>
       <input type='text' id='volunteer-email-edit' name='volunteerEmail' required size='40' onChange={this.handleInputChange} onBlur={this.handleBlur('volunteerEmail')} value={this.state.fields.volunteerEmail || ''}/>
       <span className='invalid-feedback'>{this.state.errors.volunteerEmail}</span>
-      <label htmlFor='volunteer-bio-edit'>Tell us about yourself: </label>
+      <label htmlFor='volunteer-bio-edit'>Tell us about yourself: (Required)</label>
       <textarea rows='10' cols='70' id='volunteer-bio-edit' name='volunteerBio' required onChange={this.handleInputChange} onBlur={this.handleBlur('volunteerBio')} value={this.state.fields.volunteerBio || ''}/>
       <span className='invalid-feedback'>{this.state.errors.volunteerBio}</span>
       <fieldset className='skills-group'>
-        <legend><h3>Technical Skills:</h3></legend>
+        <legend><h3>Technical Skills: (Optional)</h3></legend>
         <ul className='skills-checkbox'>
           {skills.map(([id, name], idx) => (
             <li key={idx}>

@@ -98,13 +98,13 @@ class BusinessProfileEdit extends React.Component {
   render() {
     const { location } = this.props;
 
-    const businessProfile = <React.Fragment><label htmlFor='business-name-edit'>Business Name: </label>
+    const businessProfile = <React.Fragment><label htmlFor='business-name-edit'>Business Name: (Required)</label>
       <input type='text' id='business-name-edit' name='businessName' required onChange={this.handleInputChange} onBlur={this.handleBlur('businessName')} value={this.state.fields.businessName || ''}/>
       <span className='invalid-feedback'>{this.state.errors.businessName}</span>
-      <label htmlFor='business-email-edit'>Business Email: </label>
+      <label htmlFor='business-email-edit'>Business Email: (Required)</label>
       <input type='email' id='business-email-edit' name='businessEmail' required onChange={this.handleInputChange} onBlur={this.handleBlur('businessEmail')} value={this.state.fields.businessEmail || ''}/>
       <span className='invalid-feedback'>{this.state.errors.businessEmail}</span>
-      <label htmlFor='business-desc-edit'>Business Description: </label>
+      <label htmlFor='business-desc-edit'>Business Description: (Required)</label>
       <textarea rows='10' cols='70' id='business-desc-edit' name='businessDesc' required onChange={this.handleInputChange} onBlur={this.handleBlur('businessDesc')} value={this.state.fields.businessDesc || ''}/>
       <span className='invalid-feedback'>{this.state.errors.businessDesc}</span>
       <label htmlFor='business-website-edit'>Existing Website (Optional): </label>
