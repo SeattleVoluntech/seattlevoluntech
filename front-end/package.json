@@ -12,6 +12,7 @@
     "webpack": "webpack-cli --config='config/webpack.config.js'",
     "build": "rm -rf ./build && webpack --config webpack.prod.js"
   },
+  "homepage": "https://seattlevoluntech.github.io/seattlevoluntech/",
   "keywords": [],
   "author": "",
   "license": "ISC",
