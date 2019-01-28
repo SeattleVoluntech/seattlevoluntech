@@ -2,19 +2,8 @@ import React from 'react';
 import Link from 'react-router';
 import './project-info.scss';
 
-const SignUpButton = (props) => {
-  return (
-    <Link to='/thank-you'><button >I want to work on this!</button></Link>
-  );
-};
-
-const EditProjectButton = (props) => {
-  return (
-    <Link to='/project-edit'><button>Edit this project</button></Link>
-  );
-};
-
 const ProjectInfo = (props) => {
+  console.log(props);
   return (
     <div className='project-info flex'>
       <div className='project-wrapper'>
@@ -25,8 +14,8 @@ const ProjectInfo = (props) => {
           <p>{props.projectDesc || 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elit massa, lobortis at augue sit amet, faucibus pellentesque ante. Nunc sit amet euismod mauris, eu ornare eros. Quisque et quam ultricies, pretium enim eu, iaculis leo. Ut pellentesque mattis orci vel porta. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elit massa, lobortis at augue sit amet, faucibus pellentesque ante. Nunc sit amet euismod mauris, eu ornare eros. Quisque et quam ultricies, pretium enim eu, iaculis leo. Ut pellentesque mattis orci vel porta. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elit massa, lobortis at augue sit amet, faucibus pellentesque ante. Nunc sit amet euismod mauris, eu ornare eros. Quisque et quam ultricies, pretium enim eu, iaculis leo. Ut pellentesque mattis orci vel porta. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elit massa, lobortis at augue sit amet, faucibus pellentesque ante. Nunc'}</p>
         </div>
         <div className='project-buttons flex'>
-          {props.isBusiness ? <SignUpButton /> : null}
-          {props.isVolunteer ? <EditProjectButton /> : null}
+          {props.isBusiness ? <button onClick={props.handleSignUp}>I want to work on this!</button> : null}
+          {props.isVolunteer ? <Link to='/project-edit'><button>Edit this project</button></Link> : null}
         </div>
       </div>
       <div className='business-wrapper'>

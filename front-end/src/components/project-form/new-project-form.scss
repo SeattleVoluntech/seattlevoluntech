@@ -1,7 +1,11 @@
 @import '../../../style/variables';
 
 .project-form {
-  height: 70vh;
+  padding-top: 100px;
+  overflow: visible;
+  flex: 1;
+  margin: auto;
+  padding-bottom: 60px;
 }
 
 .project-container {
@@ -14,17 +18,4 @@
 
 .project-container > h2 {
   height: 50px;
-}
-
-.project-edit-fields {
-  flex-flow: column wrap;
-  width: 80%;
-  justify-content: space-between;
-  height: 80%;
-}
-
-.project-edit-fields > button {
-  align-self: center;
-  background-color: $color-quaternary;
-  color: $color-primary;
 }
