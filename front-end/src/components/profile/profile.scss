@@ -1,7 +1,7 @@
 @import '../../../style/variables.scss';
 
 .profile {
-  padding-top: 75px;
+  padding-top: 0px;
   color: $color-primary;
   flex-flow: row wrap;
 }
@@ -11,39 +11,60 @@
   background-color: $color-septenary;
 }
 
-.profile > div > span > p {
-  color: $color-secondary;
-  width: 300px;
-}
-
 .profile-container {
   width: 80%;
+  flex-flow: column wrap;
+  justify-content: center;
 }
 
 .profile-container > span {
   width: 90%;
 }
 
-.profile-projects {
-  flex-flow: column wrap;
+.profile-container > span > p {
+  color: $color-primary;
 }
 
-.profile-projects > button {
-  align-self: center;
-  margin: 50px 0 50px 0;
-  border: 1px solid $color-octonary;
+.profile-projects {
+  flex-flow: column wrap;
+  justify-content: center;
+}
+
+.profile-projects h2 {
+  color: $color-secondary;
+  width: 100%;
+  text-align: center;
+}
+
+.profile-container h3 {
+  padding: 10px 0 0 0;
+}
+
+.profile-container h4 {
+  color: #f4ff1f;
+}
+
+.profile-container button {
+  margin: 50px auto 50px auto;
+  border: none;
   background-color: $color-quaternary;
   color: $color-primary;
+  font-size: 15px;
 }
 
 .open-projects, .closed-projects, .current-projects {
   flex-flow: row wrap;
   justify-content: space-around;
 }
-.open-projects > h3 {
-  margin: 0 0 55px 0;
+
+.open-projects > h2, .current-projects > h2 {
+  margin: 50px 0 55px 0;
 }
 
-.closed-projects > h3  {
-  margin: 40px 0 55px 0;
+.closed-projects {
+  margin: 0 0 20px 0;
+}
+
+.closed-projects > h2  {
+  margin: 50px 0 55px 0;
 }
