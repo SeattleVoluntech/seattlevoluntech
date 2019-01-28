@@ -89,9 +89,9 @@ class NewProfileForm extends React.Component {
       errors['businessDesc'] ='Please tell us briefly about your business.';
     }
 
-    if (touched['existingSite'] && !fields['existingSite']) {
+    if (touched['businessSite'] && !fields['businessSite']) {
       formValid = false;
-      errors['existingSite'] ='Please enter a valid url.';
+      errors['businessSite'] ='Please enter a valid url.';
     }
 
     if (touched['volunteerName'] && !fields['volunteerName']) {
@@ -141,7 +141,7 @@ class NewProfileForm extends React.Component {
       method: 'POST',
       body: data,
     }); */
-    //this.setState({ redirectToReferrer: true });
+    //this.setState({ formSubmitted: true });
   }
 
   render() {
@@ -156,9 +156,9 @@ class NewProfileForm extends React.Component {
       <label htmlFor='business-desc-edit'>Business Description: </label>
       <textarea rows='10' cols='70' id='business-desc-edit' name='businessDesc' required onChange={this.handleInputChange} onBlur={this.handleBlur('businessDesc')} value={this.state.fields.businessDesc || ''}/>
       <span className='invalid-feedback'>{this.state.errors.businessDesc}</span>
-      <label htmlFor='existing-website-edit'>Existing Website (Optional): </label>
-      <input type='url' id='existing-website-edit' name='existingSite' onChange={this.handleInputChange} onBlur={this.handleBlur('existingSite')} value={this.state.fields.existingSite || ''}/>
-      <span className='invalid-feedback'>{this.state.errors.existingSite}</span>
+      <label htmlFor='business-website-edit'>Existing Website (Optional): </label>
+      <input type='url' id='business-website-edit' name='businessSite' onChange={this.handleInputChange} onBlur={this.handleBlur('businessSite')} value={this.state.fields.businessSite || ''}/>
+      <span className='invalid-feedback'>{this.state.errors.businessSite}</span>
       </React.Fragment>;
 
     const skills = [['visual-design', 'visualDesign'], ['ux-design', 'uxDesign'], ['front-end', 'frontEnd'], ['back-end', 'backEnd'], ['full-stack', 'fullStack'], ['wordpress', 'wordpress'], ['squarespace', 'squarespace'], ['wix', 'wix']];
@@ -198,8 +198,8 @@ class NewProfileForm extends React.Component {
     console.log(this.state);
     const checkFormCompletion = this.checkFormCompletion();
     const { redirectToReferrer } = this.state;
-    if (redirectToReferrer) {
-      return <Redirect to={'/dashboard'}/>;
+    if (formSubmitted) {
+      return <Link to={'/dashboard'}/>;
     }
     return (
         <React.Fragment>
