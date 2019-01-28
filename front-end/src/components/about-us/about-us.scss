@@ -1,5 +1,7 @@
 .about-us-container {
-  min-height: 85.8vh;
+  flex: 1;
+  margin-top: auto;
+  min-height: 92.75vh;
 }
 
 .about-us {
@@ -25,7 +27,6 @@
   width: 70%;
   align-self: center;
   top: 30%;
-  height: 70vh;
 }
 
 .about-styles {

@@ -4,8 +4,10 @@
   text-align: center;
   display: flex;
   justify-content: space-around;
-  margin: 50px 0 0 0;
-  position: relative;
+  margin: 0;
+  flex-shrink: 0;
+  bottom: 0;
+  position: absolute;
 }
 
 .footer-container {

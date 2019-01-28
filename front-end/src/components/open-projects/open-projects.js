@@ -2,7 +2,6 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import ProjectPane from './project-pane';
-import NavUi from '../nav-ui/nav-ui';
 
 import './open-projects.scss';
 

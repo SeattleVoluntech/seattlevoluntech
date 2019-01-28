@@ -10,9 +10,20 @@ body {
   background-color: $color-primary;
   font-family: $raleway;
   color: $color-secondary;
-  height: 100vh;
+  height: 100%;
   margin: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.main-container {
   min-height: 100vh;
+  flex: 1 0 auto;
+  //overflow: scroll;
+  position: relative;
+  //padding-bottom: 50px;
 }
 
 .flex {
@@ -44,7 +55,7 @@ h1 {
 }
 
 html {
-  overflow-y: scroll;
+  //overflow-y: scroll;
   scroll-behavior: smooth;
   height: 100vh;
 }
