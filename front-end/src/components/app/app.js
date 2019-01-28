@@ -18,6 +18,7 @@ import NewProject from '../project-form/new-project-form';
 import AboutUs from '../about-us/about-us';
 import ThankYou from '../thank-you/thank-you';
 import Footer from '../footer/footer';
+import {Redirect, Switch} from "react-router";
 
 class App extends React.Component {
   render() {
@@ -27,6 +28,9 @@ class App extends React.Component {
             <div className='main-container'>
               {/* <Route path='*' component={Landing}/> */}
               <NavUi location={location} />
+              <Route exact path="/" >
+                  <Redirect to={routes.SITE_ROOT_FRONTEND} />
+              </Route>
               <Route exact path={routes.SITE_ROOT_FRONTEND} component={Landing}/>
               <Route path={routes.LOGIN_FRONTEND} component={Landing}/>
               <Route path={routes.LOGOUT_FRONTEND} component={Landing}/>
