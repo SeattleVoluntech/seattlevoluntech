@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 
 // styles
 import './profile-form.scss';
-/* TODO Add redux for conditional rendering */
+
 class VolunteerProfileEdit extends React.Component {
   constructor(props) {
     super(props);
@@ -29,7 +29,6 @@ class VolunteerProfileEdit extends React.Component {
     const { target } = event;
     const name = target.type === 'radio' ? 'userType' : target.name;
     const value = target.type === 'checkbox' ? target.checked : target.value;
-    console.log(target.value);
     fields[name] = value
     this.setState({
       fields,
@@ -67,8 +66,6 @@ class VolunteerProfileEdit extends React.Component {
         errors: errors
       });
     return formValid;
-
-    console.log(fields);
   }
 
   handleSubmit(event) {
@@ -116,7 +113,6 @@ class VolunteerProfileEdit extends React.Component {
 
     const existingProfileHeading = <React.Fragment><h2>Edit Your Profile</h2></React.Fragment>;
     const { userExist, userType } = this.state;
-    console.log(this.props);
     const { redirectToReferrer } = this.state;
     if (redirectToReferrer) {
       return <Redirect to={'/dashboard'}/>;

@@ -21,7 +21,7 @@ class NewProfileForm extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log(prevProps, prevState);
+    //console.log(prevProps, prevState);
   }
 
   handleBlur = (field) => (event) => {
@@ -35,7 +35,6 @@ class NewProfileForm extends React.Component {
     const { target } = event;
     const name = target.type === 'radio' ? 'userType' : target.name;
     const value = target.type === 'checkbox' ? target.checked : target.value;
-    console.log(target.value);
     fields[name] = value
     this.setState({
       fields,
@@ -122,8 +121,6 @@ class NewProfileForm extends React.Component {
         errors: errors
       });
     return formValid;
-
-    console.log(fields);
   }
 
   handleSubmit(event) {

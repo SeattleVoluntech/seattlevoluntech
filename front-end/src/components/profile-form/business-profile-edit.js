@@ -29,7 +29,6 @@ class BusinessProfileEdit extends React.Component {
     const { target } = event;
     const name = target.type === 'radio' ? 'userType' : target.name;
     const value = target.type === 'checkbox' ? target.checked : target.value;
-    console.log(target.value);
     fields[name] = value
     this.setState({
       fields,
@@ -74,8 +73,6 @@ class BusinessProfileEdit extends React.Component {
         errors: errors
       });
     return formValid;
-
-    console.log(fields);
   }
 
   handleSubmit(event) {
@@ -115,7 +112,6 @@ class BusinessProfileEdit extends React.Component {
     const existingProfileHeading = <React.Fragment><h2>Edit Your Profile</h2></React.Fragment>;
     const { userType } = this.state;
     const { userExist } = this.props;
-    console.log(this.props);
     const { redirectToReferrer } = this.state;
     if (redirectToReferrer) {
       return <Redirect to={'/dashboard'}/>;

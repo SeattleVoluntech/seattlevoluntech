@@ -3,7 +3,6 @@ import Link from 'react-router';
 import './project-info.scss';
 
 const ProjectInfo = (props) => {
-  console.log(props);
   return (
     <div className='project-info flex'>
       <div className='project-wrapper'>

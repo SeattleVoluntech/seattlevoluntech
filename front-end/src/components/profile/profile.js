@@ -12,7 +12,6 @@ class Profile extends React.Component {
 
   render() {
     const { location } = this.props;
-    console.log(this.props);
 
     const businessProfile = <div className='profile-info flex'><div className='profile-container'><h3>this.props.businessname</h3>
     <span><h4>Business Email : </h4><p>this.props.business.email</p></span>
