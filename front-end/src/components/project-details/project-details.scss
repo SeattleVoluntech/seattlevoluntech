@@ -1,14 +1,14 @@
 @import '../../../style/variables';
 
 .project-details {
-  width: 80%;
-  top: 100px;
+  width: 100%;
+  top: 80px;
   position: relative;
   margin: 0 auto 0 auto;
-  padding: 20px 20px 60px 20px;
-  //border: 1px solid $color-thirteen;
-  display: flex;
-  flex-direction: row;
+  padding: 30px 0 20px 0;
+  flex-direction: column;
   justify-content: space-between;
-  min-height: 74.5vh;
+  min-height: 81vh;
+  flex: 1;
+  height: auto;
 }
