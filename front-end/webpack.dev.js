@@ -13,6 +13,7 @@ webpackDevConfig.devServer = {
   open: true,
   hot: true,
   historyApiFallback: true,
+  port: 8081
 };
 
 webpackDevConfig.plugins = [
