@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Optional;
@@ -22,6 +24,7 @@ public class ProjectController {
     // Create project
     @PostMapping(path="/projects")
     public Project createProject(@RequestBody Project project){
+
         return projectsRepository.save(project);
     }
 

@@ -16,15 +16,19 @@ import ProjectDetails from '../project-details/project-details';
 import AboutUs from '../about-us/about-us';
 import ThankYou from '../thank-you/thank-you';
 import Footer from '../footer/footer';
+import {Redirect, Switch} from "react-router";
 
 class App extends React.Component {
   render() {
     return (
         <div>
-          <BrowserRouter basename={process.env.PUBLIC_URL}>
+          <BrowserRouter basename={process.env.CDN_URL}>
             <div>
               {/* <Route path='*' component={Landing}/> */}
               <NavUi location={location} />
+              <Route exact path="/" >
+                  <Redirect to={routes.SITE_ROOT_FRONTEND} />
+              </Route>
               <Route exact path={routes.SITE_ROOT_FRONTEND} component={Landing}/>
               <Route path={routes.LOGIN_FRONTEND} component={Landing}/>
               <Route path={routes.LOGOUT_FRONTEND} component={Landing}/>

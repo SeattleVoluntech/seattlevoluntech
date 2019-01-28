@@ -33,7 +33,6 @@ public class UserController {
         return new User();
     }
 
-
     @RequestMapping("/findByLastName")
     public String fetchDataByLastName(@RequestParam("last_name") String lastName){
 
