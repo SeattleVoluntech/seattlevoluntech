@@ -41,12 +41,6 @@ CREATE TABLE owners (
     id SERIAL PRIMARY KEY,
     user_id serial,
     project_id serial,
-    PRIMARY KEY ("id"),
     FOREIGN KEY ("user_id") REFERENCES "public"."users"("id") ON DELETE RESTRICT ON UPDATE RESTRICT,
-    FOREIGN KEY ("project_id") REFERENCES "public"."project"("id") ON DELETE CASCADE ON UPDATE RESTRICT
+    FOREIGN KEY ("project_id") REFERENCES "public"."projects"("id") ON DELETE CASCADE ON UPDATE RESTRICT
 );
-
--- Indices -------------------------------------------------------
-
-CREATE UNIQUE INDEX project_pkey ON project(id int4_ops);
-CREATE UNIQUE INDEX project_project_name_key ON project(project_name text_ops);
