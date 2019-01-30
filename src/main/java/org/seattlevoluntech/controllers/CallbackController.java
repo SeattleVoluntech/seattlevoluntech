@@ -31,6 +31,7 @@ import java.util.Optional;
 
 import static java.util.Objects.isNull;
 
+@CrossOrigin
 @SuppressWarnings("unused")
 @Controller
 public class CallbackController {
