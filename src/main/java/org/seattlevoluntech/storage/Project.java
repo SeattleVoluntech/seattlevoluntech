@@ -1,10 +1,13 @@
-package org.seattlevoluntech.models;
+package org.seattlevoluntech.storage;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity(name = "projects")
 @Table(name="projects")
@@ -26,6 +29,11 @@ public class Project implements Serializable {
     private Date creationDate;
     @Column(name = "status")
     private String status;
+    @ManyToMany(mappedBy = "projects")
+    private List<User> userList;
+    @Version
+    @Column(name="opt_lock")
+    private Integer lock;
 
     public Long getId() {
         return id;
@@ -78,4 +86,18 @@ public class Project implements Serializable {
     public String getStatus() { return status; }
 
     public void setStatus(String status) { this.status = status; }
+
+    public void addUsers(User user)
+    {
+        if (!this.userList.contains(user))
+        {
+            this.userList.add(user);
+        }
+    }
+
+    @JsonIgnoreProperties("projects")
+    public List<User> getUsers()
+    {
+        return this.userList;
+    }
 }
