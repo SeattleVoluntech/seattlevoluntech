@@ -10,34 +10,38 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin
 @RestController
 public class UserController {
-
-    @Autowired UsersRepository userRepository;
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @RequestMapping("/users")
+    @Autowired
+    UsersRepository userRepository;
+
+    @GetMapping("/users")
+    @ResponseBody
     public List<User> users(final HttpServletRequest request) {
         logger.info(request.getRemoteUser());
         return Lists.newArrayList(userRepository.findAll());
     }
 
-    @RequestMapping(value = "/currentUser", method = RequestMethod.GET)
+    @GetMapping(value = "/currentUser")
     public User currentUserName(HttpServletRequest request) {
         if (request.getRemoteUser() != null)
             return userRepository.findByTokenId(request.getRemoteUser());
         return new User();
     }
 
-    @RequestMapping("/findByLastName")
-    public String fetchDataByLastName(@RequestParam("last_name") String lastName){
+    @GetMapping("/findByLastName")
+    @ResponseBody
+    public String fetchDataByLastName(@RequestParam("last_name") String lastName) {
 
         logger.info("Finding items by last name");
         StringBuilder result = new StringBuilder();
 
-        for(User user: userRepository.findByLastName(lastName)){
+        for (User user : userRepository.findByLastName(lastName)) {
             result.append(user.getFirstName());
             result.append(" ");
             result.append(user.getLastName());
@@ -46,6 +50,5 @@ public class UserController {
 
         return result.toString();
     }
-
 
 }
