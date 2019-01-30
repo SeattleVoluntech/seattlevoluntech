@@ -53,8 +53,12 @@ public class CallbackController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     public CallbackController() {
-        this.redirectOnFail = "/login";
-        this.redirectOnSuccess = "/portal/home";
+
+        String staticAssetHost = System.getenv("STATIC_ASSET_HOST");
+
+        this.redirectOnFail = staticAssetHost + "/index.html#/login";
+        this.redirectOnSuccess = staticAssetHost + "/index.html#/dashboard";
+        logger.info("staticAssetHost {}", staticAssetHost);
     }
 
     @RequestMapping(value = "/callback", method = RequestMethod.GET)
