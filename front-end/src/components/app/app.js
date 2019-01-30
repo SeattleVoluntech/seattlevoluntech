@@ -27,7 +27,6 @@ class App extends React.Component {
         <div>
           <HashRouter basename={process.env.CDN_URL}>
             <div className='main-container'>
-              {/* <Route path='*' component={Landing}/> */}
               <NavUi location={location} />
               <Route exact path={routes.SITE_ROOT_FRONTEND} component={Landing}/>
               <Route path={routes.LOGIN_FRONTEND} component={Landing}/>
