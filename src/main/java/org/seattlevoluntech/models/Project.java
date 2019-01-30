@@ -5,8 +5,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(name="project")
-public class Project implements Serializable {
+@Table(name="projects")
+public class Projects implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
