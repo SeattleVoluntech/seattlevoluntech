@@ -35,6 +35,7 @@ CREATE TABLE users (
     status text,
     bio text,
     opt_lock integer,
+    type text,
     created timestamp without time zone DEFAULT now(),
     updated timestamp
 );
