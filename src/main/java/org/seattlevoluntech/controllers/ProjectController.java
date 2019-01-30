@@ -1,25 +1,26 @@
 package org.seattlevoluntech.controllers;
 
 import com.google.common.collect.Lists;
-import org.seattlevoluntech.models.Project;
-import org.seattlevoluntech.storage.ProjectsRepository;
+import org.seattlevoluntech.storage.Project;
+import org.seattlevoluntech.storage.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin
 @RestController
 public class ProjectController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private ProjectsRepository projectsRepository;
+    @Autowired
+    private UsersRepository usersRepository;
 
     // Create project
     @PostMapping(path="/projects")
@@ -89,6 +90,34 @@ public class ProjectController {
         return projectsRepository.findById(id);
     }
 
+    // Update project
+    @PutMapping(path="/projects/link/{projectId}/{userId}")
+    @ResponseBody
+    public Optional<Project> linkUserWithProject(
+            @PathVariable("projectId") Long projectId,
+            @PathVariable("userId") Long userId
+    ) {
+        Optional<Project> optionalProject = projectsRepository.findById(projectId);
+
+        if(!optionalProject.isPresent())
+        {
+            throw new ErrorController.ErrorNotFound("projectId-" + projectId);
+        }
+
+        Optional<User> optionalUser = usersRepository.findById(userId);
+
+        if (!optionalUser.isPresent())
+        {
+            throw new ErrorController.ErrorNotFound("userId-" + userId);
+        }
+
+
+        optionalUser.get().addProject(optionalProject.get());
+        usersRepository.save(optionalUser.get());
+
+        return projectsRepository.findById(projectId);
+    }
+
     // Delete project
     @DeleteMapping(path="projects/{id}")
     @ResponseBody
@@ -99,5 +128,4 @@ public class ProjectController {
         projectsRepository.deleteById(id);
         return Lists.newArrayList(projectsRepository.findAll());
     }
-
 }

@@ -2,7 +2,7 @@
 export const PROJECTS_BACKEND = '/projects';
 
 // front-end routes
-export const SITE_ROOT_FRONTEND = '/index.html';
+export const SITE_ROOT_FRONTEND = '/';
 export const LOGIN_FRONTEND = '/login';
 export const LOGOUT_FRONTEND = '/logout';
 export const SIGNUP_FRONTEND = '/signup';

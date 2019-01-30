@@ -1,7 +1,5 @@
 package org.seattlevoluntech.storage;
 
-import org.seattlevoluntech.models.Project;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
