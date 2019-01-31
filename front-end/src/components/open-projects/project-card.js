@@ -4,7 +4,6 @@ import * as routes from '../../routes';
 import './project-card.scss';
 
 const ProjectCard = (props) => {
-  console.log(props);
   return (
     <div className="aProject">
       { /* <div className="card-top"> */ }

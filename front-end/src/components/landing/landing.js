@@ -12,9 +12,6 @@ import Button from '../button/button';
 // styles
 import './landing.scss';
 
-// routes
-import * as routes from '../../routes';
-
 class Landing extends React.Component {
   constructor(props) {
     super(props);
@@ -61,14 +58,12 @@ class Landing extends React.Component {
       <p>Seattle VolunTech is one of three projects resulting from
       the efforts of the <a href='https://www.washingtontechnology.org/'>WTIA</a> ION Collaborators - Cohort 3 developed and maintained in concert
       with Codefellows code school in Seattle.</p></div>;
-  
+
     return (
       <React.Fragment>
         <section>
           <section>
             <LandingImage />
-            {/* { location.pathname === routes.LOGIN_FRONTEND ? this.loginForm() : null } */}
-            {/* { location.pathname === routes.SIGNUP_FRONTEND ? this.signUpForm() : null } */}
             <div className='intro-body'>
               <div className='business'>
                 <img src={cashRegister} alt='cash register icon'/>

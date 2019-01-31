@@ -57,12 +57,10 @@ class NavUi extends React.Component {
       </div>;
 
     if (location.pathname === routes.LOGIN_FRONTEND) {
-      console.log('loading loginSet');
       return loginSet;
     }
 
     if (location.pathname === routes.DASHBOARD_EDIT_FRONTEND) {
-      console.log('loading dashboardSet');
       return dashboardSet;
     }
     return loginSet;

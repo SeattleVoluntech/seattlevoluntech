@@ -12,7 +12,6 @@ class Dashboard extends React.Component {
 
   render() {
     const { location } = this.props;
-    console.log(this.props);
     return (
       <div className='dashboard'>
         <Profile user={'business'}/>

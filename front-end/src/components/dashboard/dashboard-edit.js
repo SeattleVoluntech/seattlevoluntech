@@ -1,7 +1,7 @@
 // packages
 import React from 'react';
-import { Redirect } from 'react-router-dom';
 
+// components
 import NewProfileForm from '../profile-form/new-profile-form';
 import BusinessProfileEdit from '../profile-form/business-profile-edit';
 import VolunteerProfileEdit from '../profile-form/volunteer-profile-edit';
