@@ -192,7 +192,6 @@ class NewProfileForm extends React.Component {
 
     const { userType } = this.state.fields;
     const { userExist } = this.state;
-    console.log(this.state);
     const checkFormCompletion = this.checkFormCompletion();
     const { formSubmitted } = this.state;
     if (formSubmitted) {

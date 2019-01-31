@@ -3,8 +3,8 @@ import React from 'react';
 
 // custom components
 import LandingAuthForm from '../landing-auth-form/landing-auth-form'; // eslint-disable-line
-import LandingImage from './landingImage';
-import LatestProjects from './latestProjects';
+import LandingImage from './landing-image';
+import LatestProjects from './latest-projects';
 import volunteer from '../../../assets/red_Volunteer.png';
 import cashRegister from '../../../assets/red_Cash.png';
 import Button from '../button/button';
