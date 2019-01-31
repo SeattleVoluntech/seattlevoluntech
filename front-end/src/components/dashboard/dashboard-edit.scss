@@ -1,0 +1,110 @@
+@import '../../../style/variables.scss';
+
+/*.profile-form {
+  padding-top: 100px;
+  position: static;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin: auto;
+}
+
+.form-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.profile-container {
+  width: 60vw;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 20px 0;
+  color: $color-primary;
+}
+
+.profile-container > h2, h3 {
+  width: 100%;
+  text-align: center;
+}
+
+.profile-container > span > p {
+  color: $color-primary;
+}
+
+.profile-container > h2 {
+  background-color: $color-quaternary;
+  margin: 0;
+  padding: 18px 0 18px 0;
+  border-radius: 10px 10px 0 0;
+  color: $color-primary;
+}
+
+.profile-form p {
+  color: $color-octonary;
+}
+
+.profile-edit-fields {
+  display: flex;
+  flex-flow: column wrap;
+  margin: 20px 0 0 0;
+  width: 80%;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.profile-edit-fields > label {
+  padding: 1em 0 1em 0;
+}
+
+.profile-edit-fields input[type='text'], input[type='email'], input[type='url'], textarea {
+  font-family: $raleway;
+  font-size: 18px;
+}
+
+.user-type label {
+  font-size: 20px;
+}
+
+.user-type > label:nth-of-type(2) {
+  padding-left: 2em;
+}
+
+.profile-edit-fields button {
+  width: 80px;
+  background-color: $color-quaternary;
+  margin: 20px 0 20px 0;
+  font-size: 16px;
+  align-self: center;
+  color: $color-primary;
+}
+
+button:disabled {
+  background-color: #dddddd;
+  color: #666666;
+}
+
+.skills-group {
+  margin: 30px 0 0 0;
+}
+
+.skills-checkbox {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: [label] 40% [input] 2em ;
+  max-height: 270px;
+  padding-left: 22%;
+}
+
+.skills-checkbox > li {
+  border: 1px transparent solid;
+  display:inline-block;
+  width: 12em;
+  align-self: center;
+}
+
+.invalid-feedback {
+  color: red;
+}*/

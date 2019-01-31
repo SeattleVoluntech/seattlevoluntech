@@ -1,0 +1,21 @@
+@import '../../../style/variables';
+
+.project-form {
+  padding-top: 100px;
+  overflow: visible;
+  flex: 1;
+  margin: auto;
+  padding-bottom: 60px;
+}
+
+.project-container {
+  flex-flow: row wrap;
+  width: 60vw;
+  height: auto;
+  justify-content: center;
+  padding: 0 0 20px 0;
+}
+
+.project-container > h2 {
+  height: 50px;
+}

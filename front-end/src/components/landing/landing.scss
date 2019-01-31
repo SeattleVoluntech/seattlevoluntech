@@ -7,10 +7,6 @@ Link a {
   color: $color-primary;
 }
 
-p {
-  color: $color-primary;
-}
-
 .formHeader {
   color: $color-secondary;
   margin-top: 40px;
@@ -23,45 +19,39 @@ p {
   font-weight: bold;
 }
 
-.business {
+.business, .volunteer {
   width: 40%;
   margin: 50px 0 0 0;
   text-align: center;
   animation: fade-in 2s linear;
-}
-
-.signup-business {
-  background-color: #0052c8;
-  font-weight: bold;
-}
-
-button {
-  width: 150px;
-  height: 40px;
-  color: $color-primary;
-  border-radius: 10px;
-}
-
-.volunteer {
-  width: 40%;
-  margin: 50px 0 0 0;
-  text-align: center;
-  animation: fade-in 2s linear;
-}
-
-.volunteer p, .business p {
   color: $color-denary;
 }
 
-.signup-volunteer {
-  background-color: $color-secondary;
-  font-weight: bold;
+.signup-business {
+  color: #0052c8;
+  font-size: 14px;
 }
 
-.business p, .volunteer p {
+.signup-business:hover {
+  box-shadow: 0px 1px 15px 2px #0052c8;
+  color: #0052c8;
+}
+
+.signup-volunteer {
+  color: $color-secondary;
+  font-size: 14px;
+}
+
+.signup-volunteer:hover {
+  box-shadow: 0px 1px 15px 2px $color-secondary;
+  color: $color-secondary;
+}
+
+.business > p, .volunteer > p {
   width: 60%;
   margin-left: 20%;
   margin-right: auto;
+  color: $color-denary;
 }
 
 @keyframes fade-in {
@@ -78,7 +68,7 @@ button {
 .main-details {
   background: url('../../../assets/fistbump.jpg') no-repeat content-box;
   background-size: cover;
-  height: 450px;
+  height: 530px;
   display: flex;
   justify-content: center;
   margin: 50px 0 0 0;
@@ -90,9 +80,10 @@ button {
   text-align: center;
   display: flex;
   justify-content: center;
-  margin: 95px 0 0 0;
-  background: rgba(0, 0, 0, 0.5);
+  margin: 85px 0 0 0;
+  background: rgba(0, 0, 0, 0.6);
   flex-wrap: wrap;
+  padding: 20px 0 20px 0;
 }
 
 .about-container p {

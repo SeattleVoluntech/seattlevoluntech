@@ -1,0 +1,38 @@
+@import '../../../style/variables.scss';
+
+.user-type {
+  width: 100%;
+  text-align: center;
+}
+
+.user-type label {
+  font-size: 20px;
+}
+
+.user-type > label:nth-of-type(2) {
+  padding-left: 2em;
+}
+
+button:disabled {
+  background-color: #dddddd;
+  color: #666666;
+}
+
+.skills-group {
+  margin: 30px 0 0 0;
+}
+
+.skills-checkbox {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: [label] 40% [input] 2em ;
+  max-height: 270px;
+  padding-left: 22%;
+}
+
+.skills-checkbox > li {
+  border: 1px transparent solid;
+  display:inline-block;
+  width: 12em;
+  align-self: center;
+}

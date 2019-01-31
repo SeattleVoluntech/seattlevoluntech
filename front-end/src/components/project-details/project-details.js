@@ -1,16 +1,18 @@
-import React, { Fragments } from 'react';
-import NavUi from '../nav-ui/nav-ui';
+import React, { Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import ProjectEditing from './project-editing';
 import ProjectInfo from './project-info';
-import { Link } from 'react-router-dom';
+// import * as routes from '../../routes';
+
+import './project-details.scss';
 
 class ProjectDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       isEditing: false,
-
     };
+    this.handleSignUp = this.handleSignUp.bind(this);
   }
 
   handleClick() {
@@ -19,26 +21,26 @@ class ProjectDetails extends React.Component {
     });
   }
 
+  handleSignUp() {
+    // Post request
+    return <Link to='/thank-you'>abc</Link>
+  }
+
   render() {
     const { location } = this.props;
     return (
-      <Fragments>
-        <section>
-          <NavUi location={location} />
-        </section>
-        <section>
-          {this.props.isBusiness 
-            ? <span onClick={this.handleClick} className="editLink">edit</span> 
-            : null 
+      <Fragment>
+        <section className='project-details flex'>
+          {this.props.isBusiness
+            ? <span onClick={this.handleClick} className="editLink">edit</span>
+            : null
           }
-          {this.state.isEditing && this.props.isBusiness 
+          {this.state.isEditing && this.props.isBusiness
             ? <ProjectEditing handleClick={this.handleClick}/>
-            : <ProjectInfo />
+            : <ProjectInfo isBusiness={true} handleSignUp={this.handleSignUp}/>
           }
-          {/* Button on click needs functionality - must make some kind of POST request */}
-          {this.props.isVolunteer ? <Link to='/thank-you'><button >I want to work on this!</button></Link> : null}
         </section>
-      </Fragments>
+      </Fragment>
     );
   }
 }

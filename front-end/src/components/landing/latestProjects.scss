@@ -1,22 +1,19 @@
 @import '../../../style/variables.scss';
 
-.latest-projects {
+.latest-projects-container {
   width: 100%;
   height: 100%;
-  color: $color-nonary;
   margin: 0 0 0 0;
   text-align: center;
   background-color: $color-eleven;
   padding: 50px 0 50px 0;
 }
 
-.latest-projects h3 {
-  font-size: 35px;
-  font-weight: 900;
-  font-family: $josefinsans;
+.latest-projects-container > h2:nth-child(1) {
+    font-size: 35px;
 }
 
-.new-projects {
+.latest-projects {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
@@ -24,7 +21,7 @@
   height: auto;
 }
 
-.main-project {
+.latest-project {
   width: 25vw;
   height: 20vw;
   background-color: $color-primary;
@@ -33,19 +30,6 @@
   border-radius: 5px;
   color: $color-septenary;
 }
-
-.main-project h4 {
-  font-size: 35px;
-}
-
-.main-project h5 {
-  font-size: 25px;
-}
-
-.main-project h6 {
-  font-size: 20px;
-}
-
 
 @media only screen and (min-width: 320px) and (max-width: 700px){
   .project {

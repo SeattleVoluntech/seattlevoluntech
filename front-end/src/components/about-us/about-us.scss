@@ -1,18 +1,32 @@
+.about-us-container {
+  flex: 1;
+  margin-top: auto;
+  min-height: 92.75vh;
+}
+
+.about-us {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  top: 75px;
+  height: auto;
+  position: relative;
+}
+
 .header-styles {
   color: black;
   font-size: large;
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+  height: 50px;
+  align-self: flex-start;
 }
 
 .about-style-container {
   width: 70%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  align-self: center;
+  top: 30%;
 }
 
 .about-styles {
