@@ -56,11 +56,11 @@ class NavUi extends React.Component {
         <Link to={routes.PROJECTS_FRONTEND} className='navLink'>Projects</Link>
       </div>;
 
-    if (location.pathname === routes.LOGIN_FRONTEND) {
+    if (location.hash === `#${routes.LOGIN_FRONTEND}`) {
       return loginSet;
     }
 
-    if (location.pathname === routes.DASHBOARD_EDIT_FRONTEND) {
+    if (location.hash === `#${routes.DASHBOARD_EDIT_FRONTEND}`) {
       return dashboardSet;
     }
     return loginSet;

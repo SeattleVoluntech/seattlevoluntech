@@ -6,8 +6,12 @@
   height: 22vw;
   background-color: $color-primary;
   margin-bottom: 60px;
-  box-shadow: 0 3px 7px 3px $color-senary;
+  box-shadow: 3px 3px 7px 0px $color-senary;
   border-radius: 5px;
+}
+
+.aProject > * {
+  color: $color-octonary;
 }
 
 .aProject h2 {
@@ -22,6 +26,20 @@
 
 .aProject h4 {
   font-size: 16px;
+  text-overflow: ellipsis;
+  white-space: wrap;
+  overflow: hidden;
+}
+
+.aProject p {
+  text-align: right;
+  padding: 0 20px 0 0;
+}
+
+.card-vertical-line {
+  border-left: 20px solid $color-nonary;
+  height: 22vw;
+  margin: 0;
 }
 
 .card-top {
