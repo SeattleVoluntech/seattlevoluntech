@@ -65,3 +65,69 @@
 #navControl .navLink:active {
   color: $color-secondary;
 }
+
+// React burger menu
+
+/* Position and sizing of burger button */
+.bm-burger-button {
+  position: fixed;
+  width: 42px;
+  height:35px;
+  left: 85%;
+  top: 2.5%;
+}
+
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+  background: $color-secondary;
+  height: 15% !important;
+  border-radius: 15px;
+}
+
+/* Color/shape of burger icon bars on hover*/
+.bm-burger-bars-hover {
+  background: $color-tertiary;
+}
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+
+/* Color/shape of close button cross */
+.bm-cross {
+  background: $color-tertiary;
+}
+
+/* General sidebar styles */
+.bm-menu {
+  background: $color-primary;
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+  height: 45% !important;
+}
+
+/* Wrapper for item list */
+.bm-item-list {
+  padding: 0.8em;
+}
+
+/* Individual item */
+.bm-item {
+  color: $color-secondary;
+  margin-bottom: 15px;
+  display: inline-block;
+  text-align: right;
+  font-weight: bold;
+}
+
+.bm-item:visited {
+  color: $color-secondary;
+}
+
+/* Styling of overlay */
+.bm-overlay {
+  background: rgba(0, 0, 0, 0.3);
+}
+
