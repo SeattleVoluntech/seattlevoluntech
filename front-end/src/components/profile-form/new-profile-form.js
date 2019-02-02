@@ -1,6 +1,6 @@
 // packages
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 // styles
 import './profile-form.scss';
@@ -18,10 +18,6 @@ class NewProfileForm extends React.Component {
     this.handleBlur = this.handleBlur.bind(this);
     this.checkFormCompletion = this.checkFormCompletion.bind(this);
     this.validateForm = this.validateForm.bind(this);
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    //console.log(prevProps, prevState);
   }
 
   handleBlur = (field) => (event) => {
@@ -49,7 +45,7 @@ class NewProfileForm extends React.Component {
       }
       return false
     } else if (this.state.fields.userType === 'volunteer') {
-        const { volunteerName, volunteerEmail, volunteerBio } = this.state.fields;
+        const { volunteerFirstName, volunteerLastName, volunteerEmail, volunteerBio } = this.state.fields;
         if (volunteerName && volunteerEmail && volunteerBio) {
           return true
         }
@@ -93,9 +89,14 @@ class NewProfileForm extends React.Component {
       errors['businessSite'] ='Please enter a valid url.';
     }
 
-    if (touched['volunteerName'] && !fields['volunteerName']) {
+    if (touched['volunteerFirstName'] && !fields['volunteerFirstName']) {
       formValid = false;
-      errors['volunteerName'] ='Please tell us your name.';
+      errors['volunteerFirstName'] ='Please tell us your first name.';
+    }
+
+    if (touched['volunteerLastName'] && !fields['volunteerLastName']) {
+      formValid = false;
+      errors['volunteerLastName'] ='Please tell us your last name.';
     }
 
     if (touched['volunteerEmail'] && !fields['volunteerEmail']) {
@@ -185,12 +186,12 @@ class NewProfileForm extends React.Component {
       <h3>Are you a business owner or want to volunteer?</h3>
       <div className='user-type' onChange={this.handleInputChange}>
       <label htmlFor='business'>Business Owner</label>
-      <input type='radio' id='business' name='userType' onChange={this.handleInputChange} checked={this.state.fields.userType === 'business'} value='business'></input>
+      <input type='radio' id='business' name='type' onChange={this.handleInputChange} checked={this.state.fields.type === 'business'} value='business'></input>
       <label htmlFor='volunteer'>Volunteer</label>
-      <input type='radio' id='volunteer' name='userType' onChange={this.handleInputChange} checked={this.state.fields.userType === 'volunteer'} value='volunteer'></input>
+      <input type='radio' id='volunteer' name='type' onChange={this.handleInputChange} checked={this.state.fields.type === 'volunteer'} value='volunteer'></input>
       </div></React.Fragment>;
 
-    const { userType } = this.state.fields;
+    const { type } = this.state.fields;
     const { userExist } = this.state;
     const checkFormCompletion = this.checkFormCompletion();
     const { formSubmitted } = this.state;
@@ -204,8 +205,8 @@ class NewProfileForm extends React.Component {
               <div className='form-container flex'>
                 { newProfileHeading }
                 <div className='form-edit-fields flex'>
-                  { userType === 'business' ? businessProfile : null }
-                  { userType === 'volunteer' ? volunteerProfile : null}
+                  { type === 'business' ? businessProfile : null }
+                  { type === 'volunteer' ? volunteerProfile : null}
                   <button type='submit' disabled={!checkFormCompletion} value='Submit'>Submit</button>
                 </div>
               </div>

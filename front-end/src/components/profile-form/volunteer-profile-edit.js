@@ -1,6 +1,6 @@
 // packages
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 // styles
 import './profile-form.scss';
@@ -40,9 +40,14 @@ class VolunteerProfileEdit extends React.Component {
     let errors = {};
     let formValid = true;
 
-    if (touched['volunteerName'] && !fields['volunteerName']) {
+    if (touched['volunteerFirstName'] && !fields['volunteerFirstName']) {
       formValid = false;
-      errors['volunteerName'] ='Please tell us your name.';
+      errors['volunteerFirstName'] ='Please tell us your first name.';
+    }
+
+    if (touched['volunteerLastName'] && !fields['volunteerLastName']) {
+      formValid = false;
+      errors['volunteerLastName'] ='Please tell us your last name.';
     }
 
     if (touched['volunteerEmail'] && !fields['volunteerEmail']) {
@@ -68,6 +73,14 @@ class VolunteerProfileEdit extends React.Component {
     return formValid;
   }
 
+  checkFormCompletion() {
+      const { volunteerFirstName, volunteerLastName, volunteerEmail, volunteerBio } = this.state.fields;
+      if (volunteerFirstName && volunteerLastName && volunteerEmail && volunteerBio) {
+        return true
+      }
+      return false
+  }
+
   handleSubmit(event) {
     event.preventDefault();
     this.validateForm();
@@ -88,13 +101,16 @@ class VolunteerProfileEdit extends React.Component {
   render() {
     const { location } = this.props;
     const skills = [['visual-design', 'visualDesign'], ['ux-design', 'uxDesign'], ['front-end', 'frontEnd'], ['back-end', 'backEnd'], ['full-stack', 'fullStack'], ['wordpress', 'wordpress'], ['squarespace', 'squarespace'], ['wix', 'wix']];
-    const volunteerProfile = <React.Fragment><label htmlFor='volunteer-name-edit'>Name: (Required)</label>
-      <input type='text' id='volunteer-name-edit' name='volunteerName' required size='40' onChange={this.handleInputChange} onBlur={this.handleBlur('volunteerName')} value={this.state.fields.volunteerName || ''}/>
+    const volunteerProfile = <React.Fragment><label htmlFor='volunteer-name-edit'>First Name:</label>
+      <input type='text' id='volunteer-first-name-edit' name='volunteerFirstName' required size='40' onChange={this.handleInputChange} onBlur={this.handleBlur('volunteerFirstName')} value={this.state.fields.volunteerFirstName || ''}/>
       <span className='invalid-feedback'>{this.state.errors.volunteerName}</span>
-      <label htmlFor='volunteer-email-edit'>Email: (Required)</label>
+      <label htmlFor='volunteer-last-name-edit'>Last Name:</label>
+      <input type='text' id='volunteer-last-name-edit' name='volunteerLastName' required size='40' onChange={this.handleInputChange} onBlur={this.handleBlur('volunteerLastName')} value={this.state.fields.volunteerLastName || ''}/>
+      <span className='invalid-feedback'>{this.state.errors.volunteerName}</span>
+      <label htmlFor='volunteer-email-edit'>Email:</label>
       <input type='text' id='volunteer-email-edit' name='volunteerEmail' required size='40' onChange={this.handleInputChange} onBlur={this.handleBlur('volunteerEmail')} value={this.state.fields.volunteerEmail || ''}/>
       <span className='invalid-feedback'>{this.state.errors.volunteerEmail}</span>
-      <label htmlFor='volunteer-bio-edit'>Tell us about yourself: (Required)</label>
+      <label htmlFor='volunteer-bio-edit'>Tell us about yourself:</label>
       <textarea rows='10' cols='70' id='volunteer-bio-edit' name='volunteerBio' required onChange={this.handleInputChange} onBlur={this.handleBlur('volunteerBio')} value={this.state.fields.volunteerBio || ''}/>
       <span className='invalid-feedback'>{this.state.errors.volunteerBio}</span>
       <fieldset className='skills-group'>
@@ -111,21 +127,22 @@ class VolunteerProfileEdit extends React.Component {
       </fieldset>
       </React.Fragment>;
 
-    const existingProfileHeading = <React.Fragment><h2>Edit Your Profile</h2></React.Fragment>;
-    const { userExist, userType } = this.state;
-    const { redirectToReferrer } = this.state;
-    if (redirectToReferrer) {
-      return <Redirect to={'/dashboard'}/>;
+    const { userType } = this.state.fields;
+    const { userExist } = this.state;
+    const checkFormCompletion = this.checkFormCompletion();
+    const { formSubmitted } = this.state;
+    if (formSubmitted) {
+      return <Link to={'/dashboard'}/>;
     }
     return (
         <React.Fragment>
-          <section className='profile-form'>
-            <form noValidate onSubmit={this.handleSubmit} className='form-container'>
-              <div className='profile-container'>
-                { existingProfileHeading }
-                <div className='profile-edit-fields'>
+          <section className='form flex'>
+            <form noValidate onSubmit={this.handleSubmit}>
+              <div className='form-container flex'>
+                <h2>Edit Your Profile</h2>
+                <div className='form-edit-fields flex'>
                   { volunteerProfile }
-                  <button type='submit' value='Submit'>Submit</button>
+                  <button type='submit' disabled={!checkFormCompletion} value='Submit'>Submit</button>
                 </div>
               </div>
             </form>

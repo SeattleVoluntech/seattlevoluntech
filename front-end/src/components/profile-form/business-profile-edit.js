@@ -1,6 +1,6 @@
 // packages
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 // styles
 import './profile-form.scss';
@@ -33,6 +33,14 @@ class BusinessProfileEdit extends React.Component {
     this.setState({
       fields,
     });
+  }
+
+  checkFormCompletion() {
+      const { businessName, businessEmail, businessDesc, businessSite } = this.state.fields;
+      if (businessName && businessEmail && businessDesc && businessSite) {
+        return true
+      }
+      return false
   }
 
   validateForm() {
@@ -95,13 +103,13 @@ class BusinessProfileEdit extends React.Component {
   render() {
     const { location } = this.props;
 
-    const businessProfile = <React.Fragment><label htmlFor='business-name-edit'>Business Name: (Required)</label>
+    const businessProfile = <React.Fragment><label htmlFor='business-name-edit'>Business Name:</label>
       <input type='text' id='business-name-edit' name='businessName' required onChange={this.handleInputChange} onBlur={this.handleBlur('businessName')} value={this.state.fields.businessName || ''}/>
       <span className='invalid-feedback'>{this.state.errors.businessName}</span>
-      <label htmlFor='business-email-edit'>Business Email: (Required)</label>
+      <label htmlFor='business-email-edit'>Business Email:</label>
       <input type='email' id='business-email-edit' name='businessEmail' required onChange={this.handleInputChange} onBlur={this.handleBlur('businessEmail')} value={this.state.fields.businessEmail || ''}/>
       <span className='invalid-feedback'>{this.state.errors.businessEmail}</span>
-      <label htmlFor='business-desc-edit'>Business Description: (Required)</label>
+      <label htmlFor='business-desc-edit'>Business Description:</label>
       <textarea rows='10' cols='70' id='business-desc-edit' name='businessDesc' required onChange={this.handleInputChange} onBlur={this.handleBlur('businessDesc')} value={this.state.fields.businessDesc || ''}/>
       <span className='invalid-feedback'>{this.state.errors.businessDesc}</span>
       <label htmlFor='business-website-edit'>Existing Website (Optional): </label>
@@ -109,22 +117,22 @@ class BusinessProfileEdit extends React.Component {
       <span className='invalid-feedback'>{this.state.errors.businessSite}</span>
       </React.Fragment>;
 
-    const existingProfileHeading = <React.Fragment><h2>Edit Your Profile</h2></React.Fragment>;
-    const { userType } = this.state;
-    const { userExist } = this.props;
-    const { redirectToReferrer } = this.state;
-    if (redirectToReferrer) {
-      return <Redirect to={'/dashboard'}/>;
+    const { userType } = this.state.fields;
+    const { userExist } = this.state;
+    const checkFormCompletion = this.checkFormCompletion();
+    const { formSubmitted } = this.state;
+    if (formSubmitted) {
+      return <Link to={'/dashboard'}/>;
     }
     return (
         <React.Fragment>
-          <section className='profile-form'>
-            <form onSubmit={this.handleSubmit} className='form-container'>
-              <div className='profile-container'>
-                { existingProfileHeading }
-                <div className='profile-edit-fields'>
+          <section className='form flex'>
+            <form onSubmit={this.handleSubmit}>
+              <div className='form-container flex'>
+                <h2>Edit Your Profile</h2>
+                <div className='form-edit-fields flex'>
                   { businessProfile }
-                  <button type='submit' value='Submit'>Submit</button>
+                  <button type='submit' disabled={!checkFormCompletion} value='Submit'>Submit</button>
                 </div>
               </div>
             </form>
