@@ -1,5 +1,7 @@
 // packages
 import React from 'react';
+import { Link } from 'react-router-dom';
+import * as routes from '../../routes';
 
 // custom components
 import LandingAuthForm from '../landing-auth-form/landing-auth-form'; // eslint-disable-line
@@ -43,6 +45,10 @@ class Landing extends React.Component {
     }
   }
 
+  handleReload() {
+    window.location.assign('http://localhost:8080/login');
+  }
+
   render() {
     const { location } = this.props;
     const businessText = <p>Are you a small business owner who needs a website to
@@ -58,7 +64,6 @@ class Landing extends React.Component {
       <p>Seattle VolunTech is one of three projects resulting from
       the efforts of the <a href='https://www.washingtontechnology.org/'>WTIA</a> ION Collaborators - Cohort 3 developed and maintained in concert
       with Codefellows code school in Seattle.</p></div>;
-
     return (
       <React.Fragment>
         <section>
@@ -69,16 +74,20 @@ class Landing extends React.Component {
                 <img src={cashRegister} alt='cash register icon'/>
                 <h2>Businesses</h2>
                 { businessText }
-                <Button id='signup-business' className='signup-business'
-                  onClick={this.signUp}>Yes, I have a project!</Button>
+                <Link to={routes.SIGNUP_FRONTEND} onClick={this.handleReload}>
+                  <Button id='signup-business' className='signup-business'
+                    onClick={this.signUp}>Yes, I have a project!</Button>
+                </Link>
               </div>
               <div className='vertical-line' />
               <div className='volunteer'>
                 <img src={volunteer} alt='people hand raise icon'/>
                 <h2>Volunteers</h2>
                 { volunteerText }
-                <Button id='signup-volunteer' className='signup-volunteer'
-                  onClick={this.signUp}>Yes, I want to help!</Button>
+                <Link to={routes.SIGNUP_FRONTEND} onClick={this.handleReload}>
+                  <Button id='signup-volunteer' className='signup-volunteer'
+                    onClick={this.signUp}>Yes, I want to help!</Button>
+                </Link>
               </div>
             </div>
           </section>
