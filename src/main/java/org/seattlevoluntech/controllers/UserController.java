@@ -77,6 +77,7 @@ public class UserController {
         dbUser.setLastName(user.getLastName());
         dbUser.setPhoneNumber(user.getPhoneNumber());
         dbUser.setStatus(user.getStatus());
+        dbUser.setType(user.getType());
 
         return userRepository.save(dbUser);
     }
