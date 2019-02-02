@@ -8,7 +8,7 @@ const ProjectCard = (props) => {
     <div className='aProject flex'>
       { /* <div className="card-top"> */ }
         <div className='card-vertical-line' />
-        <Link to={routes.PROJECT_DETAILS_FRONTEND} >
+        <Link to={routes.PROJECT_DETAILS_FRONTEND + props.currentProject.id} className='flex'>
           <h2>{props.currentProject.projectName}</h2>
           <h3>{props.currentProject.businessName}</h3>
           <h4>{props.currentProject.projectHeadline}</h4>

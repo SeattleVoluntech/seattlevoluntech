@@ -1,9 +1,18 @@
+// packages
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
+// Redux actions
+import { fetchProjectDetails } from '../../actions/project-details-actions';
+
+// components
 import ProjectEditing from './project-editing';
 import ProjectInfo from './project-info';
-// import * as routes from '../../routes';
+import * as routes from '../../routes';
 
+// styling
 import './project-details.scss';
 
 class ProjectDetails extends React.Component {
@@ -27,7 +36,7 @@ class ProjectDetails extends React.Component {
   }
 
   render() {
-    const { location } = this.props;
+    const { location, match } = this.props;
     return (
       <Fragment>
         <section className='project-details flex'>
@@ -37,7 +46,7 @@ class ProjectDetails extends React.Component {
           }
           {this.state.isEditing && this.props.isBusiness
             ? <ProjectEditing handleClick={this.handleClick}/>
-            : <ProjectInfo isBusiness={true} handleSignUp={this.handleSignUp}/>
+          : <ProjectInfo isBusiness={false} handleSignUp={this.handleSignUp}/>
           }
         </section>
       </Fragment>
@@ -45,4 +54,25 @@ class ProjectDetails extends React.Component {
   }
 }
 
-export default ProjectDetails;
+ProjectDetails.propTypes = {
+  latestProjects: PropTypes.object,
+  projects: PropTypes.object,
+  error: PropTypes.object,
+  loading: PropTypes.bool,
+  fetchLatestProjects: PropTypes.func,
+};
+
+const mapStateToProps = (state, ownProps) => ({
+  projectId: ownProps.match.params.id,
+  projectDetails: state.projectDetails,
+  loading: state.loading,
+  error: state.error,
+});
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchProjectDetails: () => dispatch(fetchProjectDetails()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProjectDetails);

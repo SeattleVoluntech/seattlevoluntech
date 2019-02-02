@@ -60,7 +60,7 @@ class NavUi extends React.Component {
       return loginSet;
     }
 
-    if (location.hash === `#${routes.DASHBOARD_EDIT_FRONTEND}`) {
+    if (location.hash === `#${routes.DASHBOARD_EDIT_FRONTEND}` || location.hash === `#${routes.DASHBOARD_FRONTEND}`) {
       return dashboardSet;
     }
     return loginSet;
@@ -68,6 +68,7 @@ class NavUi extends React.Component {
 
   render() {
     const { location } = this.props;
+    console.log(this.props);
     return (
       <section id="navControl">
         <nav className ='loginSetNavigation'>
