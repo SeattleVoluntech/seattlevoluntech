@@ -14,6 +14,12 @@
   color: $color-octonary;
 }
 
+.aProject a {
+  width: 100%;
+  flex-flow: row wrap;
+  padding: 5px;
+}
+
 .aProject h2 {
   font-size: 25px;
   margin: 0 0 0 0;
@@ -22,18 +28,20 @@
 
 .aProject h3 {
   font-size: 20px;
+  margin: 0;
 }
 
 .aProject h4 {
   font-size: 16px;
-  text-overflow: ellipsis;
+  //text-overflow: ellipsis;
   white-space: wrap;
-  overflow: hidden;
+  width: 100%;
 }
 
 .aProject p {
   text-align: right;
   padding: 0 20px 0 0;
+  flex-grow: 1;
 }
 
 .card-vertical-line {
