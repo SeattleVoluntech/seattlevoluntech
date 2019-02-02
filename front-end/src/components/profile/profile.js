@@ -14,11 +14,17 @@ class Profile extends React.Component {
   render() {
     const { location } = this.props;
 
-    const businessProfile = <div className='profile-info flex'><div className='profile-container flex'><h3>this.props.businessname</h3>
-      <span><h4>Business Email : </h4><p>this.props.business.email</p></span>
-      <span><h4>Business Description: </h4><p>this.props.business.description</p></span>
-      <span><h4>Business Website: </h4><p>this.props.business.website</p></span>
-      <div className='business-profile-buttons'>
+    const businessProfile = <div className='profile-info flex'><div className='profile-container'><h3>this.props.businessname</h3>
+      <div className='profile-details flex'>
+        <div className='profile-business-details'>
+          <span><h4>Business Email : </h4><p>this.props.business.email</p></span>
+          <span><h4>Business Website: </h4><p>this.props.business.website this.props.business.websitethis.props.business.websitethis.props.business.website</p></span>
+        </div>
+        <div className='profile-business-desc '>
+          <span><h4>Business Description: </h4><p>this.props.business.descripftion this.props.business.descriptionthis.props.business.descriptionthis.props.business.descriptionthis.props.business.descriptionthis.props.business.descriptionthis.props.business.descriptionthis.props.business.descriptionthis.props.business.description</p></span>
+        </div>
+      </div>
+      <div className='business-profile-buttons flex'>
       <Link to='dashboard-edit'><button>Edit your profile</button></Link>
       <Link to='/project-new'><button>Create a new project</button></Link>
       </div>
@@ -39,16 +45,11 @@ class Profile extends React.Component {
               <div className='open-projects flex'>
                 <h2>Open Projects</h2>
                 {/* map over project object to generate cards and pass userType as props */}
-                <ProjectCard />
-                <ProjectCard />
-                <ProjectCard />
-                <ProjectCard />
               </div>
               <hr className='underline' />
               <div className='closed-projects flex'>
                 <h2>Closed Projects</h2>
                 {/* map over project object to generate cards and pass userType as props */}
-                <ProjectCard />
               </div>
             </div>
             </div>)
@@ -61,13 +62,11 @@ class Profile extends React.Component {
                   <div className='current-projects flex'>
                     <h2>Current Projects</h2>
                     {/* map over project object to generate cards and pass userType as props */}
-                    <ProjectCard />
                   </div>
                   <hr className='underline' />
                   <div className='closed-projects flex'>
                     <h2>Past Projects</h2>
                     {/* map over project object to generate cards and pass userType as props */}
-                    <ProjectCard />
                   </div>
                 </div>
               </div>

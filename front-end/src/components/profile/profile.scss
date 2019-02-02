@@ -2,27 +2,42 @@
 
 .profile {
   padding-top: 0px;
-  color: $color-primary;
   flex-flow: row wrap;
 }
 
 .profile-info {
   width: 100%;
-  background-color: $color-septenary;
+  background-color: $color-accent;
 }
 
 .profile-container {
   width: 80%;
   flex-flow: column wrap;
-  justify-content: center;
+  min-height: 200px;
 }
 
-.profile-container > span {
-  width: 90%;
+.profile-details {
+  flex-flow: row wrap;
+  justify-content: space-around;
+  background-color: $color-primary;
+  padding: 30px;
 }
 
-.profile-container > span > p {
-  color: $color-primary;
+.profile-details div {
+  border: 1px solid $color-octonary;
+  padding: 10px;
+}
+
+.profile-business-details {
+  flex-grow: 1;
+  max-width: 40%;
+  word-wrap: break-word;
+}
+
+.profile-business-desc {
+  flex-grow: 2;
+  max-width: 50%;
+  word-wrap: break-word;
 }
 
 .profile-projects {
@@ -30,22 +45,17 @@
   justify-content: center;
 }
 
-.profile-projects h2 {
-  color: $color-secondary;
-  width: 100%;
-  text-align: center;
-}
-
 .profile-container h3 {
   padding: 10px 0 0 0;
+  color: $color-primary;
 }
 
-.profile-container h4 {
-  color: #f4ff1f;
+.business-profile-buttons {
+  justify-content: space-around;
 }
 
 .profile-container button {
-  margin: 50px auto 50px auto;
+  margin: 50px 10px 50px auto;
   border: none;
   background-color: $color-quaternary;
   color: $color-primary;

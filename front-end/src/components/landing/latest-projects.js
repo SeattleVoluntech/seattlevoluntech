@@ -1,8 +1,11 @@
+// packages
 import React from 'react';
-import ProjectCard from './project-card';
-import './project-pane.scss';
+import ProjectCard from '../open-projects/project-card';
 
-class ProjectPane extends React.Component {
+// styles
+import './latest-projects.scss';
+
+class LatestProjects extends React.Component {
   constructor(props) {
     super(props);
     this.state = { projects: [] };
@@ -28,11 +31,11 @@ class ProjectPane extends React.Component {
         alert(err);
       });
   }
-
   // truncate project description on project card to display up to 150 characters
+
   truncate(data) {
     data.map((olddata) => {
-      const newData = olddata.projectHeadline = olddata.projectDescription.split('').slice(0, olddata.projectDescription.lastIndexOf(' ', 60)).join('').concat(' ...');
+      const newData = olddata.projectHeadline = olddata.projectDescription.split('').slice(0, olddata.projectDescription.lastIndexOf(' ', 150)).join('').concat(' ...');
       return newData;
     });
     return data;
@@ -40,15 +43,19 @@ class ProjectPane extends React.Component {
 
   render() {
     return (
-      <div className="projectPane">
-        {this.state.projects.map((project, i) => <ProjectCard
-            currentProject={project}
-            key={i}
-            className='main-project'
-        />)}
-      </div>
+        <div id='latest-projects' className='latest-projects-container'>
+            <h2>Latest Projects</h2>
+            <hr className="underline"/>
+            <div className='latest-projects flex'>
+                {this.state.projects.map((project, i) => <ProjectCard
+                    currentProject={project}
+                    key={i}
+                    className='main-project'
+                />)}
+            </div>
+        </div>
     );
   }
 }
 
-export default ProjectPane;
+export default LatestProjects;
