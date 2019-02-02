@@ -14,18 +14,18 @@ class Profile extends React.Component {
   render() {
     const { location } = this.props;
 
-    const businessProfile = <div className='profile-info flex'><div className='profile-container'><h3>this.props.businessname</h3>
+    const businessProfile = <div className='profile-info flex'><div className='profile-container'><h3>Business Name Here</h3>
       <div className='profile-details flex'>
         <div className='profile-business-details'>
-          <span><h4>Business Email : </h4><p>this.props.business.email</p></span>
-          <span><h4>Business Website: </h4><p>this.props.business.website this.props.business.websitethis.props.business.websitethis.props.business.website</p></span>
+          <span><h4>Business Email : </h4><p>Business Email here</p></span>
+          <span><h4>Business Website: </h4><a href='http://seattlevoluntech.com'>`http://seattlevoluntech.com`</a></span>
         </div>
         <div className='profile-business-desc '>
-          <span><h4>Business Description: </h4><p>this.props.business.descripftion this.props.business.descriptionthis.props.business.descriptionthis.props.business.descriptionthis.props.business.descriptionthis.props.business.descriptionthis.props.business.descriptionthis.props.business.descriptionthis.props.business.description</p></span>
+          <span><h4>Business Description: </h4><p>My business is the best. My business is the best. My business is the best. My business is the best. My business is the best.business is the best. My business is the best. My business is the best. My business is the best. My business is the best.</p></span>
         </div>
       </div>
       <div className='business-profile-buttons flex'>
-      <Link to='dashboard-edit'><button>Edit your profile</button></Link>
+      <Link to='dashboard-edit' user='business'><button>Edit your profile</button></Link>
       <Link to='/project-new'><button>Create a new project</button></Link>
       </div>
       </div></div>;
