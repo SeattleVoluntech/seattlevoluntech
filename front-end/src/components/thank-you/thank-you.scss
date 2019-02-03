@@ -1,0 +1,19 @@
+.thank-you {
+  flex: 1;
+  min-height: 80.75vh;
+  text-align: center;
+  top: 90px;
+  position: relative;
+  margin-top: auto;
+  flex-flow: column wrap;
+  align-items: center;
+}
+
+.thank-you h3 {
+  margin-top: 0px;
+}
+
+.thank-you img {
+  width: 40%;
+  height: 40%;
+}
