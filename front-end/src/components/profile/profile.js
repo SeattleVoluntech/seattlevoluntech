@@ -30,11 +30,17 @@ class Profile extends React.Component {
       </div>
       </div></div>;
 
-    const volunteerProfile = <div className='profile-info flex'><div className='profile-container flex'><h3>this.props.volunteername</h3>
-      <span><h4>Volunteer Email :</h4><p>this.props.volunteer.email</p></span>
-      <span><h4>Volunteer Skills :</h4><p>this.props.volunteer.skills</p></span>
-      <Link to='/dashboard-edit'><button>Edit your profile</button></Link>
-      </div></div>;
+    const volunteerProfile = <div className='profile-info flex'><div className='profile-container'><h3>Volunteer Name Here</h3>
+            <div className='profile-details flex'>
+              <div className='profile-business-details'>
+                <span><h4>Volunteer Email :</h4><p>this.props.volunteer.email</p></span>
+                <span><h4>Volunteer Skills :</h4><p>this.props.volunteer.skills</p></span>
+              </div>
+            </div>
+            <div className='business-profile-buttons flex'>
+            <Link to='dashboard-edit' user='business'><button>Edit your profile</button></Link>
+            </div>
+            </div></div>;
 
     return (
         <React.Fragment>
