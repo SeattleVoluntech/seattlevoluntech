@@ -1,6 +1,12 @@
 // packages
 import React from 'react';
 import {Link, Redirect} from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
+// Redux actions
+import { putProfileForm } from '../../actions/profile-edit-actions';
+
 // styles
 import './profile-form.scss';
 import * as routes from "../../routes";
@@ -17,6 +23,14 @@ class NewProfileForm extends React.Component {
     this.handleBlur = this.handleBlur.bind(this);
     this.checkFormCompletion = this.checkFormCompletion.bind(this);
     this.validateForm = this.validateForm.bind(this);
+  }
+
+  componentWillUnmount() {
+    this.setState({
+      fields: {},
+      errors: {},
+      formSubmitted: null,
+    })
   }
 
   handleBlur = (field) => (event) => {
@@ -113,20 +127,13 @@ class NewProfileForm extends React.Component {
     }
     if (await this.state.formIsValid) {
       const data = JSON.stringify(this.state.fields);
-      await fetch('http://localhost:8080/profile', {
-        method: 'PUT',
-        headers: { "Content-Type": "application/json" },
-        body: data,
-      }).catch((error) => {
-        alert(error);
-      });
+      await this.props.putProfileForm();
       this.setState({ formSubmitted: true });
     }
   }
 
   // Currently 'lastName' is being used for business website as there is no website field in the users table
   render() {
-    const { location } = this.props;
     const businessProfile = <React.Fragment><label htmlFor='business-name-edit'>Business Name:</label>
       <input type='text' id='business-name-edit' name='firstName' required size='70' onChange={this.handleInputChange} onBlur={this.handleBlur('firstName')} value={this.state.fields.firstName || ''}/>
       <span className='invalid-feedback'>{this.state.errors.firstName}</span>
@@ -172,12 +179,12 @@ class NewProfileForm extends React.Component {
         <input type='radio' id='volunteer' name='type' onChange={this.handleInputChange} checked={this.state.fields.type === 'volunteer'} value='volunteer'></input>
       </div></React.Fragment>;
     const { type } = this.state.fields;
-    const { userExist } = this.state;
     const checkFormCompletion = this.checkFormCompletion();
     const { formSubmitted } = this.state;
     if (formSubmitted) {
       return <Redirect to={routes.DASHBOARD_FRONTEND}/>;
     }
+    const { profileForm } = this.props.profileForm;
     return (
         <React.Fragment>
           <section className='form flex'>
@@ -196,4 +203,24 @@ class NewProfileForm extends React.Component {
     );
   }
 }
-export default NewProfileForm;
+
+NewProfileForm.propTypes = {
+  profileForm: PropTypes.object,
+  error: PropTypes.object,
+  loading: PropTypes.bool,
+  putProfileForm: PropTypes.func,
+};
+
+const mapStateToProps = state => ({
+  profileForm: state.profileForm,
+  loading: state.loading,
+  error: state.error,
+});
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    putProfileForm: () => dispatch(putProfileForm()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewProfileForm);
