@@ -13,13 +13,13 @@ public class SeattlevoluntechAppConfig {
     /**
      * Domain for mailgun mail sender api
      */
-    @Value(value = "${mailgun.domain}")
+    @Value(value = "${org.seattlevoluntech.mailgun.domain}")
     private String mailgunDomain;
 
     /**
      * API key required to send emails through mailgun
      */
-    @Value(value = "${mailgun.api.key}")
+    @Value(value = "${org.seattlevoluntech.mailgun.api.key}")
     private String mailgunApiKey;
 
     @Bean
