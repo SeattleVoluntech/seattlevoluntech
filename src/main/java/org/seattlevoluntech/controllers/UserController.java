@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @CrossOrigin
@@ -49,6 +51,35 @@ public class UserController {
         }
 
         return result.toString();
+    }
+
+    @PutMapping("/profile")
+    public User updateUser(@RequestBody User user, HttpServletRequest request, HttpServletResponse res) throws Exception {
+        if(request.getRemoteUser() == null) {
+            res.sendError(400, "You are not logged in");
+            return null;
+        }
+
+        User dbUser = userRepository.findByTokenId(request.getRemoteUser());
+
+        if(dbUser == null) {
+            res.sendError(500, "Failed to find logged in user");
+            return null;
+        }
+        if(!Objects.equals(user.getId(), dbUser.getId())) {
+            res.sendError(400, "Invalid user id");
+            return null;
+        }
+
+        dbUser.setEmail(user.getEmail());
+        dbUser.setFirstName(user.getFirstName());
+        dbUser.setBio(user.getBio());
+        dbUser.setLastName(user.getLastName());
+        dbUser.setPhoneNumber(user.getPhoneNumber());
+        dbUser.setStatus(user.getStatus());
+        dbUser.setType(user.getType());
+
+        return userRepository.save(dbUser);
     }
 
 }
