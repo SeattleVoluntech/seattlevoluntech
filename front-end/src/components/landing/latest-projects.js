@@ -26,6 +26,7 @@ class LatestProjects extends React.Component {
     if (loading) {
       return <div>Loading...</div>;
     }
+
     return (
         <div id='latest-projects' className='latest-projects-container'>
             <h2>Latest Projects</h2>
