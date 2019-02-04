@@ -31,24 +31,22 @@ Link a {
   color: $color-denary;
 }
 
-.signup-business {
+#signup-business {
   color: #0052c8;
   font-size: 14px;
 }
 
-.signup-business:hover {
+#signup-business:hover {
   box-shadow: 0px 1px 15px 2px #0052c8;
-  color: #0052c8;
 }
 
-.signup-volunteer {
+#signup-volunteer {
   color: $color-secondary;
   font-size: 14px;
 }
 
-.signup-volunteer:hover {
+#signup-volunteer:hover {
   box-shadow: 0px 1px 15px 2px $color-secondary;
-  color: $color-secondary;
 }
 
 .business > p, .volunteer > p {

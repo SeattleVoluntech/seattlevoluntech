@@ -28,14 +28,14 @@ class LatestProjects extends React.Component {
     }
 
     return (
-        <div id='latest-projects' className='latest-projects-container'>
+        <div id='latest-projects' className={'latest-projects-container'}>
             <h2>Latest Projects</h2>
             <hr className="underline"/>
-            <div className='latest-projects flex'>
+            <div className={'latest-projects flex'}>
                 {latestProjects && latestProjects.map((project, i) => <ProjectCard
                     currentProject={project}
                     key={i}
-                    className='main-project'
+                    className={`main-project ${this.props.className}`}
                 />)}
             </div>
         </div>
@@ -49,6 +49,7 @@ LatestProjects.propTypes = {
   error: PropTypes.object,
   loading: PropTypes.bool,
   fetchLatestProjects: PropTypes.func,
+  className: PropTypes.string,
 };
 
 const mapStateToProps = state => ({
