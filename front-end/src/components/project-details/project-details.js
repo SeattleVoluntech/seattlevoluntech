@@ -62,7 +62,7 @@ class ProjectDetails extends React.Component {
 }
 
 ProjectDetails.propTypes = {
-  projectDetails: PropTypes.array,
+  projectDetails: PropTypes.object,
   projectId: PropTypes.string,
   error: PropTypes.object,
   loading: PropTypes.bool,
