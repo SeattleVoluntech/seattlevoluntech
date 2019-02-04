@@ -1,7 +1,10 @@
+// packages
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+// custom components
 import ProjectCard from '../open-projects/project-card';
+import Button from '../button/button'
 
 // styles
 import './profile.scss';
@@ -9,36 +12,55 @@ import './profile.scss';
 class Profile extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      user: 'business',
+    };
+  }
+
+  switchUser = () => {
+    const newUser = this.state.user === 'business' ? 'volunteer' : 'business';
+    this.setState({ user: newUser });
   }
 
   render() {
     const { location } = this.props;
 
-    const businessProfile = <div className='profile-info flex'><div className='profile-container'><h3>Business Name Here</h3>
+    const businessProfile = <div className='profile-info flex'><div className='profile-container'><h2>Pizza Pisa</h2>
+      <Button onClick={this.switchUser}>Switch user</Button>
       <div className='profile-details flex'>
         <div className='profile-business-details'>
-          <span><h4>Business Email : </h4><p>Business Email here</p></span>
-          <span><h4>Business Website: </h4><a href='http://seattlevoluntech.com'>`http://seattlevoluntech.com`</a></span>
+          <div><h4>Business Email : </h4><p>pizzapisa@gmail.com</p></div>
+          <div><h4>Business Website: </h4><a href='http://seattlevoluntech.com'></a></div>
         </div>
-        <div className='profile-business-desc '>
-          <span><h4>Business Description: </h4><p>My business is the best. My business is the best. My business is the best. My business is the best. My business is the best.business is the best. My business is the best. My business is the best. My business is the best. My business is the best.</p></span>
+        <div className='profile-business-desc flex'>
+          <div><h4>Business Description: </h4><p>Pizza Pisa is a small family-owned pizzeria in Georgetown. They specialize in neapolitan style pizza. Every day, the owners make their own mozzarella cheese by hand with locally sourced ingredients. Each pizza is hand tossed with love. </p></div>
         </div>
       </div>
-      <div className='business-profile-buttons flex'>
-      <Link to='dashboard-edit' user='business'><button>Edit your profile</button></Link>
-      <Link to='/project-new'><button>Create a new project</button></Link>
+      <div className='profile-buttons flex'>
+      <Link to='dashboard-edit' user='business'><Button>Edit your profile</Button></Link>
+      <Link to='/project-new'><Button>Create a new project</Button></Link>
       </div>
       </div></div>;
 
-    const volunteerProfile = <div className='profile-info flex'><div className='profile-container flex'><h3>this.props.volunteername</h3>
-      <span><h4>Volunteer Email :</h4><p>this.props.volunteer.email</p></span>
-      <span><h4>Volunteer Skills :</h4><p>this.props.volunteer.skills</p></span>
-      <Link to='/dashboard-edit'><button>Edit your profile</button></Link>
+    const volunteerProfile = <div className='profile-info flex'><div className='profile-container'><h2>Techy Bob</h2>
+      <Button onClick={this.switchUser}>Switch user</Button>
+      <div className='profile-details flex'>
+        <div className='profile-volunteer-details'>
+          <div><h4>Volunteer Email :</h4><p>techybob@gmail.com</p></div>
+          <div><h4>Volunteer Skills :</h4><p>Web Design, Front End Development</p></div>
+        </div>
+        <div className='profile-volunteer-bio flex'>
+          <div><h4>Volunteer Bio :</h4><p>I'm an engineer who is early in my career. I am interested in working on projects that help me build my expertise and portfolio while helping out in the community. </p></div>
+        </div>
+      </div>
+      <div className='profile-buttons flex'>
+      <Link to='dashboard-edit' user='volunteer'><Button>Edit your profile</Button></Link>
+      </div>
       </div></div>;
-
+    console.log(this.state);
     return (
         <React.Fragment>
-          {this.props.user === 'business' && (
+          {this.state.user === 'business' && (
             <div className='profile'>
             {businessProfile}
             <div className='profile-projects flex'>
@@ -54,7 +76,7 @@ class Profile extends React.Component {
             </div>
             </div>)
           }
-          {this.props.user === 'volunteer' && (
+          {this.state.user === 'volunteer' && (
             <React.Fragment>
               <div className='profile'>
                 {volunteerProfile}

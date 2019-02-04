@@ -19,8 +19,27 @@ class Landing extends React.Component {
     super(props);
     this.state = {
       user: null,
+      ticker: false,
+      opacity: false,
     };
     this.signUp = this.signUp.bind(this);
+    this.handleScroll = this.handleScroll.bind(this);
+  }
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
+
+  handleScroll() {
+    if (!this.state.ticker) {
+      if (window.scrollY > 1050) {
+        this.setState({ ticker: true, opacity: true });
+      }
+    }
   }
 
   signUpForm() {
@@ -95,7 +114,7 @@ class Landing extends React.Component {
           <section className ='main-details'>
             { about }
           </section>
-          <LatestProjects />
+          <LatestProjects className={this.state.opacity ? 'open' : 'close'} />
         </section>
       </React.Fragment>
     );
