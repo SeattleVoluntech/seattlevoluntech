@@ -21,7 +21,7 @@ class Profile extends React.Component {
 
   render() {
     const { location } = this.props;
-    const { latestProjects } = this.props.latestProjects;
+    const { error, loading, latestProjects } = this.props.latestProjects;
 
     const businessProfile = <div className='profile-info flex'><div className='profile-container'><h3>Business Name Here</h3>
       <div className='profile-details flex'>
@@ -54,10 +54,9 @@ class Profile extends React.Component {
             <div className='profile-projects flex'>
               <div className='open-projects flex'>
                 <h2>Open Projects</h2>
-                {latestProjects && latestProjects.map((project, i) => <ProjectCard
-                      currentProject={project}
-                      key={i}
-                    />)}
+                <ProjectCard
+                   currentProject={latestProjects[0]}
+                />)}
               </div>
               <hr className='underline' />
               <div className='closed-projects flex'>
