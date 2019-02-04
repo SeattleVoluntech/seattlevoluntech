@@ -1,6 +1,5 @@
 // packages
 import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -21,7 +20,6 @@ class ProjectDetails extends React.Component {
     this.state = {
       isEditing: false,
     };
-    this.handleSignUp = this.handleSignUp.bind(this);
   }
 
   componentDidMount() {
@@ -32,11 +30,6 @@ class ProjectDetails extends React.Component {
     this.setState({
       isEditing: true,
     });
-  }
-
-  handleSignUp() {
-    // Post request
-    return <Link to='/thank-you'>abc</Link>
   }
 
   render() {
@@ -54,7 +47,7 @@ class ProjectDetails extends React.Component {
           {this.props.isBusiness
             ? <ProjectInfo isBusiness={true} handleSignUp={this.handleSignUp}
             projectDetails={projectDetails}/>
-            : <ProjectInfo isBusiness={false} handleSignUp={this.handleSignUp}
+            : <ProjectInfo isVolunteer={true} handleSignUp={this.handleSignUp}
           projectDetails={projectDetails}/>
           }
           {this.props.isVolunteer
@@ -69,7 +62,7 @@ class ProjectDetails extends React.Component {
 }
 
 ProjectDetails.propTypes = {
-  projectDetails: PropTypes.array,
+  projectDetails: PropTypes.object,
   projectId: PropTypes.string,
   error: PropTypes.object,
   loading: PropTypes.bool,
