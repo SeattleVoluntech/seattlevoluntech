@@ -1,37 +1,37 @@
 import {
-  GET_PROJECT_DETAILS_BEGIN,
-  GET_PROJECT_DETAILS_SUCCESS,
-  GET_PROJECT_DETAILS_FAILURE,
-} from '../actions/project-details-actions';
+  PUT_PROFILE_FORM_BEGIN,
+  PUT_PROFILE_FORM_SUCCESS,
+  PUT_PROFILE_FORM_FAILURE,
+} from '../actions/profile-edit-actions';
 
 const initialState = {
-  projectDetails: {},
+  profileForm: [],
   loading: false,
   error: null,
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case GET_PROJECT_DETAILS_BEGIN:
+    case PUT_PROFILE_FORM_BEGIN:
       return {
         ...state,
         loading: true,
         error: null,
       };
 
-    case GET_PROJECT_DETAILS_SUCCESS:
+    case PUT_PROFILE_FORM_SUCCESS:
       return {
         ...state,
         loading: false,
-        projectDetails: action.payload,
+        profileForm: action.payload,
       };
 
-    case GET_PROJECT_DETAILS_FAILURE:
+    case PUT_PROFILE_FORM_FAILURE:
       return {
         ...state,
         loading: false,
         error: action.payload.error,
-        projectDetails: [],
+        profileForm: [],
       };
 
     default:
