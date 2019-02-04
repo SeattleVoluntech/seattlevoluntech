@@ -11,7 +11,7 @@ const Posedbutton = posed.button({
 
 const Button = (props) => {
   return (
-    <Posedbutton {...props}/>
+    <Posedbutton {...props} className='posed-button'/>
   );
 };
 
