@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import ProjectPane from './project-pane';
 
 import './open-projects.scss';
+import ProjectCard from "../landing/latest-projects";
 
 class Projects extends React.Component {
   constructor(props) {

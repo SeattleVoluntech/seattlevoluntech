@@ -54,4 +54,4 @@ CREATE TABLE volunteers
     project_id bigint NOT NULL,
     FOREIGN KEY ("user_id") REFERENCES "public"."users"("id") ON DELETE RESTRICT ON UPDATE RESTRICT,
     FOREIGN KEY ("project_id") REFERENCES "public"."projects"("id") ON DELETE CASCADE ON UPDATE RESTRICT
-)
+);

@@ -1,5 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+
+import { fetchLatestProjects } from "../../actions/latest-projects-actions";
 
 import ProjectCard from '../open-projects/project-card';
 
@@ -11,8 +15,13 @@ class Profile extends React.Component {
     super(props);
   }
 
+  componentDidMount() {
+    this.props.fetchLatestProjects();
+  }
+
   render() {
     const { location } = this.props;
+    const { error, loading, latestProjects } = this.props.latestProjects;
 
     const businessProfile = <div className='profile-info flex'><div className='profile-container'><h3>Business Name Here</h3>
       <div className='profile-details flex'>
@@ -38,13 +47,16 @@ class Profile extends React.Component {
 
     return (
         <React.Fragment>
+          {console.log(latestProjects)}
           {this.props.user === 'business' && (
             <div className='profile'>
             {businessProfile}
             <div className='profile-projects flex'>
               <div className='open-projects flex'>
                 <h2>Open Projects</h2>
-                {/* map over project object to generate cards and pass userType as props */}
+                <ProjectCard
+                   currentProject={latestProjects[0]}
+                />)}
               </div>
               <hr className='underline' />
               <div className='closed-projects flex'>
@@ -77,4 +89,24 @@ class Profile extends React.Component {
   }
 }
 
-export default Profile;
+Profile.propTypes = {
+  fetchLatestProjects: PropTypes.func,
+  projects: PropTypes.object,
+  error: PropTypes.object,
+  loading: PropTypes.bool,
+  latestProjects:PropTypes.object,
+};
+
+const mapStateToProps = state => ({
+  latestProjects: state.latestProjects,
+  loading: state.loading,
+  error: state.error,
+});
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchLatestProjects: () => dispatch(fetchLatestProjects()),
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);
