@@ -89,10 +89,12 @@
 .open-projects, .closed-projects, .current-projects {
   flex-flow: row wrap;
   justify-content: space-around;
+  text-align: center;
 }
 
 .open-projects > h2, .current-projects > h2 {
   margin: 50px 0 55px 0;
+  width: 100%;
 }
 
 .closed-projects {

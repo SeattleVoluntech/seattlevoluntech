@@ -67,7 +67,7 @@ class Profile extends React.Component {
       <Link to='dashboard-edit' user='volunteer'><Button>Edit your profile</Button></Link>
       </div>
       </div></div>;
-    
+
     return (
         <React.Fragment>
           {this.state.user === 'business' && (
@@ -76,9 +76,10 @@ class Profile extends React.Component {
             <div className='profile-projects flex'>
               <div className='open-projects flex'>
                 <h2>Open Projects</h2>
-                <ProjectCard
+                {latestProjects.length > 0 && <ProjectCard
                    currentProject={latestProjects[0]}
-                />)}
+                   className={'main-project'}
+                />}
               </div>
               <hr className='underline' />
               <div className='closed-projects flex'>
