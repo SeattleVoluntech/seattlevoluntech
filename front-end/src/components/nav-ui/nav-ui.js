@@ -42,7 +42,7 @@ class NavUi extends React.Component {
     const loginSet = <Media query="(max-width: 767px)">
       {matches => matches ? ( // mobile sized
               <Menu right width={ '50%' }>
-                <Link to={routes.DASHBOARD_FRONTEND} onClick={this.handleReload} className='menu-item'>Login</Link>
+                <Link to={routes.LOGIN_FRONTEND} onClick={this.handleReload} className='menu-item'>Login</Link>
                 <Link to={routes.SIGNUP_FRONTEND} onClick={this.handleReload} className='menu-item'>Sign Up</Link>
                 <Link to={routes.ABOUT_US_FRONTEND} className='menu-item'>About Us</Link>
                 <Link to={routes.PROJECTS_FRONTEND} className='menu-item'>Projects</Link>
@@ -50,7 +50,7 @@ class NavUi extends React.Component {
               </Menu>
           ) : ( // larger than mobile
               <div className='navLinks'>
-                <Link to={routes.DASHBOARD_FRONTEND} onClick={this.handleReload} className='navLink'>Login</Link>
+                <Link to={routes.LOGIN_FRONTEND} onClick={this.handleReload} className='navLink'>Login</Link>
                 <Link to={routes.SIGNUP_FRONTEND} onClick={this.handleReload} className='navLink'>Sign Up</Link>
                 <Link to={routes.ABOUT_US_FRONTEND} className='navLink'>About Us</Link>
                 <Link to={routes.PROJECTS_FRONTEND} className='navLink'>Projects</Link>
