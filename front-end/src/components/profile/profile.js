@@ -1,6 +1,11 @@
 // packages
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+
+// Redux action
+import { fetchLatestProjects } from "../../actions/latest-projects-actions";
 
 // custom components
 import ProjectCard from '../open-projects/project-card';
@@ -22,8 +27,13 @@ class Profile extends React.Component {
     this.setState({ user: newUser });
   }
 
+  componentDidMount() {
+    this.props.fetchLatestProjects();
+  }
+
   render() {
     const { location } = this.props;
+    const { error, loading, latestProjects } = this.props.latestProjects;
 
     const businessProfile = <div className='profile-info flex'><div className='profile-container'><h2>Pizza Pisa</h2>
       <Button onClick={this.switchUser}>Switch user</Button>
@@ -57,7 +67,7 @@ class Profile extends React.Component {
       <Link to='dashboard-edit' user='volunteer'><Button>Edit your profile</Button></Link>
       </div>
       </div></div>;
-    console.log(this.state);
+    
     return (
         <React.Fragment>
           {this.state.user === 'business' && (
@@ -66,7 +76,9 @@ class Profile extends React.Component {
             <div className='profile-projects flex'>
               <div className='open-projects flex'>
                 <h2>Open Projects</h2>
-                {/* map over project object to generate cards and pass userType as props */}
+                <ProjectCard
+                   currentProject={latestProjects[0]}
+                />)}
               </div>
               <hr className='underline' />
               <div className='closed-projects flex'>
@@ -99,4 +111,24 @@ class Profile extends React.Component {
   }
 }
 
-export default Profile;
+Profile.propTypes = {
+  fetchLatestProjects: PropTypes.func,
+  projects: PropTypes.object,
+  error: PropTypes.object,
+  loading: PropTypes.bool,
+  latestProjects:PropTypes.object,
+};
+
+const mapStateToProps = state => ({
+  latestProjects: state.latestProjects,
+  loading: state.loading,
+  error: state.error,
+});
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchLatestProjects: () => dispatch(fetchLatestProjects()),
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);
