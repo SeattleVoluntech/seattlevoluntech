@@ -89,19 +89,24 @@ class NavUi extends React.Component {
       }
     </Media>;
 
-    if (location.hash === `#${routes.LOGIN_FRONTEND}`) {
+    /*if (location.hash === `#${routes.LOGIN_FRONTEND}`) {
       return loginSet;
     }
 
     if (location.hash === `#${routes.DASHBOARD_EDIT_FRONTEND}` || location.hash === `#${routes.DASHBOARD_FRONTEND}`) {
       return dashboardSet;
     }
-    return loginSet;
+    return loginSet;*/
+    if (location.hash === `#${routes.SITE_ROOT_FRONTEND}`) {
+      return loginSet;
+    }
+    if (location.hash !== `#${routes.SITE_ROOT_FRONTEND}`) {
+      return dashboardSet;
+    }
   }
 
   render() {
     const { location } = this.props;
-    console.log(this.props);
     return (
       <section id="navControl">
         <nav className ='loginSetNavigation'>
