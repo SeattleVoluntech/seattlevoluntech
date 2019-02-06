@@ -24,9 +24,17 @@ public class ProjectController {
 
     // Create project
     @PostMapping(path="/projects")
-    public Project createProject(@RequestBody Project project){
+    public Project createProject(@RequestBody Project project, final HttpServletRequest request){
 
-        return projectsRepository.save(project);
+        String loggedInUserTokenId = request.getRemoteUser();
+
+        project.setOwnerId(loggedInUserTokenId);
+
+        Project createdProject = projectsRepository.save(project);
+
+        logger.info("Newly created project id: {}", createdProject.getId());
+
+        return createdProject;
     }
 
     // List projects, specifying optional status parameters
