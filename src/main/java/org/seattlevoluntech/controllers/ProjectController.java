@@ -85,15 +85,34 @@ public class ProjectController {
     @ResponseBody
     public Optional<Project> updateProject(
             @RequestBody Project project,
-            @PathVariable("id") Long id
+            @PathVariable("id") Long id,
+            final HttpServletRequest request
         ) {
 
-        if(!projectsRepository.findById(id).isPresent())
+        String loggedInUserTokenId = request.getRemoteUser();
+
+        Optional<Project> projectInDatabase = projectsRepository.findById(id);
+
+        if(!projectInDatabase.isPresent()){
             throw new ErrorController.ErrorNotFound("id-" + id);
+        } else {
+            Project retrievedProject = projectInDatabase.get();
+            String retrievedOwnerId = retrievedProject.getOwnerId();
 
-        project.setId(id);
-
-        projectsRepository.save(project);
+            if(loggedInUserTokenId.equals(retrievedOwnerId)){
+                retrievedProject.setId(id);
+                retrievedProject.setOwnerId(loggedInUserTokenId);
+                retrievedProject.setProjectName(project.getProjectName());
+                retrievedProject.setProjectDescription(project.getProjectDescription());
+                retrievedProject.setBusinessName(project.getBusinessName());
+                retrievedProject.setBusinessDescription(project.getBusinessDescription());
+                retrievedProject.setCreationDate(project.getCreationDate());
+                retrievedProject.setStatus(project.getStatus());
+                projectsRepository.save(retrievedProject);
+            } else {
+                throw new ErrorController.ErrorUnauthorized("You are not authorized to make changes to this project.");
+            }
+        }
 
         return projectsRepository.findById(id);
     }
