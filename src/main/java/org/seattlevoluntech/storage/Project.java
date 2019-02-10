@@ -16,6 +16,8 @@ public class Project implements Serializable {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
+    @Column(name = "owner_id")
+    private String ownerId;
     @Column(name = "project_name")
     private String projectName;
     @Column(name = "project_description")
@@ -39,9 +41,11 @@ public class Project implements Serializable {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public void setId(Long id) { this.id = id; }
+
+    public String getOwnerId() { return ownerId; }
+
+    public void setOwnerId(String ownerId) { this.ownerId = ownerId; }
 
     public String getProjectName() {
         return projectName;

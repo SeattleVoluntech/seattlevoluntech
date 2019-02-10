@@ -21,4 +21,11 @@ public class ErrorController{
         }
     }
 
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public static class ErrorUnauthorized extends RuntimeException {
+        public ErrorUnauthorized(String exception) {
+            super(exception);
+        }
+    }
+
 }
