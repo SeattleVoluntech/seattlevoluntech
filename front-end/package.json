@@ -60,7 +60,11 @@
     "lodash": "latest",
     "match-sorter": "^2.3.0",
     "namor": "^1.1.1",
+<<<<<<< HEAD
     "react-burger-menu": "^2.6.3",
+=======
+    "react-burger-menu": "^2.6.2",
+>>>>>>> ea881ca6d0d760fbef6258fb0813d5d59b89ef4e
     "react-media": "^1.9.2",
     "react-pose": "^4.0.5",
     "react-pose-text": "^3.1.0"
