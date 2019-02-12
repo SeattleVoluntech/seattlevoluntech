@@ -34,9 +34,10 @@ body {
 button {
   width: 170px;
   height: 40px;
-  background-color: $color-primary;
+  background-color: $color-quaternary;
   border-radius: 10px;
   font-weight: bold;
+  color: $color-primary;
 }
 
 button:hover {

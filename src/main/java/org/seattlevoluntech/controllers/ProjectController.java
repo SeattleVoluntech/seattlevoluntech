@@ -1,6 +1,9 @@
 package org.seattlevoluntech.controllers;
 
 import com.google.common.collect.Lists;
+import com.mashape.unirest.http.exceptions.UnirestException;
+import org.seattlevoluntech.Utilities.EmailUtility;
+import org.seattlevoluntech.models.Email;
 import org.seattlevoluntech.storage.Project;
 import org.seattlevoluntech.storage.*;
 import org.slf4j.Logger;
@@ -21,12 +24,22 @@ public class ProjectController {
     private ProjectsRepository projectsRepository;
     @Autowired
     private UsersRepository usersRepository;
+    @Autowired
+    private EmailUtility emailUtility;
 
     // Create project
     @PostMapping(path="/projects")
-    public Project createProject(@RequestBody Project project){
+    public Project createProject(@RequestBody Project project, final HttpServletRequest request){
 
-        return projectsRepository.save(project);
+        String loggedInUserTokenId = request.getRemoteUser();
+
+        project.setOwnerId(loggedInUserTokenId);
+
+        Project createdProject = projectsRepository.save(project);
+
+        logger.info("Newly created project id: {}", createdProject.getId());
+
+        return createdProject;
     }
 
     // List projects, specifying optional status parameters
@@ -77,15 +90,34 @@ public class ProjectController {
     @ResponseBody
     public Optional<Project> updateProject(
             @RequestBody Project project,
-            @PathVariable("id") Long id
+            @PathVariable("id") Long id,
+            final HttpServletRequest request
         ) {
 
-        if(!projectsRepository.findById(id).isPresent())
+        String loggedInUserTokenId = request.getRemoteUser();
+
+        Optional<Project> projectInDatabase = projectsRepository.findById(id);
+
+        if(!projectInDatabase.isPresent()){
             throw new ErrorController.ErrorNotFound("id-" + id);
+        } else {
+            Project retrievedProject = projectInDatabase.get();
+            String retrievedOwnerId = retrievedProject.getOwnerId();
 
-        project.setId(id);
-
-        projectsRepository.save(project);
+            if(loggedInUserTokenId.equals(retrievedOwnerId)){
+                retrievedProject.setId(id);
+                retrievedProject.setOwnerId(loggedInUserTokenId);
+                retrievedProject.setProjectName(project.getProjectName());
+                retrievedProject.setProjectDescription(project.getProjectDescription());
+                retrievedProject.setBusinessName(project.getBusinessName());
+                retrievedProject.setBusinessDescription(project.getBusinessDescription());
+                retrievedProject.setCreationDate(project.getCreationDate());
+                retrievedProject.setStatus(project.getStatus());
+                projectsRepository.save(retrievedProject);
+            } else {
+                throw new ErrorController.ErrorUnauthorized("You are not authorized to make changes to this project.");
+            }
+        }
 
         return projectsRepository.findById(id);
     }
@@ -112,8 +144,12 @@ public class ProjectController {
         }
 
 
-        optionalUser.get().addProject(optionalProject.get());
+        Optional newProjectList = Optional.ofNullable(optionalUser.get().addProject(optionalProject.get()));
+
         usersRepository.save(optionalUser.get());
+        if (newProjectList.isPresent()) {
+            sendEmail(optionalUser.get(), optionalProject.get());
+        }
 
         return projectsRepository.findById(projectId);
     }
@@ -127,5 +163,26 @@ public class ProjectController {
 
         projectsRepository.deleteById(id);
         return Lists.newArrayList(projectsRepository.findAll());
+    }
+
+
+    private void sendEmail(User user, Project project) {
+        try {
+            Email email = new Email();
+            email.setFrom("no-reply@seattlevoluntech.com");
+            // TODO: Set this email up dynamically based on the owner of the project
+            email.setTo("jennyyuan88+voluntechTest@gmail.com");
+            email.setSubject("You got a volunteer for: " + project.getProjectName());
+            email.setMessage(
+                    "Hello, a volunteer joined your project named "
+                            + project.getProjectName()
+                            + ".  Their name is "
+                            + user.getFirstName() + " " + user.getLastName() + "."
+                            + " You can reach them at: " + user.getEmail()
+            );
+            emailUtility.SendSimpleMessage(email);
+        } catch (UnirestException e) {
+            logger.error(e.toString());
+        }
     }
 }

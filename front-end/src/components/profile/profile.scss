@@ -12,8 +12,16 @@
 
 .profile-container {
   width: 80%;
-  flex-flow: column wrap;
+  flex-flow: row wrap;
   min-height: 200px;
+  padding: 40px 0 0 0;
+}
+
+.profile-container > button:nth-of-type(1) {
+  margin: 0 0 5px 0;
+  width: 70px;
+  height: 20px;
+  font-size: 10px;
 }
 
 .profile-details {
@@ -24,20 +32,32 @@
 }
 
 .profile-details div {
-  border: 1px solid $color-octonary;
+  //border: 1px solid $color-octonary;
+  //border-radius: 5px;
   padding: 10px;
 }
 
-.profile-business-details {
+.profile-business-details, .profile-volunteer-details {
   flex-grow: 1;
   max-width: 40%;
   word-wrap: break-word;
 }
 
-.profile-business-desc {
+.profile-business-details > div, .profile-business-desc > div,
+.profile-volunteer-details > div, .profile-volunteer-bio > div {
+  border-width: 1px;
+  border-color: $color-accent;
+  border-style: solid;
+}
+
+.profile-business-desc, .profile-volunteer-bio {
   flex-grow: 2;
   max-width: 50%;
   word-wrap: break-word;
+}
+
+.profile-business-desc > div {
+  height: auto;
 }
 
 .profile-projects {
@@ -45,12 +65,12 @@
   justify-content: center;
 }
 
-.profile-container h3 {
+.profile-container h2 {
   padding: 10px 0 0 0;
   color: $color-primary;
 }
 
-.business-profile-buttons {
+.profile-buttons {
   justify-content: space-around;
 }
 
@@ -60,6 +80,10 @@
   background-color: $color-quaternary;
   color: $color-primary;
   font-size: 15px;
+}
+
+.profile-container button:hover {
+  background-color: #0FACF3;
 }
 
 .open-projects, .closed-projects, .current-projects {

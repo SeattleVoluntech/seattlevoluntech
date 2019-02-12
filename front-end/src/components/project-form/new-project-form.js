@@ -19,6 +19,14 @@ class ProjectNew extends React.Component {
     this.validateForm = this.validateForm.bind(this);
   }
 
+  componentWillUnmount() {
+    this.setState({
+      fields: {},
+      errors: {},
+      formSubmitted: null,
+    })
+  }
+
   handleBlur = (field) => (e) => {
     this.setState({
       touched: { ...this.state.touched, [field]: true },
@@ -48,10 +56,10 @@ class ProjectNew extends React.Component {
       errors['businessDescription'] ='Please tell us briefly about your business.';
     }
 
-    if (touched['businessSite'] && !fields['businessSite']) {
+    /*if (touched['businessSite'] && !fields['businessSite']) {
       formValid = false;
       errors['businessSite'] ='Please enter a valid url.';
-    }
+    }*/
 
     if (touched['projectName'] && !fields['projectName']) {
       formValid = false;
@@ -65,26 +73,25 @@ class ProjectNew extends React.Component {
 
     this.setState({
         errors: errors
-      });
+    });
     return formValid;
-
   }
 
   async handleSubmit(event) {
     event.preventDefault();
-    if (this.validateForm()){
-      this.setState({ formIsValid: true })
+    if (await this.validateForm()){
+      await this.setState({ formIsValid: true })
     }
-    if (this.state.formIsValid) {
+    if (await this.state.formIsValid) {
       const data = JSON.stringify(this.state.fields);
-      fetch('http://localhost:8080/projects', {
+      await fetch('http://localhost:8080/projects', {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
         body: data,
       }).catch((error) => {
-        console.log(error);
+        alert(error);
       });
-      await this.setState({ formSubmitted: true });
+      this.setState({ formSubmitted: true });
     }
   }
 
