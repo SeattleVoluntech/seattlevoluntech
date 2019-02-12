@@ -1,37 +1,37 @@
 import {
-  GET_PROJECT_DETAILS_BEGIN,
-  GET_PROJECT_DETAILS_SUCCESS,
-  GET_PROJECT_DETAILS_FAILURE,
-} from '../actions/project-details-actions';
+  GET_ALL_PROJECTS_BEGIN,
+  GET_ALL_PROJECTS_SUCCESS,
+  GET_ALL_PROJECTS_FAILURE,
+} from '../actions/get-all-projects-actions';
 
 const initialState = {
-  projectDetails: {},
+  allProjects: [],
   loading: false,
   error: null,
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case GET_PROJECT_DETAILS_BEGIN:
+    case GET_ALL_PROJECTS_BEGIN:
       return {
         ...state,
         loading: true,
         error: null,
       };
 
-    case GET_PROJECT_DETAILS_SUCCESS:
+    case GET_ALL_PROJECTS_SUCCESS:
       return {
         ...state,
         loading: false,
-        projectDetails: action.payload,
+        allProjects: action.payload,
       };
 
-    case GET_PROJECT_DETAILS_FAILURE:
+    case GET_ALL_PROJECTS_FAILURE:
       return {
         ...state,
         loading: false,
         error: action.payload.error,
-        projectDetails: [],
+        allProjects: [],
       };
 
     default:

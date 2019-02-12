@@ -1,6 +1,5 @@
 // packages
 import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -8,7 +7,7 @@ import { connect } from 'react-redux';
 import { fetchProjectDetails } from '../../actions/project-details-actions';
 
 // components
-import ProjectEditing from './project-editing';
+//import ProjectEditing from './project-editing';
 import ProjectInfo from './project-info';
 import * as routes from '../../routes';
 
@@ -21,7 +20,10 @@ class ProjectDetails extends React.Component {
     this.state = {
       isEditing: false,
     };
-    this.handleSignUp = this.handleSignUp.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.fetchProjectDetails();
   }
 
   handleClick() {
@@ -30,23 +32,28 @@ class ProjectDetails extends React.Component {
     });
   }
 
-  handleSignUp() {
-    // Post request
-    return <Link to='/thank-you'>abc</Link>
-  }
-
   render() {
-    const { location, match } = this.props;
+    const { error, loading, projectDetails } = this.props.projectDetails;
+    if (error) {
+      return <div>Error! {error.message}</div>;
+    }
+
+    if (loading) {
+      return <div>Loading...</div>;
+    }
     return (
       <Fragment>
         <section className='project-details flex'>
           {this.props.isBusiness
-            ? <span onClick={this.handleClick} className="editLink">edit</span>
-            : null
+            ? <ProjectInfo isBusiness={true} handleSignUp={this.handleSignUp}
+            projectDetails={projectDetails}/>
+            : <ProjectInfo isVolunteer={true} handleSignUp={this.handleSignUp}
+          projectDetails={projectDetails}/>
           }
-          {this.state.isEditing && this.props.isBusiness
-            ? <ProjectEditing handleClick={this.handleClick}/>
-          : <ProjectInfo isBusiness={false} handleSignUp={this.handleSignUp}/>
+          {this.props.isVolunteer
+            ? <ProjectInfo isVolunteer={true} handleSignUp={this.handleSignUp}
+            projectDetails={projectDetails}/>
+            : null
           }
         </section>
       </Fragment>
@@ -55,11 +62,11 @@ class ProjectDetails extends React.Component {
 }
 
 ProjectDetails.propTypes = {
-  latestProjects: PropTypes.object,
-  projects: PropTypes.object,
+  projectDetails: PropTypes.object,
+  projectId: PropTypes.string,
   error: PropTypes.object,
   loading: PropTypes.bool,
-  fetchLatestProjects: PropTypes.func,
+  fetchProjectDetails: PropTypes.func,
 };
 
 const mapStateToProps = (state, ownProps) => ({
@@ -69,9 +76,9 @@ const mapStateToProps = (state, ownProps) => ({
   error: state.error,
 });
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    fetchProjectDetails: () => dispatch(fetchProjectDetails()),
+    fetchProjectDetails: () => dispatch(fetchProjectDetails(ownProps.match.params.id)),
   };
 };
 

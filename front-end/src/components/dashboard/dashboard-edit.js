@@ -8,19 +8,18 @@ import VolunteerProfileEdit from '../profile-form/volunteer-profile-edit';
 
 // styles
 import './dashboard-edit.scss';
-/* TODO Add redux for conditional rendering */
+
 class DashboardEdit extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       userExist: null,
       userType: null,
-    }
+    };
   }
 
+  // TODO: Retrieve current user type from Redux Store to render correct form
   render() {
-    const { location } = this.props;
-
     return (
         <React.Fragment>
           {this.state.userType === null && <NewProfileForm />}

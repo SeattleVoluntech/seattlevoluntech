@@ -1,37 +1,37 @@
 import {
-  GET_PROJECT_DETAILS_BEGIN,
-  GET_PROJECT_DETAILS_SUCCESS,
-  GET_PROJECT_DETAILS_FAILURE,
-} from '../actions/project-details-actions';
+  GET_CURRENTUSER_INFO_BEGIN,
+  GET_CURRENTUSER_INFO_SUCCESS,
+  GET_CURRENTUSER_INFO_FAILURE,
+} from '../actions/get-currentuser-info-actions';
 
 const initialState = {
-  projectDetails: {},
+  currentUserInfo: [],
   loading: false,
   error: null,
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case GET_PROJECT_DETAILS_BEGIN:
+    case GET_CURRENTUSER_INFO_BEGIN:
       return {
         ...state,
         loading: true,
         error: null,
       };
 
-    case GET_PROJECT_DETAILS_SUCCESS:
+    case GET_CURRENTUSER_INFO_SUCCESS:
       return {
         ...state,
         loading: false,
-        projectDetails: action.payload,
+        currentUserInfo: action.payload,
       };
 
-    case GET_PROJECT_DETAILS_FAILURE:
+    case GET_CURRENTUSER_INFO_FAILURE:
       return {
         ...state,
         loading: false,
         error: action.payload.error,
-        projectDetails: [],
+        currentUserInfo: [],
       };
 
     default:
