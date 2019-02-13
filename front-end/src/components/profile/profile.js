@@ -4,21 +4,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-import { fetchLatestProjects } from "../../actions/latest-projects-actions";
-
-=======
-=======
->>>>>>> ea881ca6d0d760fbef6258fb0813d5d59b89ef4e
 // Redux action
 import { fetchLatestProjects } from "../../actions/latest-projects-actions";
 
 // custom components
-<<<<<<< HEAD
->>>>>>> cbd4e2cee3fa9a1625320fe6192118faa041683c
-=======
->>>>>>> ea881ca6d0d760fbef6258fb0813d5d59b89ef4e
 import ProjectCard from '../open-projects/project-card';
 import Button from '../button/button'
 
@@ -36,7 +25,7 @@ class Profile extends React.Component {
   switchUser = () => {
     const newUser = this.state.user === 'business' ? 'volunteer' : 'business';
     this.setState({ user: newUser });
-  }
+  };
 
   componentDidMount() {
     this.props.fetchLatestProjects();
@@ -85,16 +74,8 @@ class Profile extends React.Component {
     
     return (
         <React.Fragment>
-<<<<<<< HEAD
-<<<<<<< HEAD
           {console.log(latestProjects)}
           {this.props.user === 'business' && (
-=======
-          {this.state.user === 'business' && (
->>>>>>> cbd4e2cee3fa9a1625320fe6192118faa041683c
-=======
-          {this.state.user === 'business' && (
->>>>>>> ea881ca6d0d760fbef6258fb0813d5d59b89ef4e
             <div className='profile'>
             {businessProfile}
             <div className='profile-projects flex'>
