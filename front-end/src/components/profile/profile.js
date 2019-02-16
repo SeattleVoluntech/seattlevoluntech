@@ -70,7 +70,7 @@ class Profile extends React.Component {
     
     return (
         <React.Fragment>
-          {this.props.user === 'business' && (
+          {this.state.user === 'business' && (
             <div className='profile'>
             {businessProfile}
             <div className='profile-projects flex'>
