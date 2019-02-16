@@ -31,10 +31,6 @@ class Profile extends React.Component {
     this.props.fetchLatestProjects();
   }
 
-  componentDidMount() {
-    this.props.fetchLatestProjects();
-  }
-
   render() {
     const { location } = this.props;
     const { error, loading, latestProjects } = this.props.latestProjects;
@@ -74,7 +70,6 @@ class Profile extends React.Component {
     
     return (
         <React.Fragment>
-          {console.log(latestProjects)}
           {this.props.user === 'business' && (
             <div className='profile'>
             {businessProfile}
