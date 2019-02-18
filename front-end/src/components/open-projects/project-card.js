@@ -1,10 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import * as routes from '../../routes';
+import PropTypes from 'prop-types';
 import './project-card.scss';
 
 const ProjectCard = (props) => {
-  console.log(props);
   return (
     <div className={`aProject flex ${props.className}`}>
       { /* <div className="card-top"> */ }
@@ -15,9 +14,14 @@ const ProjectCard = (props) => {
           <h4>{props.currentProject.projectHeadline}</h4>
           <p>Read more</p>
         </Link>
-      {/*</div>*/}
+      { /* </div> */ }
     </div>
   );
+};
+
+ProjectCard.propTypes = {
+  className: PropTypes.string,
+  currentProject: PropTypes.object,
 };
 
 export default ProjectCard;
