@@ -100,9 +100,12 @@ Link a {
 
 //Mobile
 @media only screen and (min-width: 320px) and (max-width: 700px) and (orientation: portrait) {
+  .intro-body {
+    flex-wrap: wrap;
+  }
   .business, .volunteer {
     margin: 25px 0 0 0;
-    width: 50%;
+    width: 90%;
   }
 
   .business > p, .volunteer > p {
@@ -116,6 +119,14 @@ Link a {
 
   .intro-body button {
     width: 90%;
+  }
+
+  .vertical-line {
+    border-bottom: 4px solid $color-quaternary;
+    border-left: 0;
+    height: 10px;
+    width: 50%;
+    margin: 50px 0 40px 0;
   }
 
   .main-details {

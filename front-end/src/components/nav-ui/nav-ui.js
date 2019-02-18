@@ -72,7 +72,7 @@ class NavUi extends React.Component {
                 <Link to={routes.BLOG_FRONTEND} className='menu-item'>Blog</Link>
                 <Link to={routes.ABOUT_US_FRONTEND} className='menu-item'>About Us</Link>
                 <Link to={routes.PROJECTS_FRONTEND} className='menu-item'>Projects</Link>
-                <Link to={routes.DASHBOARD_FRONTEND} className='navLink'>Home</Link>
+                <Link to={routes.DASHBOARD_FRONTEND} className='menu-item'>Home</Link>
               </Menu>
           ): ( // larger than mobile
               <div className='navLinks'>
