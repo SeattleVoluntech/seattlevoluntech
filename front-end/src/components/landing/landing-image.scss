@@ -30,7 +30,7 @@
   background: url('../../../assets/landing-image.jpg') no-repeat content-box;
   background-size: cover;
   width: 100%;
-  max-height: 28vw;
+  max-height: 35vw;
   padding: 75px 0 0 0;
 }
 
@@ -71,8 +71,8 @@
 }
 
 @keyframes slide-in {
-    0% { transform: translateX(-100px);}
-    100% { transform: translateX(0%); }
+  0% { transform: translateX(-100px);}
+  100% { transform: translateX(0%); }
 }
 
 @keyframes bounce {
@@ -80,7 +80,8 @@
   25%, 75% { transform: translateY(15px); }
 }
 
-@media only screen and (min-width: 320px) and (max-width: 700px){
+// Mobile
+@media only screen and (min-width: 320px) and (max-width: 700px) and (orientation: portrait) {
   .landing-image {
     height: 80vw;
   }
@@ -91,13 +92,44 @@
     padding: 2%;
   }
 
+  .intro-text {
+    margin-top: 0px;
+  }
+
   .intro-text p {
     width: 80%;
-    font-size: 20px;
+    font-size: 14px;
     font-weight: normal;
+  }
+
+  .siteTitle {
+    padding: 0px 0 0 0;
+    margin: -2% auto 0% auto;
+  }
+
+  .siteTitle div {
+    font-size: 32px;
   }
 }
 
+//Mobile Landscape
+@media only screen and (min-width: 320px) and (max-width: 700px) and (orientation: landscape) {
+  .siteTitle {
+    padding: 20px 0 0 0;
+    margin: 0 auto 2% auto
+  }
+
+  .intro-text {
+    margin: 10px;
+    padding-bottom: 10px;
+  }
+
+  .intro-text p {
+    font-size: 20px;
+  }
+}
+
+//Tablet
 @media only screen and (min-width: 701px) and (max-width: 900px){
   .landing-image {
     height: 60vw;
@@ -118,6 +150,15 @@
 
   .arrow-wrapper svg {
     margin-top: 2vw;
+  }
+
+  .siteTitle {
+    padding: 30px 0 0 0;
+    margin: 0% auto 2% auto;
+  }
+
+  .intro-text {
+    margin-top: 20px;
   }
 }
 

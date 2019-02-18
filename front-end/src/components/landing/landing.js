@@ -73,7 +73,7 @@ class Landing extends React.Component {
     const businessText = <p>Are you a small business owner who needs a website to
       grow your business, but don't know how or where to start?</p>;
 
-    const volunteerText = <p>Are you a tech professional/enthusiast who is passionate
+    const volunteerText = <p>Are you a tech professional or enthusiast who is passionate
         about making a difference in your local community?</p>;
 
     const about = <div className='about-container'>

@@ -25,7 +25,7 @@ class Profile extends React.Component {
   switchUser = () => {
     const newUser = this.state.user === 'business' ? 'volunteer' : 'business';
     this.setState({ user: newUser });
-  }
+  };
 
   componentDidMount() {
     this.props.fetchLatestProjects();
