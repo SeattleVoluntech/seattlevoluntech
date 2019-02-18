@@ -32,7 +32,7 @@ class LatestProjects extends React.Component {
             <h2>Latest Projects</h2>
             <hr className="underline"/>
             <div className={'latest-projects flex'}>
-                {latestProjects && latestProjects.map((project, i) => <ProjectCard
+                {latestProjects.length > 0 && latestProjects.map((project, i) => <ProjectCard
                     currentProject={project}
                     key={i}
                     className={`main-project ${this.props.className}`}
