@@ -4,6 +4,7 @@
 
 CREATE TABLE projects (
     id SERIAL PRIMARY KEY,
+    owner_id TEXT,
     project_name text UNIQUE,
     project_description text,
     business_name text,
