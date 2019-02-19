@@ -78,6 +78,7 @@ class Profile extends React.Component {
                 <h2>Open Projects</h2>
                 {latestProjects.length > 0 && <ProjectCard
                    currentProject={latestProjects[0]}
+                   className={'main-project'}
                 />}
               </div>
               <hr className='underline' />
