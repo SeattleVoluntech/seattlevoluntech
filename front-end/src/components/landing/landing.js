@@ -82,7 +82,7 @@ class Landing extends React.Component {
       awareness in the Seattle area.</p>
       <p>Seattle VolunTech is one of three projects resulting from
       the efforts of the <a href='https://www.washingtontechnology.org/'>WTIA</a> ION Collaborators - Cohort 3 developed and maintained in concert
-      with Codefellows code school in Seattle.</p></div>;
+      with Code Fellows code school in Seattle.</p></div>;
     return (
       <React.Fragment>
         <section>
