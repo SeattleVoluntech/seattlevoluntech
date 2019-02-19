@@ -40,7 +40,7 @@ class Profile extends React.Component {
       <div className='profile-details flex'>
         <div className='profile-business-details'>
           <div><h4>Business Email : </h4><p>pizzapisa@gmail.com</p></div>
-          <div><h4>Business Website: </h4><a href='http://seattlevoluntech.com'></a></div>
+          <div><h4>Business Website: </h4><a href='http://seattlevoluntech.com'>http://seattlevoluntech.com</a></div>
         </div>
         <div className='profile-business-desc flex'>
           <div><h4>Business Description: </h4><p>Pizza Pisa is a small family-owned pizzeria in Georgetown. They specialize in neapolitan style pizza. Every day, the owners make their own mozzarella cheese by hand with locally sourced ingredients. Each pizza is hand tossed with love. </p></div>
@@ -78,7 +78,7 @@ class Profile extends React.Component {
                 <h2>Open Projects</h2>
                 <ProjectCard
                    currentProject={latestProjects[0]}
-                />)}
+                />
               </div>
               <hr className='underline' />
               <div className='closed-projects flex'>
