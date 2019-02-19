@@ -23,7 +23,7 @@
 .close {
   visibility: hidden;
   opacity: 0;
-  transform: translateY(100%);
+  transform: translateX(-100%);
 }
 
 .open {
@@ -32,8 +32,6 @@
   transition: opacity .5s ease-in, transform .5s ease-in;
   transform: translateY(0);
 }
-
-
 
 @media only screen and (min-width: 320px) and (max-width: 700px){
   .project {

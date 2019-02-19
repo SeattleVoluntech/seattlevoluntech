@@ -128,7 +128,7 @@ class ProjectNew extends React.Component {
               <input type='text' id='project-name' name='projectName' required onChange={this.handleInputChange} onBlur={this.handleBlur('projectName')} value={this.state.fields.projectName || ''} />
               <span className='invalid-feedback'>{this.state.errors.projectName}</span>
               <label htmlFor='project-desc'>Project Description:</label>
-              <textarea rows='10' id='project-desc' name='projectDescription' required onChange={this.handleInputChange} onBlur={this.handleBlur('projectDescription')} value={this.state.fields.projectDescription || ''}/>
+              <textarea rows='10' id='project-desc' name='projectDescription' required onChange={this.handleInputChange} onBlur={this.handleBlur('projectDescription')} value={this.state.fields.projectDescription || ''} placeholder='Tell us about what you need, what you already have in place, and how this project would help.'/>
               <span className='invalid-feedback'>{this.state.errors.projectDescription}</span>
               <button type='submit' disabled={!checkFormCompletion} value='Submit'>Submit</button>
             </div>

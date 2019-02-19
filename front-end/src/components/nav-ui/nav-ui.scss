@@ -106,12 +106,13 @@
   background: $color-primary;
   padding: 2.5em 1.5em 0;
   font-size: 1.15em;
-  height: 45% !important;
+  height: 50% !important;
 }
 
 /* Wrapper for item list */
 .bm-item-list {
   padding: 0.8em;
+  height: auto;
 }
 
 /* Individual item */

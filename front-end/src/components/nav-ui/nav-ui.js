@@ -40,8 +40,7 @@ class NavUi extends React.Component {
   // CSS classNames for each nav instance can be unique for custom looks
   whichMenuSet(location) {
     const loginSet = <Media query="(max-width: 767px)">
-      {matches =>
-          matches ? ( // mobile sized
+      {matches => matches ? ( // mobile sized
               <Menu right width={ '50%' }>
                 <Link to={routes.LOGIN_FRONTEND} onClick={this.handleReload} className='menu-item'>Login</Link>
                 <Link to={routes.SIGNUP_FRONTEND} onClick={this.handleReload} className='menu-item'>Sign Up</Link>
@@ -73,6 +72,7 @@ class NavUi extends React.Component {
                 <Link to={routes.BLOG_FRONTEND} className='menu-item'>Blog</Link>
                 <Link to={routes.ABOUT_US_FRONTEND} className='menu-item'>About Us</Link>
                 <Link to={routes.PROJECTS_FRONTEND} className='menu-item'>Projects</Link>
+                <Link to={routes.DASHBOARD_FRONTEND} className='menu-item'>Home</Link>
               </Menu>
           ): ( // larger than mobile
               <div className='navLinks'>
@@ -84,6 +84,7 @@ class NavUi extends React.Component {
                 <Link to={routes.BLOG_FRONTEND} className='navLink'>Blog</Link>
                 <Link to={routes.ABOUT_US_FRONTEND} className='navLink'>About Us</Link>
                 <Link to={routes.PROJECTS_FRONTEND} className='navLink'>Projects</Link>
+                <Link to={routes.DASHBOARD_FRONTEND} className='navLink'>Home</Link>
               </div>
           )
       }

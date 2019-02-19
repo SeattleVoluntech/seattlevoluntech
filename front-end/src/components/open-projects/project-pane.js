@@ -35,7 +35,7 @@ class ProjectPane extends React.Component {
     }
     return (
       <div className="projectPane">
-        {allProjects.map((project, i) => <ProjectCard
+        {allProjects.length > 0 && allProjects.map((project, i) => <ProjectCard
             currentProject={project}
             key={i}
             className='main-project'

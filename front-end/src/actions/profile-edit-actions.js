@@ -42,10 +42,10 @@ export const sendProfileForm = (formData) => {
   };
 };
 
-export const putProfileForm = () => {
+export const putProfileForm = (data) => {
   return (dispatch) => {
     dispatch(putProfileFormBegin());
-    dispatch(sendProfileForm())
+    dispatch(sendProfileForm(data))
       .then((json) => {
         dispatch(putProfileFormSuccess(json));
         return json;

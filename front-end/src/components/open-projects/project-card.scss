@@ -3,7 +3,7 @@
 .aProject {
   text-align: center;
   width: 27vw;
-  height: 22vw;
+  min-height: 22vw;
   background-color: $color-primary;
   margin-bottom: 60px;
   box-shadow: 3px 3px 7px 0px $color-senary;
@@ -46,7 +46,7 @@
 
 .card-vertical-line {
   border-left: 20px solid $color-nonary;
-  height: 22vw;
+  height: auto;
   margin: 0;
 }
 
@@ -61,13 +61,13 @@
 @media only screen and (min-width: 320px) and (max-width: 700px){
   .aProject {
     width: 70vw;
-    height: 50vw;
+    height: auto;
   }
 }
 
 @media only screen and (min-width: 701px) and (max-width: 900px){
   .project {
     width: 40vw;
-    height: 35vw;
+    height: auto;
   }
 }
