@@ -103,10 +103,11 @@
 
 /* General sidebar styles */
 .bm-menu {
-  background: $color-primary;
+  background: $color-quaternary;
   padding: 2.5em 1.5em 0;
   font-size: 1.15em;
   height: 45% !important;
+  border: 1px $color-accent outset;
 }
 
 /* Wrapper for item list */
@@ -116,7 +117,7 @@
 
 /* Individual item */
 .bm-item {
-  color: $color-secondary;
+  color: $color-primary;
   margin-bottom: 15px;
   display: inline-block;
   text-align: right;
@@ -124,7 +125,7 @@
 }
 
 .bm-item:visited {
-  color: $color-secondary;
+  color: $color-primary;
 }
 
 /* Styling of overlay */
