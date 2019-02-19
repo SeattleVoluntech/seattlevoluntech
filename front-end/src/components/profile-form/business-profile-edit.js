@@ -1,21 +1,36 @@
 // packages
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import * as routes from "../../routes";
+
+// Redux actions
+import { putProfileForm } from '../../actions/profile-edit-actions';
 
 // styles
 import './profile-form.scss';
-/* TODO Add redux for conditional rendering */
+
 class BusinessProfileEdit extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       fields: {},
-      errors: {}
+      errors: {},
+      formSubmitted: null
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleBlur = this.handleBlur.bind(this);
     this.validateForm = this.validateForm.bind(this);
+  }
+
+  componentWillUnmount() {
+    this.setState({
+      fields: {},
+      errors: {},
+      formSubmitted: null,
+    })
   }
 
   handleBlur = (field) => (event) => {
@@ -27,7 +42,7 @@ class BusinessProfileEdit extends React.Component {
   handleInputChange(event) {
     let fields = this.state.fields;
     const { target } = event;
-    const name = target.type === 'radio' ? 'userType' : target.name;
+    const name = target.name;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     fields[name] = value
     this.setState({
@@ -72,10 +87,10 @@ class BusinessProfileEdit extends React.Component {
       errors['businessDesc'] ='Please tell us briefly about your business.';
     }
 
-    if (touched['businessSite'] && !fields['businessSite']) {
+    /*if (touched['businessSite'] && !fields['businessSite']) {
       formValid = false;
       errors['businessSite'] ='Please enter a valid url.';
-    }
+    }*/
 
     this.setState({
         errors: errors
@@ -83,47 +98,39 @@ class BusinessProfileEdit extends React.Component {
     return formValid;
   }
 
-  handleSubmit(event) {
+  async handleSubmit(event) {
     event.preventDefault();
-    this.validateForm();
-    const data = new FormData(event.target);
-    // console.log(data);
-    // console.log(data.keys());
-    for (let name of data.keys()) {
-      // console.log(name);
-      data.set(name, data.get(name));
+    if (await this.validateForm()){
+      await this.setState({ formIsValid: true })
     }
-    /* fetch('/api/', {
-      method: 'POST',
-      body: data,
-    }); */
-    //this.setState({ redirectToReferrer: true });
+    if (await this.state.formIsValid) {
+      const data = JSON.stringify(this.state.fields);
+      await this.props.putProfileForm(data);
+      this.setState({ formSubmitted: true });
+    }
   }
 
   render() {
-    const { location } = this.props;
-
     const businessProfile = <React.Fragment><label htmlFor='business-name-edit'>Business Name:</label>
-      <input type='text' id='business-name-edit' name='businessName' required onChange={this.handleInputChange} onBlur={this.handleBlur('businessName')} value={this.state.fields.businessName || ''}/>
-      <span className='invalid-feedback'>{this.state.errors.businessName}</span>
+      <input type='text' id='business-name-edit' name='firstName' required size='70' onChange={this.handleInputChange} onBlur={this.handleBlur('firstName')} value={this.state.fields.firstName || ''}/>
+      <span className='invalid-feedback'>{this.state.errors.firstName}</span>
       <label htmlFor='business-email-edit'>Business Email:</label>
-      <input type='email' id='business-email-edit' name='businessEmail' required onChange={this.handleInputChange} onBlur={this.handleBlur('businessEmail')} value={this.state.fields.businessEmail || ''}/>
-      <span className='invalid-feedback'>{this.state.errors.businessEmail}</span>
+      <input type='email' id='business-email-edit' name='email' required size='70' onChange={this.handleInputChange} onBlur={this.handleBlur('email')} value={this.state.fields.email || ''}/>
+      <span className='invalid-feedback'>{this.state.errors.email}</span>
       <label htmlFor='business-desc-edit'>Business Description:</label>
-      <textarea rows='10' cols='70' id='business-desc-edit' name='businessDesc' required onChange={this.handleInputChange} onBlur={this.handleBlur('businessDesc')} value={this.state.fields.businessDesc || ''}/>
-      <span className='invalid-feedback'>{this.state.errors.businessDesc}</span>
+      <textarea rows='10' cols='70' id='business-desc-edit' name='bio' required onChange={this.handleInputChange} onBlur={this.handleBlur('bio')} value={this.state.fields.bio || ''}/>
+      <span className='invalid-feedback'>{this.state.errors.bio}</span>
       <label htmlFor='business-website-edit'>Existing Website (Optional): </label>
-      <input type='url' id='business-website-edit' name='businessSite' onChange={this.handleInputChange} onBlur={this.handleBlur('businessSite')} value={this.state.fields.businessSite || ''}/>
-      <span className='invalid-feedback'>{this.state.errors.businessSite}</span>
-      </React.Fragment>;
-
-    const { userType } = this.state.fields;
-    const { userExist } = this.state;
+      <input type='url' id='business-website-edit' name='lastName' onChange={this.handleInputChange} onBlur={this.handleBlur('lastName')} value={this.state.fields.lastName || ''}/>
+      <span className='invalid-feedback'>{this.state.errors.lastName}</span>
+    </React.Fragment>;
+    const { type } = this.state.fields;
     const checkFormCompletion = this.checkFormCompletion();
     const { formSubmitted } = this.state;
     if (formSubmitted) {
-      return <Link to={'/dashboard'}/>;
+      return <Redirect to={routes.DASHBOARD_FRONTEND}/>;
     }
+    const { profileForm } = this.props.profileForm;
     return (
         <React.Fragment>
           <section className='form flex'>
@@ -142,4 +149,23 @@ class BusinessProfileEdit extends React.Component {
   }
 }
 
-export default BusinessProfileEdit;
+BusinessProfileEdit.propTypes = {
+  profileForm: PropTypes.object,
+  error: PropTypes.object,
+  loading: PropTypes.bool,
+  putProfileForm: PropTypes.func,
+};
+
+const mapStateToProps = state => ({
+  profileForm: state.profileForm,
+  loading: state.loading,
+  error: state.error,
+});
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    putProfileForm: () => dispatch(putProfileForm()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(BusinessProfileEdit);

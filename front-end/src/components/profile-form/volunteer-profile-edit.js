@@ -1,6 +1,12 @@
 // packages
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import * as routes from "../../routes";
+
+// Redux actions
+import { putProfileForm } from '../../actions/profile-edit-actions';
 
 // styles
 import './profile-form.scss';
@@ -10,7 +16,8 @@ class VolunteerProfileEdit extends React.Component {
     super(props);
     this.state = {
       fields: {},
-      errors: {}
+      errors: {},
+      formSubmitted: null,
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -27,7 +34,7 @@ class VolunteerProfileEdit extends React.Component {
   handleInputChange(event) {
     let fields = this.state.fields;
     const { target } = event;
-    const name = target.type === 'radio' ? 'userType' : target.name;
+    const name = target.name;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     fields[name] = value
     this.setState({
@@ -81,59 +88,50 @@ class VolunteerProfileEdit extends React.Component {
       return false
   }
 
-  handleSubmit(event) {
+  async handleSubmit(event) {
     event.preventDefault();
-    this.validateForm();
-    const data = new FormData(event.target);
-    // console.log(data);
-    // console.log(data.keys());
-    for (let name of data.keys()) {
-      // console.log(name);
-      data.set(name, data.get(name));
+    if (await this.validateForm()){
+      await this.setState({ formIsValid: true })
     }
-    /* fetch('/api/', {
-      method: 'POST',
-      body: data,
-    }); */
-    //this.setState({ redirectToReferrer: true });
+    if (await this.state.formIsValid) {
+      const data = JSON.stringify(this.state.fields);
+      await this.props.putProfileForm(data);
+      this.setState({ formSubmitted: true });
+    }
   }
 
   render() {
     const { location } = this.props;
     const skills = [['visual-design', 'visualDesign'], ['ux-design', 'uxDesign'], ['front-end', 'frontEnd'], ['back-end', 'backEnd'], ['full-stack', 'fullStack'], ['wordpress', 'wordpress'], ['squarespace', 'squarespace'], ['wix', 'wix']];
-    const volunteerProfile = <React.Fragment><label htmlFor='volunteer-name-edit'>First Name:</label>
-      <input type='text' id='volunteer-first-name-edit' name='volunteerFirstName' required size='40' onChange={this.handleInputChange} onBlur={this.handleBlur('volunteerFirstName')} value={this.state.fields.volunteerFirstName || ''}/>
-      <span className='invalid-feedback'>{this.state.errors.volunteerName}</span>
-      <label htmlFor='volunteer-last-name-edit'>Last Name:</label>
-      <input type='text' id='volunteer-last-name-edit' name='volunteerLastName' required size='40' onChange={this.handleInputChange} onBlur={this.handleBlur('volunteerLastName')} value={this.state.fields.volunteerLastName || ''}/>
-      <span className='invalid-feedback'>{this.state.errors.volunteerName}</span>
-      <label htmlFor='volunteer-email-edit'>Email:</label>
-      <input type='text' id='volunteer-email-edit' name='volunteerEmail' required size='40' onChange={this.handleInputChange} onBlur={this.handleBlur('volunteerEmail')} value={this.state.fields.volunteerEmail || ''}/>
-      <span className='invalid-feedback'>{this.state.errors.volunteerEmail}</span>
-      <label htmlFor='volunteer-bio-edit'>Tell us about yourself:</label>
-      <textarea rows='10' cols='70' id='volunteer-bio-edit' name='volunteerBio' required onChange={this.handleInputChange} onBlur={this.handleBlur('volunteerBio')} value={this.state.fields.volunteerBio || ''}/>
-      <span className='invalid-feedback'>{this.state.errors.volunteerBio}</span>
+    const volunteerProfile = <React.Fragment>
+      <label htmlFor='volunteer-name-edit'>Name: (Required)</label>
+      <input type='text' id='volunteer-name-edit' name='firstName' required size='70' onChange={this.handleInputChange} onBlur={this.handleBlur('firstName')} value={this.state.fields.firstName || ''}/>
+      <span className='invalid-feedback'>{this.state.errors.firstName}</span>
+      <label htmlFor='volunteer-email-edit'>Email: (Required)</label>
+      <input type='text' id='volunteer-email-edit' name='email' required size='70' onChange={this.handleInputChange} onBlur={this.handleBlur('email')} value={this.state.fields.email || ''}/>
+      <span className='invalid-feedback'>{this.state.errors.email}</span>
+      <label htmlFor='volunteer-bio-edit'>Tell us about yourself: (Required)</label>
+      <textarea rows='10' cols='70' id='volunteer-bio-edit' name='bio' required onChange={this.handleInputChange} onBlur={this.handleBlur('bio')} value={this.state.fields.bio || ''}/>
+      <span className='invalid-feedback'>{this.state.errors.bio}</span>
       <fieldset className='skills-group'>
         <legend><h3>Technical Skills: (Optional)</h3></legend>
         <ul className='skills-checkbox'>
           {skills.map(([id, name], idx) => (
-            <li key={idx}>
-              <input type='checkbox' id={id} name={name} onChange={this.handleInputChange} />
-              <label htmlFor={id}>{id.replace(/-/, ' ').toUpperCase()}</label>
-              <span className='invalid-feedback' />
-            </li>
+              <li key={idx}>
+                <input type='checkbox' id={id} name={name} onChange={this.handleInputChange} />
+                <label htmlFor={id}>{id.replace(/-/, ' ').toUpperCase()}</label>
+              </li>
           ))}
         </ul>
       </fieldset>
-      </React.Fragment>;
-
-    const { userType } = this.state.fields;
-    const { userExist } = this.state;
+    </React.Fragment>;
+    const { type } = this.state.fields;
     const checkFormCompletion = this.checkFormCompletion();
     const { formSubmitted } = this.state;
     if (formSubmitted) {
-      return <Link to={'/dashboard'}/>;
+      return <Redirect to={routes.DASHBOARD_FRONTEND}/>;
     }
+    const { profileForm } = this.props.profileForm;
     return (
         <React.Fragment>
           <section className='form flex'>
@@ -152,4 +150,23 @@ class VolunteerProfileEdit extends React.Component {
   }
 }
 
-export default VolunteerProfileEdit;
+VolunteerProfileEdit.propTypes = {
+  profileForm: PropTypes.object,
+  error: PropTypes.object,
+  loading: PropTypes.bool,
+  putProfileForm: PropTypes.func,
+};
+
+const mapStateToProps = state => ({
+  profileForm: state.profileForm,
+  loading: state.loading,
+  error: state.error,
+});
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    putProfileForm: () => dispatch(putProfileForm()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(VolunteerProfileEdit);

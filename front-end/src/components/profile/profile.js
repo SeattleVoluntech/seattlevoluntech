@@ -67,7 +67,7 @@ class Profile extends React.Component {
       <Link to='dashboard-edit' user='volunteer'><Button>Edit your profile</Button></Link>
       </div>
       </div></div>;
-    
+
     return (
         <React.Fragment>
           {this.state.user === 'business' && (
@@ -76,14 +76,13 @@ class Profile extends React.Component {
             <div className='profile-projects flex'>
               <div className='open-projects flex'>
                 <h2>Open Projects</h2>
-                <ProjectCard
+                {latestProjects.length > 0 && <ProjectCard
                    currentProject={latestProjects[0]}
                 />
               </div>
               <hr className='underline' />
               <div className='closed-projects flex'>
                 <h2>Closed Projects</h2>
-                {/* map over project object to generate cards and pass userType as props */}
               </div>
             </div>
             </div>)
@@ -95,12 +94,10 @@ class Profile extends React.Component {
                 <div className='profile-projects flex'>
                   <div className='current-projects flex'>
                     <h2>Current Projects</h2>
-                    {/* map over project object to generate cards and pass userType as props */}
                   </div>
                   <hr className='underline' />
                   <div className='closed-projects flex'>
                     <h2>Past Projects</h2>
-                    {/* map over project object to generate cards and pass userType as props */}
                   </div>
                 </div>
               </div>

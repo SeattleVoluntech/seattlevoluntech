@@ -3,13 +3,14 @@ import React from 'react';
 import {Link, Redirect} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import * as routes from "../../routes";
 
 // Redux actions
 import { putProfileForm } from '../../actions/profile-edit-actions';
 
 // styles
 import './profile-form.scss';
-import * as routes from "../../routes";
+
 class NewProfileForm extends React.Component {
   constructor(props) {
     super(props);
@@ -127,7 +128,7 @@ class NewProfileForm extends React.Component {
     }
     if (await this.state.formIsValid) {
       const data = JSON.stringify(this.state.fields);
-      await this.props.putProfileForm();
+      await this.props.putProfileForm(data);
       this.setState({ formSubmitted: true });
     }
   }
