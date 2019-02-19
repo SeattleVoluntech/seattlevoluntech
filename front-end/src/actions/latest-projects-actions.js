@@ -30,13 +30,11 @@ export const getLatestProjects = () => {
     return fetch('http://localhost:8080/projects/latest')
       .then(handleErrors)
       .then((response) => {
-        console.log('response', response);
         return response.json();
       }).then((data) => {
         return data;
       })
       .catch((error) => {
-        console.log('here');
         dispatch(getLatestProjectsFailure(error));
       });
   };
