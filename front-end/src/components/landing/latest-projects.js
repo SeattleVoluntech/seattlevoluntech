@@ -23,7 +23,7 @@ class LatestProjects extends React.Component {
       return <div>Error! {error.message}</div>;
     }
 
-    if (loading) {
+    if (loading === 'false') {
       return <div>Loading...</div>;
     }
 

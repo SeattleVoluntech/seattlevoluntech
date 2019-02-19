@@ -23,14 +23,15 @@ class ProjectPane extends React.Component {
   componentDidMount() {
     this.props.fetchAllProjects();
   }
-
+  
   render() {
     const { error, loading, allProjects } = this.props.allProjects;
+
     if (error) {
       return <div>Error! {error.message}</div>;
     }
 
-    if (loading) {
+    if (loading === 'false') {
       return <div>Loading...</div>;
     }
     return (
