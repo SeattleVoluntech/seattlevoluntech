@@ -99,13 +99,10 @@ Link a {
 }
 
 //Mobile
-@media only screen and (min-width: 320px) and (max-width: 700px) and (orientation: portrait) {
-  .intro-body {
-    flex-wrap: wrap;
-  }
+@media only screen and (min-width: 320px) and (max-width: 736px) and (orientation: portrait) {
   .business, .volunteer {
     margin: 25px 0 0 0;
-    width: 90%;
+    width: 50%;
   }
 
   .business > p, .volunteer > p {
@@ -119,14 +116,6 @@ Link a {
 
   .intro-body button {
     width: 90%;
-  }
-
-  .vertical-line {
-    border-bottom: 4px solid $color-quaternary;
-    border-left: 0;
-    height: 10px;
-    width: 50%;
-    margin: 50px 0 40px 0;
   }
 
   .main-details {
@@ -147,7 +136,7 @@ Link a {
 }
 
 //Mobile Landscape
-@media only screen and (min-width: 320px) and (max-width: 700px) and (orientation: landscape) {
+@media only screen and (min-width: 320px) and (max-width: 736px) and (orientation: landscape) {
   .business, .volunteer {
     margin: 15px 0 0 0;
     width: 50%;
@@ -166,7 +155,7 @@ Link a {
 }
 
 //Tablet
-@media only screen and (min-width: 701px) and (max-width: 900px){
+@media only screen and (min-width: 737px) and (max-width: 900px){
   .business, .volunteer {
     margin: 40px 0 0 0;
     width: 50%;
@@ -184,3 +173,4 @@ Link a {
     padding: 10px 0 10px 0;
   }
 }
+
